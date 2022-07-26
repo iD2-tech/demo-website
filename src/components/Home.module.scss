@@ -1,0 +1,85 @@
+@import "./../styles/variables.scss";
+
+.container {
+    background-image: url("../../public/images/pho.jpg");
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    
+}
+
+.button {
+    padding-left: 2vw;
+    padding-right:2vw;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #EBFD72;
+    border-radius: 25px;
+    // border-color: #EBFD72;
+    font-family: $Outfit;
+    color: #1B463C;
+    border-style: none;
+    font-size: 1.2vw;
+    font-weight:500;
+    margin-top: 40vh;
+    margin-right: 60vw;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    min-width: 20vw;
+
+
+    &:hover {
+        background-color: #f7ffbc;
+        cursor: pointer;
+    }
+    
+}
+
+@media (max-width: 750px) {
+    .container {
+        background-image: url("../../public/images/pho.jpg");
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        align-content: center;
+        
+    }
+    
+    .button {
+        padding-left: 7vw;
+        padding-right:7vw;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        background-color: #EBFD72;
+        border-radius: 25px;
+        font-family: $Outfit;
+        color: #1B463C;
+        border-style: none;
+        font-size: 3vw;
+        font-weight:500;
+        flex-direction: row;
+        margin-top: 40vh;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        min-width: 20vw;
+
+        &:hover {
+            background-color: #f7ffbc;
+            cursor: pointer;
+        }
+    }
+}
+
+
+

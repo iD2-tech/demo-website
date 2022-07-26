@@ -2,6 +2,8 @@
 
 .header {
     background: $primary;
+    position: sticky;
+    top: 0;
     width: 100%;
     height: $headerHeight;
     padding: 0 1.5rem;
@@ -36,7 +38,7 @@
             bottom: 0;
             width: 100%;
             height: 100vh;
-            position: fixed;
+            position: absolute;
             display: flex;
             flex-direction: column;
             justify-content: center;

@@ -58,13 +58,18 @@ const Header = () => {
                 >
                     <ul>
                         <li>
-                            <Link to="/menu" onClick={menuToggleHandler}>
+                            <a href={require("./phomenu.pdf")} target="_blank" onClick={menuToggleHandler}>
                                 Menu
-                            </Link>
+                            </a>
                         </li>
                         <li>
                             <Link to="/order" onClick={menuToggleHandler}>
                                 Order
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/aboutus" onClick={menuToggleHandler}>
+                                About Us
                             </Link>
                         </li>
                     </ul>
