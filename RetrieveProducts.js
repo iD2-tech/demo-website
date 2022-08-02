@@ -12,12 +12,14 @@ app.use(cors());
 // This displays message that the server runode nning and listening to specified port
 app.listen(port, () => console.log(`Listening on port ${port}`)); //Line 6
 
-// create a GET route
+
 app.get('/products', (req, res) => { //Line 9
     const product = getProduct().then((result) => {
         for (let i = 0; i < result.data.length; i++) {
             result.data[i].key = i;
+            result.data[i].quantity = 0;
         }
+        console.log(result.data)
         res.json({products: result.data})
     })
 

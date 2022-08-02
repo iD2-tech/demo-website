@@ -22,6 +22,8 @@ const Order = () => {
 
   }, [counter])
 
+
+  // get all products from stripe
   const getProducts = async() => {
     fetch('http://localhost:5000/products')
       .then(r => r.json())
@@ -32,6 +34,7 @@ const Order = () => {
      
   }
 
+  // get all prices from stripe
   const getPrices = async() => {
 
     fetch('http://localhost:5000/prices', {
@@ -42,6 +45,8 @@ const Order = () => {
       })
   }
     
+  // combines the products with its corresponding prices
+  // navigates to the displayMenu based on what button the user pressed (appateizer, pho, banh mi)
   const displayMenu = (props) => {
     combinePrices();
     var array =[];
@@ -59,14 +64,19 @@ const Order = () => {
     } else {
       category = "Banh Mi"
     }
+
+    // the product list sent is just the products that fall under the category
+    // all products is all products to keep track of quantity
     nav("/displayMenu", {
       state: {
         productList: array,
-        category: category
+        category: category,
+        allProducts: products
       }
     })
   }
 
+  // combines products to prices
   const combinePrices = () => {
     for (let i = 0; i < products.length; i++) {
       products[i].price = prices[i].unit_amount/100;
