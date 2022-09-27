@@ -1,0 +1,201 @@
+@import "./../styles/variables.scss";
+
+.container {
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    align-items: center;
+    height:100%;
+    
+}
+
+.headerContainer {
+    width:100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 100px;
+}
+
+.header {
+    margin-top: 3%;
+    font-size: 30px;
+    font-weight: 500;
+    color: #1B463C
+}
+
+.imageContainer {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+    width: 320px;
+    border-radius: 10px;
+
+    &:hover {
+        cursor:pointer;
+        opacity: 0.9;
+    }
+}
+
+.image {
+    object-fit:cover;
+    width: 100%;
+    height: 100%;
+}
+
+.menu {
+    margin-top: 2%;
+    // margin-left: 50px;
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    justify-content: flex-start;
+    // height:100%;
+    // justify-content: flex-start;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+    width:320px;
+    margin-left: 48px;
+}
+
+.name {
+    margin-top: 3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.description {
+    width: 100%;
+    font-size: 17px;
+    font-weight: 300;
+    margin-top: 2%;
+    color: #1B463C;
+    // height: 50%
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #1B463C;
+}
+
+.price {
+    font-size: 17px;
+    font-weight: 200;
+    color: #1B463C;
+}
+
+// modal 
+.modalContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.modalInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height:300px;
+    align-items: center;
+}
+
+.modalTitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.modalName {
+    font-size: 22px;
+    font-weight: 600;
+    color: #1B463C;
+}
+
+.modalPrice {
+    margin-top: 2%;
+    font-size: 13px;
+    font-weight: 200;
+    color: #1B463C;
+}
+
+.modalDescription {
+    width: 300px;
+    color: #1B463C;
+    text-align: center;
+}
+
+.modalQuantity {
+
+}
+
+.modalButton {
+    font-family: $Outfit;
+    background-color: #EBFD72;
+    width: 100%;
+    border-radius: 5px;
+    padding:7.5px;
+    border:#EBFD72;
+    margin-top: 12%;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #f3ffa3;
+    }
+
+}
+
+
+@media (max-width: 750px) {
+
+    .headerContainer {
+        width:100%;
+        margin-left: 0%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .header {
+        margin-top: 3%;
+        font-size: 30px;
+        font-weight: 500;
+        color: #1B463C;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .menu {
+        margin-top: 2%;
+        margin-left: 0%;
+        // margin-left: 50px;
+        display: flex;
+        flex-direction: column;
+        width:100%;
+        justify-content: center;
+        align-items: center;
+        
+        // height:100%;
+        // justify-content: flex-start;
+    }
+
+    .item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height:100%;
+        width:320px;
+        margin-top: 48px;
+        margin-left: 0%;
+    }
+}
