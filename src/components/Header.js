@@ -31,8 +31,10 @@ const Header = () => {
             var cartJSON = localStorage.getItem("cart");
             cartJSON = JSON.parse(cartJSON);
             var totalQuantity = 0;
-            for (var key in cartJSON) {
-                totalQuantity += cartJSON[key];
+            if(cartJSON != null) {
+                cartJSON.forEach(element => {
+                    totalQuantity += element.quantity;
+                });
             }
             console.log("\ttotal quantity displayed in header: " + totalQuantity);
             setCartQuantity(totalQuantity);
