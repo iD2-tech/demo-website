@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@formkit/auto-animate": "^1.0.0-beta.6",
+    "@headlessui/react": "^1.7.10",
+    "@heroicons/react": "^2.0.15",
     "@stripe/stripe-js": "^1.34.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",

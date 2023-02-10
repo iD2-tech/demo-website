@@ -18,7 +18,7 @@ const Order = () => {
           setCounter(counter + 1);
         }
       }
-      console.log(products);
+    console.log(products);
 
   }, [counter])
 
@@ -55,7 +55,7 @@ const Order = () => {
         array.push(products[i]);
       }
     }
-    console.log(array);
+    // console.log(array);
     var category;
     if (props.includes("Spring")) {
       category = "Appetizers"
@@ -89,15 +89,15 @@ const Order = () => {
       <div className={classes.buttonContainer}>
         <div onClick={() => displayMenu("Spring")} className={classes.item}>
           <img className={classes.image} src={require('./images/SpringPic.png')} alt="background"/>
-          <h className={classes.header}>Appetizers</h>
+          <p className={classes.header}>Appetizers</p>
         </div>
         <div onClick={() => displayMenu("Pho")} className={classes.item}>
           <img className={classes.image} src={require('./images/PhoPic.png')} alt="background"/>
-          <h className={classes.header}>Pho</h>
+          <p className={classes.header}>Pho</p>
         </div>
         <div onClick={() => displayMenu("Mi")} className={classes.item}>
           <img className={classes.image} src={require('./images/BahnPic.png')} alt="background"/>
-          <h className={classes.header}>Banh Mi</h>
+          <p className={classes.header}>Banh Mi</p>
         </div>
       </div>
     </div>

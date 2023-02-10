@@ -17,8 +17,57 @@ const Header = () => {
         width: undefined,
         height: undefined,
     });
+    const [cartQuantity, setCartQuantity] = useState();
+    const [data, setData] = useState(null);
 
     useEffect(() => {
+        const storedData = localStorage.getItem("cart");
+        setData(JSON.parse(storedData));
+
+        const handleStorage = (event) => {
+            if (event.key === "cart") {
+                setData(JSON.parse(event.newValue));
+              }
+            var cartJSON = localStorage.getItem("cart");
+            cartJSON = JSON.parse(cartJSON);
+            var totalQuantity = 0;
+            for (var key in cartJSON) {
+                totalQuantity += cartJSON[key];
+            }
+            console.log("\ttotal quantity displayed in header: " + totalQuantity);
+            setCartQuantity(totalQuantity);
+        };
+
+        window.addEventListener("storage", handleStorage);
+
+        return () => {
+            window.removeEventListener("storage", handleStorage);
+        };
+    }, [localStorage.getItem("cart")]);
+
+    // useEffect(() => {
+    //     const handleStorage = () => {
+    //         // Place for a function responsible for
+    //         // pulling and displaying local storage data
+            // var cartJSON = localStorage.getItem("cart");
+            // cartJSON = JSON.parse(cartJSON);
+            // var totalQuantity = 0;
+            // for (var key in cartJSON) {
+            //     totalQuantity += cartJSON[key];
+            // }
+            // console.log("hi" + totalQuantity);
+            // setCartQuantity(totalQuantity);
+    //     }
+
+    //     window.addEventListener('storage', handleStorage())
+
+
+
+    // }, [])
+
+    useEffect(() => {
+
+
         const handleResize = () => {
             setSize({
                 width: window.innerWidth,
@@ -52,9 +101,8 @@ const Header = () => {
                     {RESTNAME}
                 </Link>
                 <nav
-                    className={`${classes.header__content__nav} ${
-                        menuOpen && size.width < 768 ? classes.isMenu : ""
-                    }`}
+                    className={`${classes.header__content__nav} ${menuOpen && size.width < 768 ? classes.isMenu : ""
+                        }`}
                 >
                     <ul>
                         <li>
@@ -75,6 +123,9 @@ const Header = () => {
                     </ul>
                     <button onClick={ctaClickHandler}>
                         <AiFillShopping size="2em" />
+                        <span>
+                            {cartQuantity}
+                        </span>
                     </button>
                 </nav>
                 <div className={classes.header__content__toggle}>
