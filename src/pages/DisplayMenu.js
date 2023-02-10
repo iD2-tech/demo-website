@@ -42,81 +42,77 @@ const DisplayMenu = () => {
       setShow(true);
       setSelected(props);
     }
-     
-    // helper function checks if quantity set is going to be negative, if so sets to 0
-    const checkNegative = (quantity) => {
-      if(quantity < 0) {
-        return 0;
-      }
-      return quantity;
-    }
     
     // closes pop up
     // adds the quantity the allProducts when closing
     // this gets reset rn tho so I think we gotta get it from the database with like a checkout session
     const closeModal = (props) => {
-      console.log(allProducts);
       console.log("the following logs test the add to cart functions: ");
       setShow(false);
       
-      
       // get the cart info from local storage
-      // if it doesn't exist cartJSON is just set to empty
+      // if it doesn't exist cartJSON is just set to empty brackets
       var cartJSON = localStorage.getItem("cart");
       cartJSON = JSON.parse(cartJSON);
-      console.log(props);
-      
-      // loop searches for the correct product
-      for (let i = 0; i < allProducts.length; i++) {
-        if (allProducts[i].name === props) { // finds correct product from given parameter
+      if(cartJSON === null) {
+        cartJSON = [];
+      }
 
-          // sets vars accordingly
-          const productID = allProducts[i].id;
-          var additionalQuantity = selectedValue; 
-          console.log("\tselected: " + selectedValue);
-
-
-          if(cartJSON != null) { // needed because NULL.hasOwnProperty throws error
-
-             // if cart already has the product we are adding to cart
-            if(cartJSON.hasOwnProperty(productID)) { 
-              var quantity = cartJSON[productID];
-              console.log("\tprevious quantity : "+ cartJSON[productID]);
-              quantity += additionalQuantity; // update the quantity with previous value + selected value
-
-              quantity = checkNegative(quantity);
-
-              cartJSON[productID] = quantity; // sets the quantity to updated value
-              console.log("\tupdated quantity: " + quantity);
-
-            // if cart doesn't already have the product we are adding to cart just add it to the JSON
-            } else { 
-              additionalQuantity = checkNegative(additionalQuantity);
-
-              cartJSON = {...cartJSON, [productID] : additionalQuantity};
-            }
-          
-          // if the cart is empty just add it to the JSON
-          } else { 
-            additionalQuantity = checkNegative(additionalQuantity);
-            cartJSON = {...cartJSON, [productID] : additionalQuantity};
+      // sets index variable to index of product in cart if exists, -1 otherwise
+      var index = -1;
+      for(let cartParser = 0; cartParser < cartJSON.length; cartParser++) {
+        if(cartJSON[cartParser] !== null) {
+          if(cartJSON[cartParser].id === props.id) {
+            index = cartParser;
+            break;
           }
-          
         }
       }
 
-      
+      // set vars accordingly
+      const additionalQuantity = selectedValue;
+      console.log("\tselected: " + additionalQuantity);
 
-      // removes all zero-value entries from the cart
-      Object.entries(cartJSON).forEach((entry) => { 
-        const [key, value] = entry;
-        if(value === 0) {
-          delete cartJSON[key];
-        } 
+      // if product already exists in cart
+      if(index >= 0) {
+        //get original quantity
+        const originalQuantity = cartJSON[index].quantity;
+        console.log("\tprevious quantity: " + originalQuantity);
+
+        //update the cart with new quantity
+        const updatedQuantity = originalQuantity + additionalQuantity;
+        console.log("\tupdated quantity: " + updatedQuantity);
+        cartJSON[index].quantity = updatedQuantity;
+
+      // if product is not in the cart yet
+      } else {
+        cartJSON.push({
+          default_price: props.default_price,
+          id: props.id,
+          images: props.images,
+          key: props.key,
+          name: props.name,
+          price: props.price,
+          quantity: additionalQuantity
+        })
+
+      }
+      
+      // removes all negative/zero/null quantity entries from the cart
+      for(let k = 0; k < cartJSON.length; k++) {
+        if(cartJSON[k] != null) {
+          if(cartJSON[k].quantity <= 0) {
+            delete cartJSON[k];
+          }
+        }        
+      }
+      var filtered = cartJSON.filter(function (el) {
+        return el != null;
       });
 
 
-      localStorage.setItem("cart", JSON.stringify(cartJSON)); // update localStorage
+
+      localStorage.setItem("cart", JSON.stringify(filtered)); // update localStorage
       console.log("\tlocal storage JSON: " + localStorage.getItem("cart"));
 
 
@@ -144,7 +140,7 @@ const DisplayMenu = () => {
                   </div>
                   <p className={classes.modalDescription}>{selected.description}</p>
                   <QuantityPicker smooth width='8rem' onChange={(value) => {setSelectedValue(value)}} />
-                  <button  onClick={() => {closeModal(selected.name)}} className={classes.modalButton}>Add To Cart</button>
+                  <button  onClick={() => {closeModal(selected)}} className={classes.modalButton}>Add To Cart</button>
                 </div> : null}   
             </Modal>
       <div onClick={() => {openModal(product)}} className={classes.item}>
