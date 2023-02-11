@@ -11,6 +11,7 @@ const Order = () => {
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
+    window.dispatchEvent(new Event('storage')) // trigger update to header
     getProducts();
     getPrices();
       if (products.length === 0) {
