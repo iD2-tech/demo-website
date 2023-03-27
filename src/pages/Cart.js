@@ -3,6 +3,8 @@ import classes from '../components/Cart.module.scss';
 import { loadStripe } from '@stripe/stripe-js';
 import { Navigate, useNavigate, Link } from 'react-router-dom';
 
+const stripePromise = loadStripe('pk_test_51LPzSaAmJKzU86rc7blGPoGpWD2vDXq7lodk2F4LKPAhxChyfNN4XFYX1GEbxAYTojFIFKsnWTlqJxG9hE9ppGaL002clKaclh');
+
 const Cart = () => {
   const nav = useNavigate();
   const [cart, setCart] = useState([]);
@@ -10,9 +12,11 @@ const Cart = () => {
   const [taxes, setTaxes] = useState(0);
   const [total, setTotal] = useState(0);
   var products = [];
+  const TAX_RATE = 0.093;
 
 
   useEffect(() => {
+    // get cart info from localStorage and set info
     var cartJSON = localStorage.getItem("cart");
     if(cartJSON === null) {
       cartJSON = [];
@@ -40,29 +44,73 @@ const Cart = () => {
     }
     setSubtotal(sum.toFixed(2));
 
-    const taxEstimate = sum * 0.093
+    const taxEstimate = sum * TAX_RATE;
     setTaxes(taxEstimate.toFixed(2));
     console.log(taxes);
 
     const tempTotal = sum + taxEstimate;
     setTotal(tempTotal.toFixed(2));
     console.log(total);
+    window.dispatchEvent(new Event('storage')) // trigger update to header
+    
   }
 
-  const removeFromCart = () => {
-    console.log("removeFromCart");
+  // X button to remove from cart
+  const removeFromCart = (e, index) => {
+    e.preventDefault();
+    var cartCopy = [...cart];
+    cartCopy.splice(index, 1);
+    setCart(cartCopy);
+    localStorage.setItem("cart", JSON.stringify(cartCopy));
+    updateCartTotal();
   }
 
-  const minusButtonClicked = () => {
-    console.log("-");
+  // - button to decrement one from cart quantity, removes from cart if quantity = 0
+  const minusButtonClicked = (e, index) => {
+    e.preventDefault();
+    var cartCopy = [...cart];
+    cartCopy[index].quantity--;
+    if(cartCopy[index].quantity == 0) {
+      removeFromCart(e, index);
+    } else {
+      setCart(cartCopy);
+      localStorage.setItem("cart", JSON.stringify(cartCopy));
+      updateCartTotal();
+    }
+
   }
 
-  const plusButtonClicked = () => {
-    console.log("+");
+  // increments cart quantity by one
+  const plusButtonClicked = (e, index) => {
+    e.preventDefault();
+    var cartCopy = [...cart];
+    cartCopy[index].quantity++;
+    setCart(cartCopy);
+    localStorage.setItem("cart", JSON.stringify(cartCopy));
+    updateCartTotal();
   }
 
-  const checkoutButtonClicked = () => {
-    console.log("checkout");
+  // create stripe checkout session
+  const checkoutButtonClicked = async () => {
+    const cart = JSON.parse(localStorage.getItem('cart'));
+    const response = await fetch('http://localhost:5000/create-checkout-session', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(cart),
+    });
+
+    const session = await response.json();
+
+    const stripe = await stripePromise;
+    const { error } = await stripe.redirectToCheckout({
+      sessionId: session.id,
+    });
+
+    if (error) {
+      console.error(error);
+    }
   }
 
   return (
@@ -78,7 +126,7 @@ const Cart = () => {
 
         {/* Products */}
         <div className={classes.productsMap}>
-          {cart.map((product) => (
+          {cart.map((product, index) => (
             <div key={product.ID} className={classes.product}>
 
               {/* image container */}
@@ -104,7 +152,7 @@ const Cart = () => {
 
                   {/* mins sign container */}
                   <div className={classes.minusSign}>
-                    <button className={classes.adjustMinusButton} onClick={minusButtonClicked}>
+                    <button className={classes.adjustMinusButton} onClick={(e) => minusButtonClicked(e, index)}>
                       -
                     </button>
 
@@ -117,7 +165,7 @@ const Cart = () => {
 
                   {/* plus sign container */}
                   <div className={classes.plusSign}>
-                    <button className={classes.adjustPlusButton} onClick={plusButtonClicked}>
+                    <button className={classes.adjustPlusButton} onClick={(e) => plusButtonClicked(e, index)}>
                       +
                     </button>
                   </div>
@@ -129,7 +177,7 @@ const Cart = () => {
 
               {/* remove from cart container */}
               <div className={classes.removeFromCartContainer}>
-                <button className={classes.removeButton} onClick={removeFromCart}>
+                <button className={classes.removeButton} onClick={(e) => removeFromCart(e, index)}>
                   X
                 </button>
 
@@ -178,6 +226,10 @@ const Cart = () => {
             </div>
           ))
           }
+        </div>
+
+        <div className={classes.horizontalLine}>
+
         </div>
 
         {/* taxes and total */}
