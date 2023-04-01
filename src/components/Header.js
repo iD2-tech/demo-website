@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 
 import { BiMenuAltRight } from "react-icons/bi";
-import { AiOutlineClose, AiFillShopping } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
+import { TbShoppingBag } from "react-icons/tb";
+import { FaShoppingBasket } from "react-icons/fa";
+import kuLogo from '../pages/images/KuLogo.png';
+import kuText from '../pages/images/KuText.png';
 
 
 import classes from "./Header.module.scss";
@@ -9,7 +13,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
 
-    const RESTNAME = "Wonderful Pho";
+    const RESTNAME = "Sushi and Izakaya";
 
     const navigation = useNavigate();
     const [menuOpen, setMenuOpen] = useState(false);
@@ -27,11 +31,11 @@ const Header = () => {
         const handleStorage = (event) => {
             if (event.key === "cart") {
                 setData(JSON.parse(event.newValue));
-              }
+            }
             var cartJSON = localStorage.getItem("cart");
             cartJSON = JSON.parse(cartJSON);
             var totalQuantity = 0;
-            if(cartJSON != null) {
+            if (cartJSON != null) {
                 cartJSON.forEach(element => {
                     totalQuantity += element.quantity;
                 });
@@ -51,14 +55,14 @@ const Header = () => {
     //     const handleStorage = () => {
     //         // Place for a function responsible for
     //         // pulling and displaying local storage data
-            // var cartJSON = localStorage.getItem("cart");
-            // cartJSON = JSON.parse(cartJSON);
-            // var totalQuantity = 0;
-            // for (var key in cartJSON) {
-            //     totalQuantity += cartJSON[key];
-            // }
-            // console.log("hi" + totalQuantity);
-            // setCartQuantity(totalQuantity);
+    // var cartJSON = localStorage.getItem("cart");
+    // cartJSON = JSON.parse(cartJSON);
+    // var totalQuantity = 0;
+    // for (var key in cartJSON) {
+    //     totalQuantity += cartJSON[key];
+    // }
+    // console.log("hi" + totalQuantity);
+    // setCartQuantity(totalQuantity);
     //     }
 
     //     window.addEventListener('storage', handleStorage())
@@ -99,9 +103,13 @@ const Header = () => {
     return (
         <header className={classes.header}>
             <div className={classes.header__content}>
-                <Link to="/" className={classes.header__content__logo}>
-                    {RESTNAME}
-                </Link>
+                <div className={classes.logo}>
+                    <Link to="/" className={classes.header__content__logo}>
+                        <img src={kuLogo} style={{height: "90%", marginTop: "1.5%" }} />
+                        <img src={kuText} style={{ height: "70%", marginBottom: "4%"}} />
+                    </Link>
+                </div>
+
                 <nav
                     className={`${classes.header__content__nav} ${menuOpen && size.width < 768 ? classes.isMenu : ""
                         }`}
@@ -124,8 +132,8 @@ const Header = () => {
                         </li>
                     </ul>
                     <button onClick={ctaClickHandler}>
-                        <AiFillShopping size="2em" />
-                        <span>
+                        <FaShoppingBasket size="1.75em" color="white" />
+                        <span className={classes.cartQuantity}>
                             {cartQuantity}
                         </span>
                     </button>

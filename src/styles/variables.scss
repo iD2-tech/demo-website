@@ -8,8 +8,8 @@ $Abril: 'Abril Fatface', cursive;
 // colors
 $dark: rgb(29, 29, 29);
 $light: #fff;
-$primary: #EBFD72;
-$text: #1B463C;
+$primary: black;
+$text: white;
 
 // spacing
 $spacing-md: 16px;
@@ -27,5 +27,9 @@ $headerHeight: 80px;
             @content
         }
     }
+}
+
+* {
+    font-family: 'Times New Roman', Times, serif;
 }
 

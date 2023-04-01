@@ -56,7 +56,7 @@ const Order = () => {
         array.push(products[i]);
       }
     }
-    // console.log(array);
+    console.log(array);
     var category;
     if (props.includes("Spring")) {
       category = "Appetizers"
