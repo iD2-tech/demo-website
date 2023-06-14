@@ -92,8 +92,9 @@ const Cart = () => {
 
   // create stripe checkout session
   const checkoutButtonClicked = async () => {
+    console.log("test");
     const cart = JSON.parse(localStorage.getItem('cart'));
-    const response = await fetch('http://localhost:5000/create-checkout-session', {
+    const response = await fetch('http://localhost:3000/create-checkout-session', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
