@@ -1,0 +1,313 @@
+@import "./../styles/variables.scss";
+
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    height: 100%;
+
+    // border: 3px solid black;
+}
+
+.headerContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    height: 10%;
+    align-items: center;
+
+    // border: 3px solid blue;
+}
+
+.productsContainer {
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+    height: 100%;
+    flex-direction: column;
+    margin-left: 3%;
+    padding-left: 1.5%;
+
+    // border: 3px solid red;
+}
+
+.reviewContainer {
+    width: 30%;
+    display: flex;
+    justify-content: flex-start;
+    height: 100%;
+    flex-direction: column;
+    margin-left: 2%;
+    padding-left: 1.5%;
+    margin-right: 1.5%;
+    padding-right: 1.5%;
+
+    // border: 3px solid green;
+}
+
+.categoryHeader {
+    margin-top: 3%;
+    font-size: xx-large;
+    font-weight: 500;
+    color: #1B463C;
+}
+
+.productsMap {
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    justify-content: flex-start;
+    height: 100%;
+
+    // border: 3px solid orange;
+}
+
+.product {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-height: 20%;
+
+    // border: 3px solid blue;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.productImage {
+    width: 20%;
+    display: flex;
+    
+    // border: 3px solid lavender;
+}
+
+.image {
+    max-width:100%;
+    max-height:100%;
+    border-radius: 10px;
+}
+
+.productMetaData {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+
+    // border: 3px solid orange;
+}
+
+.productNameContainer {
+    width: 100%;
+    display: flex;
+    height: 20%;
+    font-size: 125%;
+    // padding: 3px;
+    
+
+    // border: 3px solid red;
+}
+
+.productPriceContainer {
+    width: 100%;
+    display: flex;
+    height: 50%;
+    font-size: 125%;
+    padding: 0.5%;
+
+    // border: 3px solid green;
+}
+
+.quantityButtonContainer {
+    width: 100%;
+    display: flex;
+    height: 30%;
+
+    // border: 3px solid red;
+}
+
+.minusSign {
+    width: 4%;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+
+    // border: 3px solid blue;
+}
+
+.quantityContainer {
+    width: 4%;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    
+
+    // border: 3px solid orange;
+}
+
+.plusSign {
+    width: 4%;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+
+    // border: 3px solid blue;
+}
+
+.adjustMinusButton {
+    font-weight: bold;
+    font-size: large;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.adjustPlusButton {
+    font-weight: bold;
+    font-size: large;
+    background-color: transparent;
+    border-color: transparent;
+    
+}
+
+.removeFromCartContainer {
+    width: 10%;
+    display: flex;
+    height: 100%;
+
+    // border: 3px solid yellow;
+}
+
+.removeButton {
+    height:20%;
+    font-size: 125%;
+    background-color: transparent;
+    border-color: transparent;
+    margin-top: 3%;
+}
+
+.subtotalMap {
+    margin-top: 4%;
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    height: 60%;
+    justify-content: flex-start;
+
+    // border: 3px solid orange;
+}
+
+.item {
+    height: 8%;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+
+    // border: 3px solid blue;
+}
+
+.quantityDisplay {
+    width: 10%;
+    height: 100%;
+
+    // border: 3px solid red;
+}
+
+.productNameDisplay {
+    width: 70%;
+    height: 100%;
+
+    // border: 3px solid black;
+}
+
+.quantityRow {
+    height: 100%;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+
+    // border: 3px solid blue;
+}
+
+.productPriceDisplay {
+    width: 20%;
+    height: 100%;
+    font-weight: bold;
+
+    // border: 3px solid pink;
+}
+
+.taxesTotalContainer {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+
+    // border: 3px solid blue;
+}
+
+.horizontalLine {
+    border: 1px solid #1B463C;
+    width: 100%;
+}
+
+.taxesContainer {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: row;
+
+    // border: 3px solid red;
+}    
+
+.taxLabel {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    font-size: 175%;
+    font-weight: bold;
+    align-self: center;
+    color: #1B463C;
+    
+    // border: 3px solid yellow;
+}
+
+.displayTax {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    
+
+    // border: 3px solid green;
+}
+
+.totalTax {
+    margin-left: auto;
+    margin-right: 0;
+    font-size: x-large;
+    align-self: center;
+}
+
+.totalContainer {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: row;
+
+    // border: 3px solid red;
+}
+
+.checkoutButton {
+    margin-top: 5%;
+    background-color: #EBFD72;
+    height: 25%;
+    border-color: transparent;
+    color: #1B463C;
+    border-radius: 10px;
+}
+
+.line {
+    border: 1px solid #1B463C;
+    height: 80%;
+}
