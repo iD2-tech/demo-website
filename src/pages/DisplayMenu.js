@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import classes from '../components/DisplayMenu.module.scss';
-import Modal from 'react-modal'
-
+import Modal from 'react-modal';
 
 const customStyles = {
   content: {
@@ -20,7 +19,6 @@ const customStyles = {
 };
 
 const DisplayMenu = () => {
-
   const location = useLocation();
   const nav = useNavigate();
   const [products, setProducts] = useState(location.state.productList);
@@ -34,31 +32,32 @@ const DisplayMenu = () => {
   useEffect(() => {
     // console.log(allProducts);
     // console.log(products.imag)
-  }, [])
+  }, []);
 
   // opens pop up
   const openModal = (props) => {
     setShow(true);
     setSelected(props);
-  }
+    setSelectedValue(props.quantity || 1);
+  };
 
   // closes pop up
   // adds the quantity the allProducts when closing
   // this gets reset rn tho so I think we gotta get it from the database with like a checkout session
   const closeModal = (props) => {
-    console.log("the following logs test the add to cart functions: ");
+    console.log('the following logs test the add to cart functions: ');
     setShow(false);
 
     // get the cart info from local storage
     // if it doesn't exist cartJSON is just set to empty brackets
-    var cartJSON = localStorage.getItem("cart");
+    let cartJSON = localStorage.getItem('cart');
     cartJSON = JSON.parse(cartJSON);
     if (cartJSON === null) {
       cartJSON = [];
     }
 
     // sets index variable to index of product in cart if exists, -1 otherwise
-    var index = -1;
+    let index = -1;
     for (let cartParser = 0; cartParser < cartJSON.length; cartParser++) {
       if (cartJSON[cartParser] !== null) {
         if (cartJSON[cartParser].id === props.id) {
@@ -70,21 +69,20 @@ const DisplayMenu = () => {
 
     // set vars accordingly
     const additionalQuantity = selectedValue;
-    console.log("\tselected: " + additionalQuantity);
+    console.log('\tselected: ' + additionalQuantity);
 
     // if product already exists in cart
     if (index >= 0) {
-      //get original quantity
+      // get original quantity
       const originalQuantity = cartJSON[index].quantity;
-      console.log("\tprevious quantity: " + originalQuantity);
+      console.log('\tprevious quantity: ' + originalQuantity);
 
-      //update the cart with new quantity
+      // update the cart with new quantity
       const updatedQuantity = originalQuantity + additionalQuantity;
-      console.log("\tupdated quantity: " + updatedQuantity);
+      console.log('\tupdated quantity: ' + updatedQuantity);
       cartJSON[index].quantity = updatedQuantity;
-
-      // if product is not in the cart yet
     } else {
+      // if product is not in the cart yet
       cartJSON.push({
         default_price: props.default_price,
         id: props.id,
@@ -92,9 +90,8 @@ const DisplayMenu = () => {
         key: props.key,
         name: props.name,
         price: props.price,
-        quantity: additionalQuantity
-      })
-
+        quantity: additionalQuantity,
+      });
     }
 
     // removes all negative/zero/null quantity entries from the cart
@@ -105,48 +102,56 @@ const DisplayMenu = () => {
         }
       }
     }
-    var filtered = cartJSON.filter(function (el) {
+    const filtered = cartJSON.filter(function (el) {
       return el != null;
     });
 
-
-
-    localStorage.setItem("cart", JSON.stringify(filtered)); // update localStorage
-    console.log("\tlocal storage JSON: " + localStorage.getItem("cart"));
-
+    localStorage.setItem('cart', JSON.stringify(filtered)); // update localStorage
+    console.log('\tlocal storage JSON: ' + localStorage.getItem('cart'));
 
     setTriggerRerender(triggerRerender + 1);
     setSelectedValue(0); // reset the selectedValue var
-    window.dispatchEvent(new Event('storage')) // trigger update to header
-  }
+    window.dispatchEvent(new Event('storage')); // trigger update to header
+  };
+
+  const decreaseQuantity = () => {
+    if (selectedValue > 0) {
+      setSelectedValue((prevValue) => prevValue - 1);
+    }
+  };
+
+  const increaseQuantity = () => {
+    setSelectedValue((prevValue) => prevValue + 1);
+  };
 
   return (
     <div className={classes.container}>
       <div className={classes.headerContainer}>
-        <p className={classes.header}>
-          {category}
-        </p>
+        <p className={classes.header}>{category}</p>
       </div>
       <div className={classes.menu}>
-        {products.map(product => (
+        {products.map((product) => (
           <div key={product.id}>
             <Modal isOpen={show} style={customStyles} ariaHideApp={false}>
-              {selected != null ?
+              {selected != null ? (
                 <div className={classes.modalInfo}>
                   <div className={classes.modalTitle}>
                     <p className={classes.modalName}>{selected.name}</p>
                     <p className={classes.modalPrice}>${selected.price}</p>
                   </div>
                   <p className={classes.modalDescription}>{selected.description}</p>
-                  {/* <QuantityPicker smooth width='8rem' onChange={(value) => { setSelectedValue(value) }} /> */}
-                  <button onClick={() => {setSelectedValue(2)}}>Increase quantity</button>
-
-                  {/* minus setSelectedValue(selected - 1)
-                  plus setSelectedValue(selected + 1) */}
-                  <button onClick={() => { closeModal(selected) }} className={classes.modalButton}>Add To Cart</button>
-                </div> : null}
+                  <div className={classes.quantityContainer}>
+                    <button onClick={decreaseQuantity}>-</button>
+                    <span>{selectedValue}</span>
+                    <button onClick={increaseQuantity}>+</button>
+                  </div>
+                  <button onClick={() => closeModal(selected)} className={classes.modalButton}>
+                    Add To Cart
+                  </button>
+                </div>
+              ) : null}
             </Modal>
-            <div onClick={() => { openModal(product) }} className={classes.item}>
+            <div onClick={() => openModal(product)} className={classes.item}>
               <div className={classes.imageContainer}>
                 <img className={classes.image} src={product.images[0]} alt="background" />
               </div>
@@ -160,7 +165,7 @@ const DisplayMenu = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default DisplayMenu
+export default DisplayMenu;
