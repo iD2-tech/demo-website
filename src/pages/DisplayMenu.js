@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import classes from '../components/DisplayMenu.module.scss';
 import Modal from 'react-modal'
-import { QuantityPicker } from 'react-qty-picker';
 
 
 const customStyles = {
@@ -139,7 +138,7 @@ const DisplayMenu = () => {
                     <p className={classes.modalPrice}>${selected.price}</p>
                   </div>
                   <p className={classes.modalDescription}>{selected.description}</p>
-                  <QuantityPicker smooth width='8rem' onChange={(value) => { setSelectedValue(value) }} />
+                  {/* <QuantityPicker smooth width='8rem' onChange={(value) => { setSelectedValue(value) }} /> */}
                   <button onClick={() => { closeModal(selected) }} className={classes.modalButton}>Add To Cart</button>
                 </div> : null}
             </Modal>
