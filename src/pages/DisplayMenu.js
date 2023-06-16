@@ -139,6 +139,10 @@ const DisplayMenu = () => {
                   </div>
                   <p className={classes.modalDescription}>{selected.description}</p>
                   {/* <QuantityPicker smooth width='8rem' onChange={(value) => { setSelectedValue(value) }} /> */}
+                  <button onClick={() => {setSelectedValue(2)}}>Increase quantity</button>
+
+                  {/* minus setSelectedValue(selected - 1)
+                  plus setSelectedValue(selected + 1) */}
                   <button onClick={() => { closeModal(selected) }} className={classes.modalButton}>Add To Cart</button>
                 </div> : null}
             </Modal>

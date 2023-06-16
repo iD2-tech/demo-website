@@ -77,7 +77,6 @@ const Cart = () => {
       localStorage.setItem("cart", JSON.stringify(cartCopy));
       updateCartTotal();
     }
-
   }
 
   // increments cart quantity by one
