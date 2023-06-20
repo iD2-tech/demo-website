@@ -17,9 +17,9 @@ const Home = () => {
   return (
 
     <div className={classes.container}>
-      <button onClick={goOrder}className={classes.button}>
-          ORDER NOW
-          <AiOutlineArrowRight style={{marginLeft: '15px'}}  />
+      <button onClick={goOrder} className={classes.button}>
+        VIEW MENU
+        <AiOutlineArrowRight style={{marginLeft: '15px'}} />
       </button>
     </div>
   )

@@ -109,7 +109,7 @@ const Header = () => {
                 @import url('https://fonts.googleapis.com/css2?family=El+Messiri&display=swap');
                 @import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&display=swap');
                 </style>
-                    <h1 style={{ fontSize: "2rem", marginTop: "4.5%", marginBottom: "0.5%" }}>
+                    <h1 style={{ fontSize: "2rem", marginTop: "4.5%", marginBottom: "0.5%",}}>
                         {/* <img src={kuLogo} style={{height: "90%", marginTop: "1.5%" }} />
                         <img src={kuText} style={{ height: "70%", marginBottom: "4%"}} /> */}
                         <span className={classes.topText}>COMMUNITY</span>
