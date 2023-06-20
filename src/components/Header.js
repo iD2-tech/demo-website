@@ -109,7 +109,7 @@ const Header = () => {
                 @import url('https://fonts.googleapis.com/css2?family=El+Messiri&display=swap');
                 @import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&display=swap');
                 </style>
-                    <h1 style={{ fontSize: "2rem", marginTop: "4.5%", marginBottom: "0.5%",}}>
+                    <h1 style={{ fontSize: "2rem", marginTop: "4.5%", marginBottom: "0.5%" }}>
                         {/* <img src={kuLogo} style={{height: "90%", marginTop: "1.5%" }} />
                         <img src={kuText} style={{ height: "70%", marginBottom: "4%"}} /> */}
                         <span className={classes.topText}>COMMUNITY</span>
@@ -119,26 +119,12 @@ const Header = () => {
                 </Link>
             </div>
 
-                <nav
-                    className={`${classes.header__content__nav} ${menuOpen && size.width < 768 ? classes.isMenu : ""
-                        }`}
-                >
+                <nav className={`${classes.header__content__nav} ${menuOpen && size.width < 768 ? classes.isMenu : ""
+                        }`}>
                     <ul>
-                        <li>
-                            <a href={require("./phomenu.pdf")} target="_blank" onClick={menuToggleHandler}>
-                                Menu
-                            </a>
-                        </li>
-                        <li>
-                            <Link to="/order" onClick={menuToggleHandler}>
-                                Order
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/aboutus" onClick={menuToggleHandler}>
-                                About Us
-                            </Link>
-                        </li>
+                        <li><a href={require("./phomenu.pdf")}>Menu</a></li>
+                        <li><a href="#order">Order</a></li>
+                        <li><a href="#aboutus">About Us</a></li>
                     </ul>
                     <button onClick={ctaClickHandler}>
                         <FaShoppingBasket size="1.75em" color="white" />
