@@ -18,8 +18,7 @@ const Home = () => {
 
     <div className={classes.container}>
       <button onClick={goOrder} className={classes.button}>
-        VIEW MENU
-        <AiOutlineArrowRight style={{marginLeft: '15px'}} />
+        VIEW MENU & ORDER
       </button>
     </div>
   )
