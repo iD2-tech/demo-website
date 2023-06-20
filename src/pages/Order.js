@@ -86,19 +86,60 @@ const Order = () => {
 
 
   return (
+    // <div className={classes.container}>
+    //   <div className={classes.buttonContainer}>
+    //     <div onClick={() => displayMenu("Spring")} className={classes.item}>
+    //       <img className={classes.image} src={require('./images/SpringPic.png')} alt="background"/>
+    //       <p className={classes.header}>Appetizers</p>
+    //     </div>
+    //     <div onClick={() => displayMenu("Pho")} className={classes.item}>
+    //       <img className={classes.image} src={require('./images/PhoPic.png')} alt="background"/>
+    //       <p className={classes.header}>Pho</p>
+    //     </div>
+    //     <div onClick={() => displayMenu("Mi")} className={classes.item}>
+    //       <img className={classes.image} src={require('./images/BahnPic.png')} alt="background"/>
+    //       <p className={classes.header}>Banh Mi</p>
+    //     </div>
+    //   </div>
+    // </div>
+
     <div className={classes.container}>
-      <div className={classes.buttonContainer}>
-        <div onClick={() => displayMenu("Spring")} className={classes.item}>
-          <img className={classes.image} src={require('./images/SpringPic.png')} alt="background"/>
-          <p className={classes.header}>Appetizers</p>
+      <div className={classes['left-container']}>
+        <h3>MENU</h3>
+        <ul className={classes['menu-categories']}>
+          <li>Teriyaki</li>
+          <li>Stir Fry Vegetable</li>
+          <li>Yakisoba</li>
+          <li>Fried Rice</li>
+          <li>Side Order</li>
+          <li>Wok</li>
+          <li>Daily Specials</li>
+          <li>Breakfast</li>
+          <li>Sandwiches</li>
+          <li>Drinks</li>
+        </ul>
+      </div>
+      <div className={classes['right-container']}>
+        <div className={classes.titleLineContainer}>
+          <hr className={classes.line} />
+          <h3>Teriyaki</h3>
         </div>
-        <div onClick={() => displayMenu("Pho")} className={classes.item}>
-          <img className={classes.image} src={require('./images/PhoPic.png')} alt="background"/>
-          <p className={classes.header}>Pho</p>
-        </div>
-        <div onClick={() => displayMenu("Mi")} className={classes.item}>
-          <img className={classes.image} src={require('./images/BahnPic.png')} alt="background"/>
-          <p className={classes.header}>Banh Mi</p>
+        <div className={classes['grid-container']}>
+          <div className={classes['grid-item']}>
+            <img className={classes.image} src={require('./images/davy.jpg')} alt="background"/>
+          </div>
+          <div className={classes['grid-item']}>
+            <img className={classes.image} src={require('./images/davy.jpg')} alt="background"/>
+          </div>
+          <div className={classes['grid-item']}>
+            <img className={classes.image} src={require('./images/davy.jpg')} alt="background"/>
+          </div>
+          <div className={classes['grid-item']}>
+            <img className={classes.image} src={require('./images/davy.jpg')} alt="background"/>
+          </div>
+          <div className={classes['grid-item']}>
+            <img className={classes.image} src={require('./images/davy.jpg')} alt="background"/>
+          </div>
         </div>
       </div>
     </div>
