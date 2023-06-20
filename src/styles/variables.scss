@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Outfit:wght@100;200;300;400;500;600;700;800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&display=swap');
 
 // fonts
 $Outfit: 'Outfit', sans-serif;
@@ -8,7 +8,7 @@ $Abril: 'Abril Fatface', cursive;
 // colors
 $dark: rgb(29, 29, 29);
 $light: #fff;
-$primary: black;
+$primary: rgba(35, 169, 41, 1);
 $text: white;
 
 // spacing
@@ -19,7 +19,7 @@ $spacing-lg: 32px;
 $borderRadius: 12px;
 
 // header height
-$headerHeight: 80px;
+$headerHeight: 110px;
 
 @mixin breakpoint($point) {
     @if $point == md {
