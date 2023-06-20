@@ -1,12 +1,14 @@
 @import "./../styles/variables.scss";
 
 .container {
-    background-image: url("../../public/images/pho.jpg");
+    background-image: url("../../public/images/teriyaki.jpg");
+    background-size: cover;
     height: 100%;
     width: 100%;
     justify-content: center;
     align-items: center;
     display: flex;
+    flex-direction: column;
     
 }
 
@@ -15,16 +17,14 @@
     padding-right:2vw;
     padding-top: 15px;
     padding-bottom: 15px;
-    background-color: #EBFD72;
+    background-color: #CA3521;
     border-radius: 25px;
     // border-color: #EBFD72;
-    font-family: $Outfit;
-    color: #1B463C;
+    font-family: $HomeFont;
+    color: #FFFFFF;
     border-style: none;
     font-size: 1.2vw;
     font-weight:500;
-    margin-top: 40vh;
-    margin-right: 60vw;
     flex-direction: row;
     display: flex;
     justify-content: center;
@@ -42,7 +42,7 @@
 
 @media (max-width: 750px) {
     .container {
-        background-image: url("../../public/images/pho.jpg");
+        background-image: url("../../public/images/teriyaki.jpg");
         height: 100%;
         width: 100%;
         justify-content: center;
