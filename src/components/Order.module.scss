@@ -12,7 +12,7 @@
   .left-container {
     flex: 2;
     width: 20%;
-    height: 85%;
+    height: 76.1%;
     justify-content: center;
     margin-left: 4%;
     font-size: 30px;
@@ -43,56 +43,131 @@
         text-decoration: underline;
     }
   
-.right-container {
-  flex: 8;
-  width: 80%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: flex-start;
-}
+    .right-container {
+        flex: 8;
+        width: 80%;
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
 
-.titleLineContainer {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
+.menu-heading {
+    position: relative;
+    font-size: 30px;
+    color: $Hover;
+    margin-bottom: 2%;
   }
   
-  .line {
+  .menu-heading::after {
+    content: '';
     position: absolute;
-    width: 100%;
-    height: 1px;
-    background-color: black;
-    bottom: 50%;
+    left: 10%;
+    right: 10%;
+    bottom: 40%;
+    border-bottom: 3px solid $Hover;
+    width: auto; 
   }
 
 .grid-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 100px;
-    grid-column-gap: 0;
+    grid-gap: 80px;
     max-width: 100%;
+    grid-column-gap: 0px;
     max-height: 100%;
-    overflow-y: auto;
     justify-content: space-between;
+    margin-bottom: 8%;
   }
   
   .grid-item {
     width: 250px;
     height: 250px;
-    background-color: lightblue;
     display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    text-align: left;
+    display: flex;
+  }
+
+  .grid-item-overlay {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .grid-item-overlay img {
+    display: block;
+    height: auto;
+  }
+  
+  .image {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px
+  }
+  
+  .image-text {
+    margin-top: 15px;
+    position: relative;
+  }
+
+  .selected-value {
+    position: absolute;
+    bottom: 200px; 
+    left: 110px; 
+    color: rgba(255, 255, 255, 1);
+    padding: 5px;
+    font-size: 25px;
+  }
+  
+
+  .red-box {
+    position: absolute;
+    top: 20%;
+    left: 17%;
+    width: 65%;
+    height: 60%;
+    background-color: $Hover; /* Adjust the red box color and transparency as needed */
+    display: none;
+  }
+  
+
+  .red-box-text {
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    height: 100%;
+    text-align: center;
+  }
+
+  .visible {
+    display: block;
+  }
+
+  .price-button-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .button-container {
+    display: flex;
     align-items: center;
   }
 
-.buttonContainer {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: row;
-    width: 90%;
-}
+  .price {
+    margin-right: 63%;
+  }
+
+  .button{
+    margin: 10%;
+    color: rgba(255, 255, 255, 1); 
+    background: #E45A5A;
+    border-radius: 4px;
+    width: 40px;
+  }
+  
 
 .item {
     position: relative;
