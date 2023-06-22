@@ -7,22 +7,19 @@
     // margin-top: 250px;
     height: calc(100vh - #{$headerHeight});
     display: flex;
-    overflow-y: scroll;
-    // max-height: 80vh;
-    max-width: 95vw;
-    width: 95%;
+    width: 100%;
     flex-direction: column;
     justify-content:flex-start;
     align-items: center;
     position: relative;
-    overflow:scroll;
 
 }
 
 
 .header {
     // left:0;
-    font-family: $Outfit;
+    font-family: $HomeFont;
+    color: $Hover;
     font-size: 3vw;
     font-weight: 800;
     width: 100%;

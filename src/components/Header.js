@@ -100,31 +100,41 @@ const Header = () => {
         navigation("/cart");
     };
 
+    const scrollToSection = (sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <header className={classes.header}>
             <div className={classes.header__content}>
-            <div className={classes.logo}>
-                <Link to="/" className={classes.header__content__logo}>
-                <style>
-                @import url('https://fonts.googleapis.com/css2?family=El+Messiri&display=swap');
-                @import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&display=swap');
-                </style>
-                    <h1 style={{ fontSize: "2rem", marginTop: "4.5%", marginBottom: "0.5%" }}>
-                        {/* <img src={kuLogo} style={{height: "90%", marginTop: "1.5%" }} />
-                        <img src={kuText} style={{ height: "70%", marginBottom: "4%"}} /> */}
-                        <span className={classes.topText}>COMMUNITY</span>
-                        <br />
-                        <span className={classes.botText}>GROCERY & TERIYAKI</span>
-                    </h1>
-                </Link>
-            </div>
+                <div className={classes.logo}>
+                    <Link to="/" className={classes.header__content__logo}>
+                    <style>
+                    @import url('https://fonts.googleapis.com/css2?family=El+Messiri&display=swap');
+                    @import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&display=swap');
+                    </style>
+                        <h1 style={{ fontSize: "2rem", marginTop: "4.5%", marginBottom: "0.5%" }}>
+                            {/* <img src={kuLogo} style={{height: "90%", marginTop: "1.5%" }} />
+                            <img src={kuText} style={{ height: "70%", marginBottom: "4%"}} /> */}
+                            <span className={classes.topText}>COMMUNITY</span>
+                            <br />
+                            <span className={classes.botText}>GROCERY & TERIYAKI</span>
+                        </h1>
+                    </Link>
+                </div>
 
                 <nav className={`${classes.header__content__nav} ${menuOpen && size.width < 768 ? classes.isMenu : ""
                         }`}>
                     <ul>
-                        <li><a href={require("./phomenu.pdf")}>Menu</a></li>
-                        <li><a href="#order">Order</a></li>
-                        <li><a href="#aboutus">About Us</a></li>
+                        <li>
+                            <button onClick={() => scrollToSection('order')}>Order</button>
+                        </li>
+                        <li>
+                            <button onClick={() => scrollToSection('aboutus')}>About Us</button>
+                        </li>
                     </ul>
                     <button onClick={ctaClickHandler}>
                         <FaShoppingBasket size="1.75em" color="white" />

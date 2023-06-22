@@ -10,17 +10,22 @@ const Home = () => {
     window.dispatchEvent(new Event('storage')) // trigger update to header
   }, [])
 
-  const goOrder = () => {
-      nav("/order");
-  }
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
 
     <div className={classes.container}>
-      <button onClick={goOrder} className={classes.button}>
-        VIEW MENU
-        <AiOutlineArrowRight style={{marginLeft: '15px'}} />
-      </button>
+      <section id = "home">
+        <button onClick={() => scrollToSection('order')} className={classes.button}>
+          VIEW MENU
+          <AiOutlineArrowRight style={{marginLeft: '15px'}} />
+        </button>
+      </section>
     </div>
   )
 }

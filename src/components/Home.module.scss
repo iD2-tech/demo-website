@@ -3,13 +3,16 @@
 .container {
     background-image: url("../../public/images/teriyaki.jpg");
     background-size: cover;
-    height: 100%;
+    height: calc(100vh - #{$headerHeight});
     width: 100%;
     justify-content: center;
     align-items: center;
     display: flex;
     flex-direction: column;
-    
+}
+
+hr {
+    display: none;
 }
 
 .button {

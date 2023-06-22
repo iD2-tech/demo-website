@@ -272,6 +272,4 @@ const Cart = () => {
   )
 }
 
-// comment
-
 export default Cart

@@ -104,21 +104,23 @@ const Order = () => {
     // </div>
 
     <div className={classes.container}>
-      <div className={classes['left-container']}>
-        <h3>MENU</h3>
-        <ul className={classes['menu-categories']}>
-          <li>Teriyaki</li>
-          <li>Stir Fry Vegetable</li>
-          <li>Yakisoba</li>
-          <li>Fried Rice</li>
-          <li>Side Order</li>
-          <li>Wok</li>
-          <li>Daily Specials</li>
-          <li>Breakfast</li>
-          <li>Sandwiches</li>
-          <li>Drinks</li>
-        </ul>
-      </div>
+       <section id="order">
+        <div className={classes['left-container']}>
+          <h3>MENU</h3>
+          <ul className={classes['menu-categories']}>
+            <li>Teriyaki</li>
+            <li>Stir Fry Vegetable</li>
+            <li>Yakisoba</li>
+            <li>Fried Rice</li>
+            <li>Side Order</li>
+            <li>Wok</li>
+            <li>Daily Specials</li>
+            <li>Breakfast</li>
+            <li>Sandwiches</li>
+            <li>Drinks</li>
+          </ul>
+        </div>
+      </section>
       <div className={classes['right-container']}>
         <div className={classes.titleLineContainer}>
           <hr className={classes.line} />
