@@ -1,0 +1,90 @@
+@import "./../styles/variables.scss";
+
+
+.grid-item {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    text-align: left;
+    display: flex;
+  }
+
+  .grid-item-overlay {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .grid-item-overlay img {
+    display: block;
+    height: auto;
+  }
+  
+  .image {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px
+  }
+  
+  .image-text {
+    margin-top: 15px;
+    position: relative;
+  }
+
+  .selected-value {
+    position: absolute;
+    bottom: 200px; 
+    left: 110px; 
+    color: rgba(255, 255, 255, 1);
+    padding: 5px;
+    font-size: 25px;
+  }
+  
+
+  .red-box {
+    position: absolute;
+    top: 20%;
+    left: 17%;
+    width: 65%;
+    height: 60%;
+    background-color: $Hover; /* Adjust the red box color and transparency as needed */
+    display: none;
+  }
+  
+
+  .red-box-text {
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+  }
+
+  .visible {
+    display: block;
+  }
+
+  .price-button-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .button-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .price {
+    margin-right: 63%;
+  }
+
+  .button{
+    margin: 10%;
+    color: rgba(255, 255, 255, 1); 
+    background: #E45A5A;
+    border-radius: 4px;
+    width: 40px;
+  }
