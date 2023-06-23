@@ -4,19 +4,21 @@
     min-height: 100vh;
     padding: 50px;
     box-sizing: border-box;
-    display: flex; /* Added */
-  }
+    display: flex;
+    width: 100%;
+    justify-content: flex-start; 
+}
 
 .left-container {
-    flex: 0 0 20%;
+    flex: 20%;
     height: 85%;
     justify-content: center;
-    margin-left: 4%;
     font-size: 30px;
     font-family: $HomeFont;
     color: $Hover;
     line-height: 3;
     overflow-y: auto;
+    border: 1px solid #000;
   }
   
 
@@ -43,7 +45,7 @@
     }
   
     .right-container {
-        flex: 8;
+        flex: 80%;
         width: 80%;
         display: flex;
         flex-wrap: wrap;
