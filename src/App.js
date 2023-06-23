@@ -1,23 +1,26 @@
-import Layout from "./Layout";
-import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Menu from "./pages/Menu";
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Header from './components/Header';
 import Order from "./pages/Order";
-import Cart from "./pages/Cart";
 import AboutUs from "./pages/AboutUs";
-import DisplayMenu from "./pages/DisplayMenu";
-import Success from "./pages/Success";
+import Home from "./pages/Home";
 
-function App() {
-    return (
-        <Layout>
-            <Routes>
-                <Route path="/" exact element={<Home />} />
-                <Route path="/cart" exact element={<Cart />} />
-                <Route path="/order/success" exact element={<Success />} />
-            </Routes>
-        </Layout>
-    );
-}
+const Layout = ({ children }) => {
+  const location = useLocation();
 
-export default App;
+  return (
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <Header />
+      <main style={{ flex: 1 }}>
+        <section id="home">{location.pathname === '/' && <Home />}</section>
+        <section id="order" style={{ flexGrow: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          {location.pathname === '/' && <Order />}
+        </section>
+        <section id="aboutus">{location.pathname === '/' && <AboutUs />}</section>
+      </main>
+    </div>
+  );
+};
+
+export default Layout;
