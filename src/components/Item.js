@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import classes from '../components/Item.module.scss';
+import Image from '../pages/images/davy.jpg'
 
 function Item(props) {
   const { items } = props;
@@ -13,6 +14,7 @@ function Item(props) {
   const [selectedValue, setSelectedValue] = useState(0);
   const [triggerRerender, setTriggerRerender] = useState(0);
 
+  console.log(items);
   // const openModal = (item) => {
   //   setShow(true);
   //   setSelected(item);
@@ -150,7 +152,7 @@ function Item(props) {
     <div>
       {items.map((item, index) => (
         <div className={`${classes['grid-item']} ${classes['grid-item-overlay']}`} key={index}>
-            <img className={classes.image} src={item.img} alt="background" />
+            <img className={classes.image} src={Image} alt="background" />
           <div className={`${classes['red-box']} ${item.selectedValue > 0 ? classes.visible : ''}`}>
             <span className={classes['red-box-text']}>
               {item.selectedValue}
