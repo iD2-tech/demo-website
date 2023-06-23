@@ -1,17 +1,14 @@
 @import "./../styles/variables.scss";
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 50px;
+    box-sizing: border-box;
+    display: flex; /* Added */
   }
-  
-  .left-container {
-    flex: 2;
-    width: 20%;
+
+.left-container {
+    flex: 0 0 20%;
     height: 85%;
     justify-content: center;
     margin-left: 4%;
@@ -19,7 +16,9 @@
     font-family: $HomeFont;
     color: $Hover;
     line-height: 3;
+    overflow-y: auto;
   }
+  
 
     .menu-categories {
         display: flex;
@@ -29,8 +28,8 @@
         font-size: 30px;
         font-family: $HomeFont;
         line-height: 2;
-        padding-left: 0; /* Remove default padding from the list */
-        margin-top: 0; /* Remove default margin from the list */
+        padding-left: 0; 
+        margin-top: 0;
     }
 
     .menu-categories li {
@@ -43,20 +42,45 @@
         text-decoration: underline;
     }
   
-.right-container {
-  flex: 8;
-  width: 80%;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: flex-start;
-}
+    .right-container {
+        flex: 8;
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: flex-start;
+        border: 1px solid #000;
+        box-sizing: border-box;
+      }
 
 .titleLineContainer {
     display: flex;
     align-items: center;
     flex-direction: row;
   }
+
+  .menu-heading {
+    position: relative;
+    font-size: 30px;
+    color: $Hover;
+    margin-bottom: 2%;
+    margin-top: 3%;
+  }
+    .menu-heading::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: black;
+      bottom: 50%;
+      left: 10%;
+      right: 10%;
+      bottom: 40%;
+      border-bottom: 3px solid $Hover;
+      width: auto; 
+    }
+
+    
   
   .line {
     position: absolute;
@@ -66,25 +90,14 @@
     bottom: 50%;
   }
 
-.grid-container {
+  .grid-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 100px;
-    grid-column-gap: 0;
     max-width: 100%;
-    max-height: 100%;
-    overflow-y: auto;
     justify-content: space-between;
   }
-  
-  .grid-item {
-    width: 250px;
-    height: 250px;
-    background-color: lightblue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+
 
 .buttonContainer {
     display: flex;
@@ -98,23 +111,15 @@
     position: relative;
     overflow: hidden;
     height: 25%;
-    width: 25%;
+    width: calc(25% - 50px);
+    margin-bottom: 50px; 
     border-radius: 10px;
-
+  
     &:hover {
-        cursor:pointer;
-        opacity: 0.9;
+      cursor: pointer;
+      opacity: 0.9;
     }
-
-}
-
-.image {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    // opacity: 0.5;
-    filter: brightness(0.65);
-}
+  }
 
 
 .header {
