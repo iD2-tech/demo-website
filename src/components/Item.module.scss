@@ -1,91 +1,78 @@
 @import "./../styles/variables.scss";
 
+.item-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  font-family: $HomeFont;
+}
 
 .grid-item {
-    width: 250px;
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; 
-    text-align: left;
-    display: flex;
-  }
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  margin-bottom: 6%;
+  margin-right: 3%;
+}
 
-  .grid-item-overlay {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .grid-item-overlay img {
-    display: block;
-    height: auto;
-  }
-  
-  .image {
-    width: 150px;
-    height: 150px;
-    border-radius: 10px;
-  }
-  
-  .image-text {
-    margin-top: 15px;
-    position: relative;
-  }
-  
+.image {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 3%;
+}
 
-  .selected-value {
-    position: absolute;
-    bottom: 200px; 
-    left: 110px; 
-    color: rgba(255, 255, 255, 1);
-    padding: 5px;
-    font-size: 25px;
-  }
-  
+.image-text {
+  margin-top: 15px;
+  position: relative;
+}
 
-  .red-box {
-    position: absolute;
-    top: 20%;
-    left: 17%;
-    width: 65%;
-    height: 60%;
-    background-color: $Hover; /* Adjust the red box color and transparency as needed */
-    display: none;
-  }
-  
+.red-box {
+  position: absolute;
+  top: 20%;
+  left: 17%;
+  width: 65%;
+  height: 60%;
+  background-color: $Hover;
+  display: none;
+}
 
-  .red-box-text {
-    color: white;
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    text-align: center;
-  }
+.red-box-text {
+  color: white;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
 
-  .visible {
-    display: block;
-  }
+.visible {
+  display: block;
+}
 
-  .price-button-container {
-    display: flex;
-    align-items: center;
-  }
-  
-  .button-container {
-    display: flex;
-    align-items: center;
-  }
+.price-button-container {
+  display: flex;
+  align-items: center;
+}
 
-  .price {
-    margin-right: 25%;
-  }
+.button-container {
+  display: flex;
+  align-items: center;
+}
 
-  .button{
-    margin: 10%;
-    color: rgba(255, 255, 255, 1); 
-    background: #E45A5A;
-    border-radius: 4px;
-    width: 40px;
-  }
+.price {
+  margin-right: 148%;
+  color: $ItemText;
+}
+
+.button {
+  margin: 10%;
+  color: rgba(255, 255, 255, 1);
+  background: $ItemText;
+  border-radius: 4px;
+  width: 40px;
+}

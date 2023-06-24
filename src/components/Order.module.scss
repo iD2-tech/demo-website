@@ -18,8 +18,10 @@
     color: $Hover;
     line-height: 3;
     overflow-y: auto;
-    border: 1px solid #000;
+    margin-top: 3%;
   }
+
+  
   
 
     .menu-categories {
@@ -48,11 +50,10 @@
         flex: 80%;
         width: 80%;
         display: flex;
-        flex-wrap: wrap;
         flex-direction: column;
         justify-content: flex-start;
-        border: 1px solid #000;
         box-sizing: border-box;
+        margin-top: 2.2%;
       }
 
 .titleLineContainer {
@@ -82,8 +83,7 @@
       width: auto; 
     }
 
-    
-  
+
   .line {
     position: absolute;
     width: 100%;

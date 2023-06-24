@@ -24,6 +24,27 @@ const Order = () => {
       item: 'Soy Sauce',
       price: '$15.99'
     },
+    {
+      img: '/images/davy.jpg',
+      item: 'Soy Sauce',
+      price: '$15.99'
+    },
+    {
+      img: '/images/davy.jpg',
+      item: 'Soy Sauce',
+      price: '$15.99'
+    },
+    {
+      img: '/images/davy.jpg',
+      item: 'Soy Sauce',
+      price: '$15.99'
+    },
+    {
+      img: '/images/davy.jpg',
+      item: 'Soy Sauce',
+      price: '$15.99'
+    },
+    
     
   ];
 
@@ -73,19 +94,19 @@ const Order = () => {
           <div className={classes['grid-container']}>
             <Item items ={stir}/>
           </div> 
-          <h3 className={classes['menu-heading']}>Stir Fry Vegetable</h3>
+          <h3 className={classes['menu-heading']}>Yakisoba</h3>
           <div className={classes['grid-container']}>
             <Item items ={stir}/>
           </div> 
-          <h3 className={classes['menu-heading']}>Stir Fry Vegetable</h3>
+          <h3 className={classes['menu-heading']}>Fried Rice</h3>
           <div className={classes['grid-container']}>
             <Item items ={stir}/>
           </div> 
-          <h3 className={classes['menu-heading']}>Stir Fry Vegetable</h3>
+          <h3 className={classes['menu-heading']}>Side Order</h3>
           <div className={classes['grid-container']}>
             <Item items ={stir}/>
           </div> 
-          <h3 className={classes['menu-heading']}>Stir Fry Vegetable</h3>
+          <h3 className={classes['menu-heading']}>Wok</h3>
           <div className={classes['grid-container']}>
             <Item items ={stir}/>
           </div> 
