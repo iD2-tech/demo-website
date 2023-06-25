@@ -25,6 +25,12 @@
   border-radius: 3%;
 }
 
+.image-wrapper {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
 .red-box {
   position: absolute;
   top: 50%;
@@ -33,7 +39,6 @@
   width: 80px;
   height: 80px;
   background-color: red;
-  border-radius: 50%;
 }
 
 

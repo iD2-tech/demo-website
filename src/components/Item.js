@@ -26,12 +26,12 @@ function Item(props) {
     <div className={classes['item-container']}>
       {items.map((item, index) => (
         <div className={classes['grid-item']} key={index}>
-          <img className={classes.image} src={Image} alt="background" />
+          <div className={classes['image-wrapper']}>
+            <img className={classes.image} src={Image} alt="background" />
+            {itemValues[index] > 0 && <div className={classes['red-box']}></div>}
+          </div>
           <div className={classes['image-text']}>
             <p>{item.item}</p>
-            {itemValues[index] > 0 && (
-              <div className={classes['red-box']}></div>
-            )}
             <span className={classes['value-display']}>{itemValues[index]}</span>
             <div className={classes['price-button-container']}>
               <p className={classes.price}>{item.price}</p>
