@@ -148,6 +148,20 @@ const Order = () => {
     });
   };
 
+  // Get all the menu headings
+const menuHeadings = document.querySelectorAll('.menu-heading');
+
+// Loop through each menu heading
+menuHeadings.forEach(heading => {
+  const width = heading.offsetWidth;
+  const percentage = (width / window.innerWidth) * 100; 
+  const leftPosition = 10 + (percentage / 2); 
+  
+  heading.style.setProperty('--left-position', `${leftPosition}%`);
+});
+
+  
+
 
   return (
     <div className={classes.container}>
@@ -213,3 +227,4 @@ const Order = () => {
 };
 
 export default Order;
+
