@@ -28,11 +28,18 @@ function Item(props) {
         <div className={classes['grid-item']} key={index}>
           <div className={classes['image-wrapper']}>
             <img className={classes.image} src={Image} alt="background" />
-            {itemValues[index] > 0 && <div className={classes['red-box']}></div>}
+            {itemValues[index] > 0 && (
+              <div className={classes['red-box']}>
+              <span className={classes['box-text']}>
+                <span className ={classes.boxText}>{itemValues[index]}</span>
+                <br />
+                <span className = {classes.boxText}>in your cart</span>
+              </span>
+            </div>
+            )}
           </div>
-          <div className={classes['image-text']}>
-            <p>{item.item}</p>
-            <span className={classes['value-display']}>{itemValues[index]}</span>
+          <div>
+            <p className={classes.imageText}>{item.item}</p>
             <div className={classes['price-button-container']}>
               <p className={classes.price}>{item.price}</p>
               <div className={classes['button-container']}>
