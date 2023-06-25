@@ -23,13 +23,7 @@ function Item(props) {
       {items.map((item, index) => (
         <div className={classes['grid-item']} key={index}>
           <img className={classes.image} src={Image} alt="background" />
-          <div className={`${classes['red-box']} ${selectedValue > 0 ? classes.visible : ''}`}>
-            <span className={classes['red-box-text']}>
-              {selectedValue}
-              <br />
-              in your cart
-            </span>
-          </div>
+          {selectedValue > 0 && <div className={classes['red-box']}></div>}
           <div className={classes['image-text']}>
             <p>{item.item}</p>
             <div className={classes['price-button-container']}>

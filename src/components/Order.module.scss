@@ -45,6 +45,10 @@
         color: $Hover;
         text-decoration: underline;
     }
+
+    .refCat {
+        cursor: pointer;
+      }
   
     .right-container {
         flex: 80%;
@@ -83,7 +87,8 @@
       width: auto; 
     }
 
-
+    
+  
   .line {
     position: absolute;
     width: 100%;

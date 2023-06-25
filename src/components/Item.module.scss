@@ -25,33 +25,19 @@
   border-radius: 3%;
 }
 
+.red-box {
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border-radius: 50%;
+}
+
 .image-text {
   margin-top: 15px;
   position: relative;
-}
-
-.red-box {
-  position: absolute;
-  top: 20%;
-  left: 17%;
-  width: 65%;
-  height: 60%;
-  background-color: $Hover;
-  display: none;
-}
-
-.red-box-text {
-  color: white;
-  font-size: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  text-align: center;
-}
-
-.visible {
-  display: block;
 }
 
 .price-button-container {
