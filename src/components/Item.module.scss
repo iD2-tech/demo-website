@@ -14,7 +14,7 @@
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
-  margin-bottom: 6%;
+  margin-bottom: 7%;
   margin-right: 3%;
 }
 
@@ -23,21 +23,46 @@
   height: 300px;
   object-fit: cover;
   border-radius: 3%;
+  
+}
+
+.image-wrapper {
+  position: relative;
+  width: 300px;
+  height: 300px;
 }
 
 .red-box {
-  width: 20px;
-  height: 20px;
-  background-color: red;
   position: absolute;
-  top: 5px;
-  right: 5px;
-  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 55%;
+  height: 55%;
+  background-color: $Hover;
+  opacity: 85%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.image-text {
-  margin-top: 15px;
+.box-text {
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  font-family: $HomeFont;
+}
+
+.boxText {
+  font-family: $HomeFont;
+}
+
+
+.imageText {
+  margin-top: 16px;
   position: relative;
+  font-size: 19px;
+  font-family: $HomeFont;
 }
 
 .price-button-container {
@@ -51,8 +76,9 @@
 }
 
 .price {
-  margin-right: 148%;
+  margin-right: 149%;
   color: $ItemText;
+  font-family: $HomeFont;
 }
 
 .button {
@@ -61,4 +87,5 @@
   background: $ItemText;
   border-radius: 4px;
   width: 40px;
+  
 }

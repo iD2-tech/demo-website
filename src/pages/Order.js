@@ -151,20 +151,20 @@ const Order = () => {
 
   return (
     <div className={classes.container}>
-      <div className={classes['left-container']}>
-        <h3>MENU</h3>
-        <ul className={classes['menu-categories']}>
-          <li className={classes.refCat} onClick={() => scrollToRef(teriyakiRef)}>Teriyaki</li>
-          <li className={classes.refCat} onClick={() => scrollToRef(stirFryRef)}>Stir Fry Vegetable</li>
-          <li className={classes.refCat} onClick={() => scrollToRef(yakisobaRef)}>Yakisoba</li>
-          <li className={classes.refCat} onClick={() => scrollToRef(friedRiceRef)}>Fried Rice</li>
-          <li className={classes.refCat} onClick={() => scrollToRef(sideOrderRef)}>Side Order</li>
-          <li className={classes.refCat} onClick={() => scrollToRef(wokRef)}>Wok</li>
-          <li className={classes.refCat} onClick={() => scrollToRef(dailyRef)}>Daily Specials</li>
-          <li className={classes.refCat} onClick={() => scrollToRef(breakfastRef)}>Breakfast</li>
-          <li className={classes.refCat} onClick={() => scrollToRef(sandwichesRef)}>Sandwiches</li>          
-          <li className={classes.refCat} onClick={() => scrollToRef(drinksRef)}>Drinks</li>        
-        </ul>
+        <div className={classes['left-container']}>
+          <h3 className ={classes.menu}>MENU</h3>
+          <ul className={classes['menu-categories']}>
+            <li className={classes.refCat} onClick={() => scrollToRef(teriyakiRef)}>Teriyaki</li>
+            <li className={classes.refCat} onClick={() => scrollToRef(stirFryRef)}>Stir Fry Vegetable</li>
+            <li className={classes.refCat} onClick={() => scrollToRef(yakisobaRef)}>Yakisoba</li>
+            <li className={classes.refCat} onClick={() => scrollToRef(friedRiceRef)}>Fried Rice</li>
+            <li className={classes.refCat} onClick={() => scrollToRef(sideOrderRef)}>Side Order</li>
+            <li className={classes.refCat} onClick={() => scrollToRef(wokRef)}>Wok</li>
+            <li className={classes.refCat} onClick={() => scrollToRef(dailyRef)}>Daily Specials</li>
+            <li className={classes.refCat} onClick={() => scrollToRef(breakfastRef)}>Breakfast</li>
+            <li className={classes.refCat} onClick={() => scrollToRef(sandwichesRef)}>Sandwiches</li>          
+            <li className={classes.refCat} onClick={() => scrollToRef(drinksRef)}>Drinks</li>        
+          </ul>
       </div>
       <div className={classes['right-container']}>
         <h3 ref={teriyakiRef} className={classes['menu-heading']}>Teriyaki</h3>
