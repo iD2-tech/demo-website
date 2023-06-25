@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Order from "./pages/Order";
 import AboutUs from "./pages/AboutUs";
