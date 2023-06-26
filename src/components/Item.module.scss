@@ -87,7 +87,6 @@
   background: $ItemText;
   border-radius: 4px;
   width: 40px;
-  
 }
 
 @media (max-width: 750px) {
@@ -104,11 +103,26 @@
   }
 
   .image-wrapper {
-    width: 100%;
-    height: auto;
+    width: 100px;
+    height: 100px;
+  }
+
+  .imageText {
+    font-size: 17px;
+  }
+
+  .price {
+    margin-right: 15%;
+    font-size: 14px;
+  }
+
+  .box-text {
+    font-size: 8px;
   }
 
   .button {
     margin: 5%;
+    width: 20px;
+    height: 20px;
   }
 }

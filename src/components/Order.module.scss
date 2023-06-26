@@ -156,6 +156,8 @@
   }
 
   .left-container {
+    overflow-y: auto;
+    position: sticky;
     font-size: 25px;
   }
 
@@ -178,12 +180,10 @@
   }
 
   .left-container {
+    position: sticky;
     flex: 100%;
-    height: auto;
     font-size: 20px;
-    margin-top: 0;
-    position: static;
-    overflow-y: initial;
+    overflow-y: auto;
   }
 
   .menu-categories {
