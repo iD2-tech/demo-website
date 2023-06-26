@@ -4,7 +4,8 @@
 
 
 .container {
-    // margin-top: 250px;
+    top: 40px;
+    padding: 50px;
     height: calc(100vh - #{$headerHeight});
     display: flex;
     width: 100%;
@@ -17,10 +18,9 @@
 
 
 .header {
-    // left:0;
     font-family: $HomeFont;
     color: $Hover;
-    font-size: 3vw;
+    font-size: 33px;
     font-weight: 800;
     width: 100%;
     margin-top: 3%;
