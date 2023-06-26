@@ -89,3 +89,26 @@
   width: 40px;
   
 }
+
+@media (max-width: 750px) {
+  .grid-item {
+    width: 100%;
+    height: auto;
+    margin-bottom: 4%;
+    margin-right: 0;
+  }
+
+  .image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .image-wrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  .button {
+    margin: 5%;
+  }
+}
