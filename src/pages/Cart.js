@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import classes from '../components/Cart.module.scss';
 import { loadStripe } from '@stripe/stripe-js';
 import { Navigate, useNavigate, Link } from 'react-router-dom';
+import { FaShoppingCart } from "react-icons/fa";
 
 const stripePromise = loadStripe('pk_test_51LPzSaAmJKzU86rc7blGPoGpWD2vDXq7lodk2F4LKPAhxChyfNN4XFYX1GEbxAYTojFIFKsnWTlqJxG9hE9ppGaL002clKaclh');
 
@@ -115,10 +116,8 @@ const Cart = () => {
 
   return (
     <div className={classes.container}>
-
       {/* Products Column */}
       <div className={classes.productsContainer}>
-
         {/* top bar label */}
         <div className={classes.headerContainer}>
           <p className={classes.categoryHeader}>Your Order</p>
@@ -126,78 +125,68 @@ const Cart = () => {
 
         {/* Products */}
         <div className={classes.productsMap}>
-          {cart.map((product, index) => (
-            <div key={product.ID} className={classes.product}>
-
-              {/* image container */}
-              <div className={classes.productImage}>
-                <img className={classes.image} src={product.images[0]} alt="background" />
-              </div>
-
-              {/* product info container */}
-              <div className={classes.productMetaData}>
-
-                {/* product name container */}
-                <div className={classes.productNameContainer}>
-                  <p>{product.name}</p>
-                </div>
-
-                {/* product price container */}
-                <div className={classes.productPriceContainer}>
-                  <b>${product.price}</b>
-                </div>
-
-                {/* quantity button container */}
-                <div className={classes.quantityButtonContainer}>
-
-                  {/* mins sign container */}
-                  <div className={classes.minusSign}>
-                    <button className={classes.adjustMinusButton} onClick={(e) => minusButtonClicked(e, index)}>
-                      -
-                    </button>
-
-                  </div>
-
-                  {/* quantity container */}
-                  <div className={classes.quantityContainer}>
-                    {product.quantity}
-                  </div>
-
-                  {/* plus sign container */}
-                  <div className={classes.plusSign}>
-                    <button className={classes.adjustPlusButton} onClick={(e) => plusButtonClicked(e, index)}>
-                      +
-                    </button>
-                  </div>
-
-                </div>
-
-              </div>
-
-
-              {/* remove from cart container */}
-              <div className={classes.removeFromCartContainer}>
-                <button className={classes.removeButton} onClick={(e) => removeFromCart(e, index)}>
-                  X
-                </button>
-
-              </div>
-
+          {cart.length === 0 ? (
+            <div className={classes.emptyCartContainer}>
+              <FaShoppingCart className={classes.emptyCartIcon} />
+              <p className={classes.emptyCartMessage}>Your cart is empty</p>
             </div>
-          ))
+          ) : (
+            cart.map((product, index) => (
+              <div key={product.ID} className={classes.product}>
+                {/* image container */}
+                <div className={classes.productImage}>
+                  <img className={classes.image} src={product.images[0]} alt="background" />
+                </div>
 
-          }
+                {/* product info container */}
+                <div className={classes.productMetaData}>
+                  {/* product name container */}
+                  <div className={classes.productNameContainer}>
+                    <p>{product.name}</p>
+                  </div>
+
+                  {/* product price container */}
+                  <div className={classes.productPriceContainer}>
+                    <b>${product.price}</b>
+                  </div>
+
+                  {/* quantity button container */}
+                  <div className={classes.quantityButtonContainer}>
+                    {/* mins sign container */}
+                    <div className={classes.minusSign}>
+                      <button className={classes.adjustMinusButton} onClick={(e) => minusButtonClicked(e, index)}>
+                        -
+                      </button>
+                    </div>
+
+                    {/* quantity container */}
+                    <div className={classes.quantityContainer}>{product.quantity}</div>
+
+                    {/* plus sign container */}
+                    <div className={classes.plusSign}>
+                      <button className={classes.adjustPlusButton} onClick={(e) => plusButtonClicked(e, index)}>
+                        +
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* remove from cart container */}
+                <div className={classes.removeFromCartContainer}>
+                  <button className={classes.removeButton} onClick={(e) => removeFromCart(e, index)}>
+                    X
+                  </button>
+                </div>
+              </div>
+            ))
+          )}
         </div>
-
       </div>
 
-      <div className={classes.line}>
-
-      </div>
+      <div className={classes.line}></div>
 
       {/* Subtotal Column */}
       <div className={classes.reviewContainer}>
-
         {/* top bar label */}
         <div className={classes.headerContainer}>
           <p className={classes.categoryHeader}>Review Order</p>
@@ -207,69 +196,43 @@ const Cart = () => {
         <div className={classes.subtotalMap}>
           {cart.map((product) => (
             <div key={product.ID} className={classes.item}>
-
               <div className={classes.quantityRow}>
-                <div className={classes.quantityDisplay}>
-                  {product.quantity}
-                </div>
-
-                <div className={classes.productNameDisplay}>
-                  {product.name}
-                </div>
-
-                <div className={classes.productPriceDisplay}>
-                  ${product.price * product.quantity}
-                </div>
-
+                <div className={classes.quantityDisplay}>{product.quantity}</div>
+                <div className={classes.productNameDisplay}>{product.name}</div>
+                <div className={classes.productPriceDisplay}>${product.price * product.quantity}</div>
               </div>
-
             </div>
-          ))
-          }
+          ))}
         </div>
 
-        <div className={classes.horizontalLine}>
-
-        </div>
+        <div className={classes.horizontalLine}></div>
 
         {/* taxes and total */}
         <div className={classes.taxesTotalContainer}>
-
           {/* taxes container */}
           <div className={classes.taxesContainer}>
-
-            <div className={classes.taxLabel}>
-              Tax
-            </div>
-
+            <div className={classes.taxLabel}>Tax</div>
             <div className={classes.displayTax}>
-              <p className={classes.totalTax}> ${taxes} </p>
+              <p className={classes.totalTax}>${taxes}</p>
             </div>
           </div>
 
           {/* total Container */}
           <div className={classes.totalContainer}>
-            <div className={classes.taxLabel}>
-              Total
-            </div>
-
+            <div className={classes.taxLabel}>Total</div>
             <div className={classes.displayTax}>
-              <p className={classes.totalTax}> ${total} </p>
+              <p className={classes.totalTax}>${total}</p>
             </div>
-
           </div>
 
           {/* checkout button */}
           <button className={classes.checkoutButton} onClick={checkoutButtonClicked}>
             Checkout
           </button>
-
-
         </div>
-
       </div>
-    </div >
-  )
-}
+    </div>
+  );
+};
 
-export default Cart
+export default Cart;
