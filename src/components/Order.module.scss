@@ -150,65 +150,62 @@
     z-index: 999999999;
 }
 
+@media (max-width: 1150px) {
+  .container {
+    padding: 30px;
+  }
+
+  .left-container {
+    font-size: 25px;
+  }
+
+  .menu-categories {
+    font-size: 25px;
+  }
+
+  .right-container {
+    margin-top: 30px;
+  }
+
+  .menu-heading {
+    font-size: 25px;
+  }
+}
+
 @media (max-width: 750px) {
+  .container {
+    padding: 20px;
+  }
 
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        align-content: center;
-        height: 100%;
-        width: 100%;
-    }
+  .left-container {
+    flex: 100%;
+    height: auto;
+    font-size: 20px;
+    margin-top: 0;
+    position: static;
+    overflow-y: initial;
+  }
 
-        .leftContainer {
-            flex: 1;
-            border: 1px solid black;
-            border-radius: 5px;
-        }
-        
-        .rightContainer {
-            flex: 2;
-            background-color: lightgreen;
-            border: 1px solid black;
-            border-radius: 5px;
-        }
+  .menu-categories {
+    font-size: 20px;
+  }
 
-    .buttonContainer {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        flex-direction: column;
-        width: 90%;
-        height: 90%
-    }
+  .right-container {
+    flex: 100%;
+    width: 100%;
+    margin-top: 20px;
+  }
 
-    .item {
-        position: relative;
-        overflow: hidden;
-        height: 30%;
-        width: 40%;
-        border-radius: 10px;
-    
-        &:hover {
-            cursor:pointer;
-            opacity: 0.9;
-        }
-    
-    }
+  .menu-heading {
+    font-size: 20px;
+  }
 
-    .header {
-        text-align: center;
-        font-size: 15px;
-        position: absolute;
-        color: white;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: fit-content;
-        margin: auto;
-        z-index: 999999999;
-    }
+  .header {
+    font-size: 15px;
+  }
 
+  .item {
+    width: 111.15px;
+    height: 102.15px;
+  }
 }
