@@ -1,9 +1,8 @@
-import Image from '../pages/images/davy.jpg';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import classes from '../components/Item.module.scss';
 
-function Item({ item, index }) {
+function Item({ item, index, prices}) {
   const nav = useNavigate();
   const [quantity, setQuantity] = useState(0);
 
@@ -20,7 +19,7 @@ function Item({ item, index }) {
   return (
     <div className={classes['grid-item']} key={index}>
       <div className={classes['image-wrapper']}>
-        <img className={classes.image} src={Image} alt="background" />
+        <img className={classes.image} src={item.images} alt="background" />
         {quantity > 0 && (
           <div className={classes['red-box']}>
             <span className={classes['box-text']}>
@@ -32,9 +31,9 @@ function Item({ item, index }) {
         )}
       </div>
       <div>
-        <p className={classes.imageText}>{item.item}</p>
+        <p className={classes.imageText}>{item.name}</p>
         <div className={classes['price-button-container']}>
-          <p className={classes.price}>{item.price}</p>
+        <p className={classes.price}>${prices.prices}</p>
           <div className={classes['button-container']}>
             <button className={classes.button} onClick={decreaseQuantity}>
               -
