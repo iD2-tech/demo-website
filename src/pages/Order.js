@@ -42,6 +42,7 @@ const Order = () => {
     }
   };
 
+
   useEffect(() => {
     window.dispatchEvent(new Event('storage')); // trigger update to header
     fetchProducts();
