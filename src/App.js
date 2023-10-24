@@ -1,12 +1,12 @@
-import Layout from "./components/Layout";
+import Layout from "./components/Layout/Layout";
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Menu from "./pages/Menu";
-import Order from "./pages/Order";
-import Cart from "./pages/Cart";
-import AboutUs from "./pages/AboutUs";
-import DisplayMenu from "./pages/DisplayMenu";
-import Success from "./pages/Success";
+import Home from "./pages/Home/Home";
+import Menu from "./pages/Menu/Menu";
+import Order from "./pages/Order/Order";
+import Cart from "./pages/Cart/Cart";
+import AboutUs from "./pages/AboutUs/AboutUs";
+import DisplayMenu from "./pages/DisplayMenu/DisplayMenu";
+import Success from "./pages/Success/Success";
 
 function App() {
     return (

@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import classes from '../components/Cart.module.scss';
+import classes from './Cart.module.scss';
 import { loadStripe } from '@stripe/stripe-js';
 import { Navigate, useNavigate, Link } from 'react-router-dom';
 
@@ -18,7 +18,7 @@ const Cart = () => {
   useEffect(() => {
     // get cart info from localStorage and set info
     var cartJSON = localStorage.getItem("cart");
-    if(cartJSON === null) {
+    if (cartJSON === null) {
       cartJSON = [];
     } else {
       cartJSON = JSON.parse(cartJSON);
@@ -32,7 +32,7 @@ const Cart = () => {
   // updates the cart totals
   const updateCartTotal = () => {
     var currentCart = localStorage.getItem("cart");
-    if(currentCart === null) {
+    if (currentCart === null) {
       currentCart = [];
     } else {
       currentCart = JSON.parse(currentCart);
@@ -52,7 +52,7 @@ const Cart = () => {
     setTotal(tempTotal.toFixed(2));
     console.log(total);
     window.dispatchEvent(new Event('storage')) // trigger update to header
-    
+
   }
 
   // X button to remove from cart
@@ -70,7 +70,7 @@ const Cart = () => {
     e.preventDefault();
     var cartCopy = [...cart];
     cartCopy[index].quantity--;
-    if(cartCopy[index].quantity == 0) {
+    if (cartCopy[index].quantity == 0) {
       removeFromCart(e, index);
     } else {
       setCart(cartCopy);
@@ -93,23 +93,27 @@ const Cart = () => {
   // create stripe checkout session
   const checkoutButtonClicked = async () => {
     const cart = JSON.parse(localStorage.getItem('cart'));
-    const response = await fetch('http://localhost:5000/create-checkout-session', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(cart),
-    });
+    if (cart) {
+      const response = await fetch('http://localhost:5000/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(cart),
+      });
 
-    const session = await response.json();
+      const session = await response.json();
 
-    const stripe = await stripePromise;
-    const { error } = await stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
+      const stripe = await stripePromise;
+      const { error } = await stripe.redirectToCheckout({
+        sessionId: session.id,
+      });
 
-    if (error) {
-      console.error(error);
+      if (error) {
+        console.error(error);
+      }
+    } else {
+      alert("cart is empty!");
     }
   }
 

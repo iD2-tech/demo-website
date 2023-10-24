@@ -1,0 +1,88 @@
+@import "../../styles/variables.scss";
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 70vh;
+    align-self: flex-start;
+    margin-top: 5vh;
+}
+
+.title {
+    align-self: center;
+    font-size: xx-large;
+    text-align: center;
+}
+
+.subtitle {
+    align-self: center;
+    font-size: large;
+    text-align: center;
+    padding-bottom: 1vh;
+    width: 90%;
+}
+
+.columnLabelContainer {
+    display: flex;
+    flex-direction: row;
+    border-top: 1px dashed black;
+    border-bottom: 1px dashed black;
+    width: 90%;
+    align-self: center;
+}
+
+.quantityContainer {
+    width: 15%;
+}
+
+.itemContainer {
+    width: 70%;
+}
+
+.priceContainer {
+    width: 15%;
+    text-align: end;
+}
+
+.receiptContainer {
+    width: 90%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.receiptItem {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1%;
+}
+
+
+
+.receiptEndContainer {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px dashed black;
+    border-bottom: 1px dashed black;
+    width: 90%;
+    align-self: center;
+}
+
+.receiptEndItem {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.receiptEndLeft {
+    width: 50%;
+}
+
+.receiptEndRight {
+    width: 50%;
+    text-align: end;
+}
+
+.hidden {
+    color: white;
+}

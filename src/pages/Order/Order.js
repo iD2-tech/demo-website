@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import classes from '../components/Order.module.scss';
+import classes from './Order.module.scss';
 import {loadStripe} from '@stripe/stripe-js';
 import { Navigate, useNavigate } from 'react-router-dom';
 
@@ -56,7 +56,7 @@ const Order = () => {
         array.push(products[i]);
       }
     }
-    // console.log(array);
+    console.log(array);
     var category;
     if (props.includes("Spring")) {
       category = "Appetizers"
@@ -89,15 +89,15 @@ const Order = () => {
     <div className={classes.container}>
       <div className={classes.buttonContainer}>
         <div onClick={() => displayMenu("Spring")} className={classes.item}>
-          <img className={classes.image} src={require('./images/SpringPic.png')} alt="background"/>
+          <img className={classes.image} src={require('../../assets/images/SpringPic.png')} alt="background"/>
           <p className={classes.header}>Appetizers</p>
         </div>
         <div onClick={() => displayMenu("Pho")} className={classes.item}>
-          <img className={classes.image} src={require('./images/PhoPic.png')} alt="background"/>
+          <img className={classes.image} src={require('../../assets/images/PhoPic.png')} alt="background"/>
           <p className={classes.header}>Pho</p>
         </div>
         <div onClick={() => displayMenu("Mi")} className={classes.item}>
-          <img className={classes.image} src={require('./images/BahnPic.png')} alt="background"/>
+          <img className={classes.image} src={require('../../assets/images/BahnPic.png')} alt="background"/>
           <p className={classes.header}>Banh Mi</p>
         </div>
       </div>

@@ -1,4 +1,4 @@
-@import "./../styles/variables.scss";
+@import "../../styles/variables.scss";
 
 .container {
     display: flex;
@@ -300,7 +300,7 @@
 
 .checkoutButton {
     margin-top: 5%;
-    background-color: #EBFD72;
+    background-color: $primary;
     height: 25%;
     border-color: transparent;
     color: #1B463C;

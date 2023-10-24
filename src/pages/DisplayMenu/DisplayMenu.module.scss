@@ -1,4 +1,4 @@
-@import "./../styles/variables.scss";
+@import "../../styles/variables.scss";
 
 .container {
     display:flex;
@@ -140,11 +140,11 @@
 
 .modalButton {
     font-family: $Outfit;
-    background-color: #EBFD72;
+    background-color: $primary;
     width: 100%;
     border-radius: 5px;
     padding:7.5px;
-    border:#EBFD72;
+    border: $primary;
     margin-top: 12%;
 
     &:hover {

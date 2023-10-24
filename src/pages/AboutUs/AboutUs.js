@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from '../components/AboutUs.module.scss';
+import classes from './AboutUs.module.scss';
 import { MapContainer, TileLayer, useMap } from 'react-leaflet'
 import {HiLocationMarker} from "react-icons/hi";
 import {BsTelephoneFill} from "react-icons/bs";
@@ -15,7 +15,7 @@ const AboutUs = () => {
 
         <div className={classes.about}>
             <div className={classes.imageContain}>
-                <img src={require('./images/phostaff.jpg')} className={classes.img} />
+                <img src={require('../../assets/images/about.jpg')} className={classes.img} />
             </div>
             <div className={classes.text}>
                 <h className={classes.headerr}>THIS IS WHAT YOU NEED TO KNOW ABOUT US ! ㄹㅈㄷ랴ㅓㅐㄷㅓㅐㅑㅓㄹ댜재렂</h>
