@@ -128,6 +128,7 @@ const Cart = () => {
           <p className={classes.categoryHeader}>Your Order</p>
         </div>
 
+        {/* EACH PRODUCT HERE SHOULD BE A 'CARTPRODUCT' COMPONENT IN THE COMPONENT FOLDER */}
         {/* Products */}
         <div className={classes.productsMap}>
           {cart.map((product, index) => (
@@ -154,6 +155,8 @@ const Cart = () => {
                 {/* quantity button container */}
                 <div className={classes.quantityButtonContainer}>
 
+              {/* THE MINUS QUANTITY AND THE PLUS SHOULD BE INSIDE ONE COMPONENT CALLED
+              'PRODUCTQUANTITY' */}
                   {/* mins sign container */}
                   <div className={classes.minusSign}>
                     <button className={classes.adjustMinusButton} onClick={(e) => minusButtonClicked(e, index)}>
@@ -262,7 +265,8 @@ const Cart = () => {
             </div>
 
           </div>
-
+          
+          {/* THIS CHECKOUT BUTTON SHOULD BE A COMPONENT */}
           {/* checkout button */}
           <button className={classes.checkoutButton} onClick={checkoutButtonClicked}>
             Checkout
@@ -277,5 +281,7 @@ const Cart = () => {
 }
 
 // comment
+
+// I THINK THIS PAGE IS PRETTY GOOD, JUST NEED TO MAKE SURE THE UI WORKS FOR DIFFERENT SCREEN SIZES
 
 export default Cart

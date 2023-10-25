@@ -13,6 +13,8 @@ const AboutUs = () => {
             About Us
         </div>
 
+        {/* THIS ABOUT SECTION SHOULD BE ANOTHER COMPONENT CALLED 'ABOUT US INFO'
+        IT SHOULD TAKE IN IMAGE URL, AND THE ABOUT US TEXT AS PROPS */}
         <div className={classes.about}>
             <div className={classes.imageContain}>
                 <img src={require('../../assets/images/about.jpg')} className={classes.img} />
@@ -24,6 +26,9 @@ const AboutUs = () => {
         </div>
 
         <div className={classes.info}>
+
+            {/* THIS INFORMATION SECTION SHOULD BE A COMPONENT CALLED 'INFORMATION'
+            IT SHOULD JUST TAKE IN RESTAURANT TILE, ADDRESS, PHONE NUMBER, AND HOURS */}
             <h className={classes.headerr1}>
                 WONDERFUL PHO INFORMATION:
             </h>

@@ -9,8 +9,14 @@ import DisplayMenu from "./pages/DisplayMenu/DisplayMenu";
 import Success from "./pages/Success/Success";
 
 function App() {
+
+    // all colors will be set in variable.scss as secondary, primary, text, etc..
+    // never use individual colors in css file
+
     return (
         <Layout>
+            {/* Global state will go here (JSON)
+            https://stackoverflow.com/questions/69675357/what-is-the-proper-way-to-do-global-state */}
             <Routes>
                 <Route path="/" exact element={<Home />} />
                 <Route path="/menu" exact element={<Menu />} />

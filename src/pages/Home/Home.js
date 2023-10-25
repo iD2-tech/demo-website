@@ -86,19 +86,38 @@ const Home = () => {
 
     <div className={classes.container}>
       <div className={classes.introSlide}>
+
+        {/* THIS SHOULD BE A BUTTON COMPONENT INSIDE COMPONENTS FOLDER
+        SHOULD BE CENTERED ON THE PAGE.
+        COMPONENT SHOULD BE ABLE TO TAKE IN A 'TEXT' PROP  */}
         <button onClick={goOrder} className={classes.button}>
           ORDER NOW
           <AiOutlineArrowRight style={{ marginLeft: '15px' }} />
         </button>
+
       </div>
 
       <div className={classes.orderContainer}>
+
+        {/* THIS SHOULD BE A 'SIDEBAR SCROLL' COMPONENT WITHIN COMPONENT FOLDER */}
         <div className={classes.menuContainer}>
           <text className={classes.menuTitle}>MENU</text>
           {data.categories.map((category) => (
              <text className={classes.category}>{category}</text>
           ))}
         </div>
+
+        {/* MAP EACH SECTION: EACH SECTION SHOULD BE A COMPONENT CALLED 'MenuSection' WITHIN COMPONENTS FOLDER
+        THE COMPONENT SHOULD TAKE IN SECTION TILE, AND THE LIST OF ITEMS IN THAT SECTION
+
+        EACH SECTION COMPONENT SHOULD MAP THE LIST OF ITEMS 
+        EACH ITEM INSIDE THE MAP SHOULD BE A COMPONENT CALLED 'Item' 
+        THAT TAKES IN THE PRODUCT INFORMATION AND DISPLAYS IT
+
+        ON CLICK FOR EACH ITEM SHOULD TRIGGER A POP UP MODAL
+        THE MODAL IS ALSO A COMPONENT WITHIN THE COMPONENT FOLDER
+        IT SHOULD TAKE IN PRODUCT CUSTOMIZATION INFORMATION AND DISPLAY IT ON THE MODAL */}
+
 
       </div>
     </div>

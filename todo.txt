@@ -1,0 +1,62 @@
+TODOS:
+
+1. COLORS - Nicole
+-go through basically every css file and make sure there is no
+bare color texts like "#39334". Make sure they are all imported from 
+variable.scss as global variable.
+
+2. HOME PAGE
+
+-Button component - John
+    -should take in text prop 
+
+-Sidebar Scroll component (Collin got that) 
+    -id2 website Redwood section 
+
+-Each section component - David
+    -each section will be mapped from json
+    - should take in section title, and items in that section
+    - this information will be provided from global variable
+
+    -Product component  
+        -each section should map the products within the section
+        -takes in product information and displays items
+
+    -Modal component
+        -Modal should pop up on each item click
+        -onClick each item should prop modal with that product customization information
+
+-METHOD OF APPROACH:
+    1. Collin works on sidebar scroll component
+    2. Someone else works on UI for each section
+        -this will be static for now (just do one section)
+            -use fake data to get the products mapping and modal to pop up
+
+3. About us - Nicole / John
+
+-Top Info component
+    -should be pretty simple, just make the top section into a component
+
+-Bottom Info component
+    -should also be simple, just make bottom section component
+
+
+3. Cart - Collin or John
+
+-Cart Product component
+    -Collin made it pretty clean, just move each cart product into its own component so code is not so long
+    
+    -Quanitty Chooser component
+        -the plus and minus thing should be another component
+
+-The UI should look for every screen size 
+    -rn it gets more scuffed narrower the screen gets
+
+****
+KEEP IN MIND WHILE DOING ANY OF YOUR WORK:
+EVERYTHING (LITERALLY) THAT GOES ON THE WEBSITE THAT IS 
+RESTAURANT SPECIFIC SHOULD ALL BE FROM A VARIABLE OR FROM A PROP 
+NEVER WRITE DOWN RESTAURANT INFO STUFF IN PLAIN TEXT. 
+WE WILL HAVE GLOBAL JSON VARIABLE FOR EVERYTHING SO FOR UI PURPOSES 
+USE FAKE DATA, AND THEN AFTER UI IS DONE WE WILL FIGURE OUT HOW TO 
+INCORPORATE EVERYTHING USING GLOBAL JSON.

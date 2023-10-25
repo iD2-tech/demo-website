@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
 
+    // need global variable for restaurant name. Will be prop from JSON
     const RESTNAME = "Wonderful Pho";
 
     const navigation = useNavigate();
@@ -108,6 +109,7 @@ const Header = () => {
                 >
                     <ul>
                         <li>
+                            {/* the link to menu will also be stored within json */}
                             <a href={require("../../assets/images/menu.pdf")} target="_blank" onClick={menuToggleHandler}>
                                 Menu
                             </a>
