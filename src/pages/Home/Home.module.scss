@@ -21,7 +21,7 @@
       background-color: $primary;
       border-radius: 25px;
       font-family: $Outfit;
-      color: #1B463C;
+      color: $text;
       border-style: none;
       font-size: 1.2vw;
       font-weight: 500;
@@ -36,7 +36,7 @@
     
     
       &:hover {
-        background-color: #f7ffbc;
+        background-color: $primary;
         cursor: pointer;
       }
     
@@ -46,7 +46,7 @@
   .orderContainer {
     width: 100%;
     height: 100vh;
-    background-color: #1B463C;
+    background-color: $text;
 
     .menuContainer {
       width: 20%;
@@ -56,7 +56,7 @@
       flex-direction: column;
       padding-left: 2%;
       padding-top: 2%;
-      background-color: #f7ffbc;
+      background-color: $primary;
 
       .menuTitle {
         font-size: 2vw;
@@ -101,7 +101,7 @@
     background-color: $primary;
     border-radius: 25px;
     font-family: $Outfit;
-    color: #1B463C;
+    color: $text;
     border-style: none;
     font-size: 3vw;
     font-weight: 500;
@@ -116,7 +116,7 @@
     min-width: 20vw;
 
     &:hover {
-      background-color: #f7ffbc;
+      background-color: $primary;
       cursor: pointer;
     }
   }

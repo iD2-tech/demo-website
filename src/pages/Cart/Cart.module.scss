@@ -50,7 +50,7 @@
     margin-top: 3%;
     font-size: xx-large;
     font-weight: 500;
-    color: #1B463C;
+    color: $text;
 }
 
 .productsMap {
@@ -248,7 +248,7 @@
 }
 
 .horizontalLine {
-    border: 1px solid #1B463C;
+    border: 1px solid $text;
     width: 100%;
 }
 
@@ -268,7 +268,7 @@
     font-size: 175%;
     font-weight: bold;
     align-self: center;
-    color: #1B463C;
+    color: $text;
     
     // border: 3px solid yellow;
 }
@@ -303,11 +303,11 @@
     background-color: $primary;
     height: 25%;
     border-color: transparent;
-    color: #1B463C;
+    color: $text;
     border-radius: 10px;
 }
 
 .line {
-    border: 1px solid #1B463C;
+    border: 1px solid $text;
     height: 80%;
 }

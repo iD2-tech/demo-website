@@ -1,6 +1,6 @@
 TODOS:
 
-1. COLORS - Nicole
+1. COLORS - Nicole 
 -go through basically every css file and make sure there is no
 bare color texts like "#39334". Make sure they are all imported from 
 variable.scss as global variable.
