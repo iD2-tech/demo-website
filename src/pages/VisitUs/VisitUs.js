@@ -1,53 +1,26 @@
-import React from 'react'
+import React from 'react';
 import classes from './VisitUs.module.scss';
-import { MapContainer, TileLayer, useMap } from 'react-leaflet'
-import {HiLocationMarker} from "react-icons/hi";
-import {BsTelephoneFill} from "react-icons/bs";
-import {AiOutlineClockCircle} from "react-icons/ai";
-
+import Information from '../../components/Information/Information';
 
 const VisitUs = () => {
-  return (
-    <div className={classes.container}>
-        <div className = {classes.header}>
-            Visit Us
-        </div>
+    const informationProps = {
+        address: "415 Seneca St, Seattle, WA 98101",
+        phoneNumber: "206-682-7535",
+        hours: "Mon - Fri: 9AM - 8PM\nSat: 11AM - 8PM\nSun: Closed",
+    };
 
-        {/* THIS ABOUT SECTION SHOULD BE ANOTHER COMPONENT CALLED 'ABOUT US INFO'
-        IT SHOULD TAKE IN IMAGE URL, AND THE ABOUT US TEXT AS PROPS */}
-        <div className={classes.about}>
-            <div className={classes.imageContain}>
-                <img src={require('../../assets/images/about.jpg')} className={classes.img} />
+    const hoursArray = informationProps.hours.split('\n').map((line, index) => (
+        <p key={index}>{line}</p>
+    ));
+
+    return (
+        <div className={classes.container}>
+            <div className={classes.header}>
+                HOURS AND LOCATION
             </div>
-            <div className={classes.text}>
-                <h className={classes.headerr}>THIS IS WHAT YOU NEED TO KNOW ABOUT US ! ㄹㅈㄷ랴ㅓㅐㄷㅓㅐㅑㅓㄹ댜재렂</h>
-                <h className={classes.body}>yay how are you im fine im in korea right now and i don’t want to leave. some things i miss about the u.s. are shower curtains and big towels. my hair is long but all the towels here are so small. i also miss toru i heard he went to the er because he was chasing some rabbit and went into the bushes. the bushes seemed to have something poisonous because toru’s eyes got all swollen and he got sick. i called him and it seemed like he had no energy in him. that made me really sad. anyways, the food here is so good. i drank soju with my grandpa (dad’s side) for the first time today. he was so happy and i was too. but something about that also made me feel sad. not sure why. haha tomorrow i am going to soundberry festival which i am excited for because i get to see ash island, heize, etc. but im also missing the waterbomb festival askjakjs next year for sure im gonna go. im watching woo young woo right now and this is such a good drama everything is so wholesome and happy ahhhh i want to date too HAHAHA anyways this is the “about us” page lol.</h>
-            </div>
+            <Information {...informationProps} hours={hoursArray} />
         </div>
+    );
+};
 
-        <div className={classes.info}>
-
-            {/* THIS INFORMATION SECTION SHOULD BE A COMPONENT CALLED 'INFORMATION'
-            IT SHOULD JUST TAKE IN RESTAURANT TILE, ADDRESS, PHONE NUMBER, AND HOURS */}
-            <h className={classes.headerr1}>
-                VISIT US:
-            </h>
-                <div className={classes.item}>
-                    <HiLocationMarker size={25}/>
-                    <h className={classes.infoText}>4125 ST HELLO WORLD 98033</h>
-                </div>
-                <div className={classes.item}>
-                    <BsTelephoneFill size={22}/>
-                    <h className={classes.infoText}>111-222-3333</h>
-                </div>
-                <div className={classes.item}>
-                    <AiOutlineClockCircle size={24}/>
-                    <h className={classes.infoText}>10:00 AM - 6:00 PM</h>
-                </div> 
-        </div>
-    </div>
-
-  )
-}
-
-export default VisitUs
+export default VisitUs;

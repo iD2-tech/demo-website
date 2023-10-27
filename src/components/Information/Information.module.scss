@@ -1,0 +1,23 @@
+.info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 7%;
+    width: 100%;
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.infoText {
+    text-align: center;
+    font-weight: 300;
+    font-size: 1.5vw;
+}
