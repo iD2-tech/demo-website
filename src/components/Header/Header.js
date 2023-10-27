@@ -10,7 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Header = () => {
 
     // need global variable for restaurant name. Will be prop from JSON
-    const RESTNAME = "Community Grocery and Deli";
+    const RESTNAME = "COMMUNITY GROCERY AND DELI";
 
     const navigation = useNavigate();
     const [menuOpen, setMenuOpen] = useState(false);
@@ -109,19 +109,19 @@ const Header = () => {
                 >
                     <ul>
                         <li>
-                            {/* the link to menu will also be stored within json */}
-                            <a href={require("../../assets/images/menu.pdf")} target="_blank" onClick={menuToggleHandler}>
-                                Menu
-                            </a>
-                        </li>
-                        <li>
-                            <Link to="/order" onClick={menuToggleHandler}>
-                                Order
+                            <Link to="/aboutus" onClick={menuToggleHandler}>
+                                ABOUT US
                             </Link>
                         </li>
                         <li>
-                            <Link to="/aboutus" onClick={menuToggleHandler}>
-                                About Us
+                            {/* the link to menu will also be stored within json */}
+                            <Link to="/visitus" onClick={menuToggleHandler}>
+                                VISIT US
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/order" onClick={menuToggleHandler}>
+                                VIEW MENU & ORDER
                             </Link>
                         </li>
                     </ul>
