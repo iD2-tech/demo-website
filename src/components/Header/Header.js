@@ -10,7 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 const Header = () => {
 
     // need global variable for restaurant name. Will be prop from JSON
-    const RESTNAME = "Wonderful Pho";
+    const RESTNAME = "Community Grocery and Deli";
 
     const navigation = useNavigate();
     const [menuOpen, setMenuOpen] = useState(false);

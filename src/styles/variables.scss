@@ -1,15 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Outfit:wght@100;200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Outfit:wght@100;200;300;400;500;600;700;800&family=El+Messiri&display=swap');
 
 
 // fonts
 $Outfit: 'Outfit', sans-serif;
 $Abril: 'Abril Fatface', cursive;
+$basicFont: 'El Messiri', sans-serif;
 
 // colors 
 $dark: rgb(29, 29, 29);
 $light: #fff;
-$primary: #EBFD72;
-$text: #1B463C;
+$primary: #FFFFFF;
+$text: #000000;
 
 // spacing
 $spacing-md: 16px;
@@ -19,7 +20,7 @@ $spacing-lg: 32px;
 $borderRadius: 12px;
 
 // header height
-$headerHeight: 80px;
+$headerHeight: 140px;
 
 @mixin breakpoint($point) {
     @if $point == md {
