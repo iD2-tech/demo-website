@@ -2,7 +2,7 @@
 
 .header {
     z-index: 99999999;
-    background: $primary;
+    background: linear-gradient(180deg, #FFF 69.27%, rgba(255, 255, 255, 0.00) 100%);
     position: sticky;
     top: 0;
     width: 100%;
@@ -20,17 +20,19 @@
         max-width: 1920px;
         height: 100%;
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         position: relative;
         z-index: 100;
+        border: 1px solid black;
 
         &__logo {
-            font-size: 1.8rem;
-            // font-weight: bold;
-            font-family: $Abril;
+            font-size: 3rem;
+            font-family: $basicFont;
             text-decoration: none;
             color: $text;
+            border: 1px solid black;
         }
 
         &__nav {
@@ -41,7 +43,6 @@
             height: 100vh;
             position: fixed;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
@@ -49,13 +50,15 @@
             backdrop-filter: blur(2px);
             transform: translate(0);
             transition: 0.3s ease transform;
+            font-family: $basicFont;
+            border: 1px solid black;
 
             @include breakpoint(md) {
                 transform: none;
                 flex-direction: row;
                 background: transparent;
+                height: 30%;
                 width: auto;
-                height: 100%;
                 position: static;
             }
             ul {
