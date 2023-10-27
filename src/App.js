@@ -5,6 +5,7 @@ import Menu from "./pages/Menu/Menu";
 import Order from "./pages/Order/Order";
 import Cart from "./pages/Cart/Cart";
 import AboutUs from "./pages/AboutUs/AboutUs";
+import VisitUs from "./pages/VisitUs/VisitUs";
 import DisplayMenu from "./pages/DisplayMenu/DisplayMenu";
 import Success from "./pages/Success/Success";
 
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/order" exact element={<Order />} />
                 <Route path="/cart" exact element={<Cart />} />
                 <Route path="/aboutus" exact element={<AboutUs />} />
+                <Route path="/visitus" exact element={<VisitUs />} />
                 <Route path="/displayMenu" exact element={<DisplayMenu />} />
                 <Route path="/order/success" exact element={<Success />} />
             </Routes>
