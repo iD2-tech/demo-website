@@ -46,7 +46,8 @@
   .orderContainer {
     width: 100%;
     height: 100vh;
-    background-color: $text;
+    flex-direction: row;
+    display: flex;
 
     .menuContainer {
       width: 20%;

@@ -1,0 +1,16 @@
+@import "../../styles/variables.scss";
+
+.sectionContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    // margin-bottom: 2%;
+}
+
+.eachProductContainer {
+    display: flex;
+    // grid-template-columns: repeat(4, 1fr);
+    flex-wrap: wrap;
+    grid-gap: 5%;
+    margin-top: 1.5%;
+}

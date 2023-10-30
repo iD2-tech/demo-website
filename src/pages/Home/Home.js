@@ -3,104 +3,208 @@ import classes from './Home.module.scss';
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom';
 import data from '../../assets/data.json';
+import ProductSection from '../../components/ProductSection/ProductSection';
+import image from '../../assets/images/menuImage.png';
 
-const section = {
-  title: "Stir Fry Vegetable",
-  items: [
-    {
-      title: 'Checken Veggie',
-      price: 13.99,
-      img: '../../assets/images/menuImage.png',
-      description: '[Description of menu]',
-      customization: {
-        substitutions: [
-          'Fried Rice',
-          'Brown Rice',
-          'Spicy',
-          'Teriyaki Sauce'
-        ],
-        extras: [
-          'Extra Chicken',
-          'Extra Katsu'
-        ]
-      }
-    },
-    {
-      title: 'Tofu Veggie',
-      price: 13.99,
-      img: '../../assets/images/menuImage.png',
-      description: '[Description of menu]',
-      customization: {
-        substitutions: [
-          'Fried Rice',
-          'Brown Rice',
-          'Spicy',
-          'Teriyaki Sauce'
-        ],
-        extras: [
-          'Extra Chicken',
-          'Extra Katsu'
-        ]
-      }
-    },
-    {
-      title: 'Pork Veggie',
-      price: 14.49,
-      img: '../../assets/images/menuImage.png',
-      description: '[Description of menu]',
-      customization: {
-        substitutions: [
-          'Fried Rice',
-          'Brown Rice',
-          'Spicy',
-          'Teriyaki Sauce'
-        ],
-        extras: [
-          'Extra Chicken',
-          'Extra Katsu'
-        ]
-      }
-    },
-    {
-      title: 'Shrimp Veggie',
-      price: 14.99,
-      img: '../../assets/images/menuImage.png',
-      description: '[Description of menu]',
-      customization: {
-        substitutions: [
-          'Fried Rice',
-          'Brown Rice',
-          'Spicy',
-          'Teriyaki Sauce'
-        ],
-        extras: [
-          'Extra Chicken',
-          'Extra Katsu'
-        ]
-      }
-    },
+const sectionArray = [
+  {
+    title: "Stir Fry Vegetable",
+    items: [
+      {
+        title: 'Checken Veggie',
+        price: 13.99,
+        img: image,
+        description: '[Description of menu]',
+        customization: {
+          substitutions: [
+            'Fried Rice',
+            'Brown Rice',
+            'Spicy',
+            'Teriyaki Sauce'
+          ],
+          extras: [
+            'Extra Chicken',
+            'Extra Katsu'
+          ]
+        }
+      },
+      {
+        title: 'Tofu Veggie',
+        price: 13.99,
+        img: image,
+        description: '[Description of menu]',
+        customization: {
+          substitutions: [
+            'Fried Rice',
+            'Brown Rice',
+            'Spicy',
+            'Teriyaki Sauce'
+          ],
+          extras: [
+            'Extra Chicken',
+            'Extra Katsu'
+          ]
+        }
+      },
+      {
+        title: 'Pork Veggie',
+        price: 14.49,
+        img: image,
+        description: '[Description of menu]',
+        customization: {
+          substitutions: [
+            'Fried Rice',
+            'Brown Rice',
+            'Spicy',
+            'Teriyaki Sauce'
+          ],
+          extras: [
+            'Extra Chicken',
+            'Extra Katsu'
+          ]
+        }
+      },
+      {
+        title: 'Shrimp Veggie',
+        price: 14.99,
+        img: image,
+        description: '[Description of menu]',
+        customization: {
+          substitutions: [
+            'Fried Rice',
+            'Brown Rice',
+            'Spicy',
+            'Teriyaki Sauce'
+          ],
+          extras: [
+            'Extra Chicken',
+            'Extra Katsu'
+          ]
+        }
+      },
+  
+      {
+        title: 'Vegetables',
+        price: 13.29,
+        img: image,
+        description: '[Description of menu]',
+        customization: {
+          substitutions: [
+            'Fried Rice',
+            'Brown Rice',
+            'Spicy',
+            'Teriyaki Sauce'
+          ],
+          extras: [
+            'Extra Chicken',
+            'Extra Katsu'
+          ]
+        }
+      },
+  
+    ]
+  },
 
-    {
-      title: 'Vegetables',
-      price: 13.29,
-      img: '../../assets/images/menuImage.png',
-      description: '[Description of menu]',
-      customization: {
-        substitutions: [
-          'Fried Rice',
-          'Brown Rice',
-          'Spicy',
-          'Teriyaki Sauce'
-        ],
-        extras: [
-          'Extra Chicken',
-          'Extra Katsu'
-        ]
-      }
-    },
+  {
+    title: "Yakisoba",
+    items: [
+      {
+        title: 'Checken Veggie',
+        price: 13.99,
+        img: image,
+        description: '[Description of menu]',
+        customization: {
+          substitutions: [
+            'Fried Rice',
+            'Brown Rice',
+            'Spicy',
+            'Teriyaki Sauce'
+          ],
+          extras: [
+            'Extra Chicken',
+            'Extra Katsu'
+          ]
+        }
+      },
+      {
+        title: 'Tofu Veggie',
+        price: 13.99,
+        img: image,
+        description: '[Description of menu]',
+        customization: {
+          substitutions: [
+            'Fried Rice',
+            'Brown Rice',
+            'Spicy',
+            'Teriyaki Sauce'
+          ],
+          extras: [
+            'Extra Chicken',
+            'Extra Katsu'
+          ]
+        }
+      },
+      {
+        title: 'Pork Veggie',
+        price: 14.49,
+        img: image,
+        description: '[Description of menu]',
+        customization: {
+          substitutions: [
+            'Fried Rice',
+            'Brown Rice',
+            'Spicy',
+            'Teriyaki Sauce'
+          ],
+          extras: [
+            'Extra Chicken',
+            'Extra Katsu'
+          ]
+        }
+      },
+      {
+        title: 'Shrimp Veggie',
+        price: 14.99,
+        img: image,
+        description: '[Description of menu]',
+        customization: {
+          substitutions: [
+            'Fried Rice',
+            'Brown Rice',
+            'Spicy',
+            'Teriyaki Sauce'
+          ],
+          extras: [
+            'Extra Chicken',
+            'Extra Katsu'
+          ]
+        }
+      },
+  
+      {
+        title: 'Vegetables',
+        price: 13.29,
+        img: image,
+        description: '[Description of menu]',
+        customization: {
+          substitutions: [
+            'Fried Rice',
+            'Brown Rice',
+            'Spicy',
+            'Teriyaki Sauce'
+          ],
+          extras: [
+            'Extra Chicken',
+            'Extra Katsu'
+          ]
+        }
+      },
+  
+    ]
+  }
 
-  ]
-}
+]
+
 
 const Home = () => {
 
@@ -204,6 +308,15 @@ const Home = () => {
           {data.categories.map((category) => (
              <text className={classes.category}>{category}</text>
           ))}
+        </div>
+        <div className={classes.sectionContain}>
+          {
+            sectionArray.map((item, i) => {
+              return (
+                <ProductSection items={item}/>
+              )
+            })
+          }
         </div>
 
         {/* MAP EACH SECTION: EACH SECTION SHOULD BE A COMPONENT CALLED 'MenuSection' WITHIN COMPONENTS FOLDER
