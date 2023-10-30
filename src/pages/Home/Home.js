@@ -3,6 +3,105 @@ import classes from './Home.module.scss';
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom';
 import data from '../../assets/data.json';
+
+const section = {
+  title: "Stir Fry Vegetable",
+  items: [
+    {
+      title: 'Checken Veggie',
+      price: 13.99,
+      img: '../../assets/images/menuImage.png',
+      description: '[Description of menu]',
+      customization: {
+        substitutions: [
+          'Fried Rice',
+          'Brown Rice',
+          'Spicy',
+          'Teriyaki Sauce'
+        ],
+        extras: [
+          'Extra Chicken',
+          'Extra Katsu'
+        ]
+      }
+    },
+    {
+      title: 'Tofu Veggie',
+      price: 13.99,
+      img: '../../assets/images/menuImage.png',
+      description: '[Description of menu]',
+      customization: {
+        substitutions: [
+          'Fried Rice',
+          'Brown Rice',
+          'Spicy',
+          'Teriyaki Sauce'
+        ],
+        extras: [
+          'Extra Chicken',
+          'Extra Katsu'
+        ]
+      }
+    },
+    {
+      title: 'Pork Veggie',
+      price: 14.49,
+      img: '../../assets/images/menuImage.png',
+      description: '[Description of menu]',
+      customization: {
+        substitutions: [
+          'Fried Rice',
+          'Brown Rice',
+          'Spicy',
+          'Teriyaki Sauce'
+        ],
+        extras: [
+          'Extra Chicken',
+          'Extra Katsu'
+        ]
+      }
+    },
+    {
+      title: 'Shrimp Veggie',
+      price: 14.99,
+      img: '../../assets/images/menuImage.png',
+      description: '[Description of menu]',
+      customization: {
+        substitutions: [
+          'Fried Rice',
+          'Brown Rice',
+          'Spicy',
+          'Teriyaki Sauce'
+        ],
+        extras: [
+          'Extra Chicken',
+          'Extra Katsu'
+        ]
+      }
+    },
+
+    {
+      title: 'Vegetables',
+      price: 13.29,
+      img: '../../assets/images/menuImage.png',
+      description: '[Description of menu]',
+      customization: {
+        substitutions: [
+          'Fried Rice',
+          'Brown Rice',
+          'Spicy',
+          'Teriyaki Sauce'
+        ],
+        extras: [
+          'Extra Chicken',
+          'Extra Katsu'
+        ]
+      }
+    },
+
+  ]
+}
+
 const Home = () => {
 
   const nav = useNavigate();
