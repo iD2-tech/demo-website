@@ -15,7 +15,6 @@ const customStyles = {
       left: '50%',
       right: 'auto',
       bottom: 'auto',
-      padding: '50px',
       marginRight: '-50%',
       width: '50%',
       height: '90%',
@@ -75,6 +74,7 @@ function ProductSection(props) {
         quant: modalQuant,
         inst: modalInst,
     }
+    console.log(obj);
     setShow(false);
     setModalInst('');
     setModalOpSelected([]);
@@ -115,11 +115,6 @@ function ProductSection(props) {
                         <ModalOptions options={selectedOp} title="Extras" onUpdate={handleOp}/>
                         <SpecialInst onUpdate={handleInst}/>
                         <ModalButton onClick={closeModal}/>
-
-                        {/* <div className={classes.buttonContainer}>
-                            <QuantitySelector />
-                            <ModalButton />
-                        </div> */}
                     </div>
 
                 </div> 
