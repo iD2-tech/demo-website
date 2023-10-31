@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import classes from './Cart.module.scss';
 import { loadStripe } from '@stripe/stripe-js';
 import { Navigate, useNavigate, Link } from 'react-router-dom';
+//just for testing code
 import phoImage from '../../assets/images/PhoPic.png';
 
 
