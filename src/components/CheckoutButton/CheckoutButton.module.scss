@@ -1,0 +1,12 @@
+@import "../../styles/variables.scss";
+
+.checkoutButton {
+    background-color: $primary;
+    height: 30%;
+    border-color: transparent;
+    color: $light;
+    font-family: $basicFont;
+    font-size: 18px;
+    font-weight: 300;
+    border-radius: 10px;
+  }
