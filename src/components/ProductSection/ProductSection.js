@@ -3,6 +3,11 @@ import classes from './Product.module.scss';
 import SectionTitle from '../SmallerComponents/SectionTitle/SectionTitle.js';
 import EachProduct from '../SmallerComponents/EachProduct/EachProduct.js';
 import Modal from 'react-modal'
+import ModalHeader from '../SmallerComponents/ModalHeader/ModalHeader';
+import ModalOptions from '../SmallerComponents/ModalOptions/ModalOptions.js';
+import SpecialInst from '../SmallerComponents/SpecialInst/SpecialInst';
+import QuantitySelector from '../SmallerComponents/QuantitySelector/QuantitySelector';
+import ModalButton from '../SmallerComponents/ModalButton/ModalButton';
 
 const customStyles = {
     content: {
@@ -13,7 +18,7 @@ const customStyles = {
       padding: '50px',
       marginRight: '-50%',
       width: '50%',
-      height: '80%',
+      height: '90%',
       transform: 'translate(-50%, -50%)',
       display: 'flex',
       flexDirection: 'row',
@@ -24,18 +29,55 @@ const customStyles = {
 function ProductSection(props) {
   const [show, setShow] = useState(false);
   const [selected, setSelected] = useState({});
+  const [selectedSub, setSelectedSub] = useState([]);
+  const [selectedOp, setSelectedOp] = useState([]);
+
+  const [modalSubSelected, setModalSubSelected] = useState([]);
+  const [modalOpSelected, setModalOpSelected] = useState([]);
+  const [modalQuant, setModalQuant] = useState(1);
+  const [modalInst, setModalInst] = useState();
+
+  const handleSub = (data) => {
+    setModalSubSelected(data);
+  }
+
+  const handleOp = (data) => {
+    setModalOpSelected(data);
+  }
+
+  const handleQuant = (data) => {
+    setModalQuant(data);
+  }
+
+  const handleInst = (data) => {
+    setModalInst(data);
+  }
+
   const items = props.items;
   const itemsArray = items.items;
 
   const openModal = (item) => {
     setShow(true);
     setSelected(item);
+    setSelectedSub(item.customization.substitutions);
+    setSelectedOp(item.customization.extras);
   }
 
   const closeModal = () => {
+    const obj = {
+        itemTitle: selected.title,
+        sub: modalSubSelected,
+        op: modalOpSelected,
+        quant: modalQuant,
+        inst: modalInst,
+    }
+    console.log(obj);
     setShow(false);
+    setModalInst('');
+    setModalOpSelected([]);
+    setModalQuant(1);
+    setModalSubSelected([]);
   }
-
   return (
     <div className={classes.sectionContainer}>
         <SectionTitle title={items.title}/>
@@ -49,25 +91,33 @@ function ProductSection(props) {
             }
         </div>
         <Modal isOpen={show} style={customStyles} ariaHideApp={false}>
-              {selected != null ?
+              {
+              selected != null ?
                 
                 <div className={classes.modalInfo}>
-                    
-                    <div className={classes.imageContainer}>
-                        <img className={classes.image} src={selected.img}/>
+                    <div>
+                        <div className={classes.imageContainer}>
+                            <img className={classes.image} src={selected.img}/>
+                        </div>
+                        <div className={classes.quantSelect}>
+                            <p1>Quantity</p1>
+                            <QuantitySelector onUpdate={handleQuant}/>
+                        </div>
                     </div>
 
-                    {/* <div className={classes.infoContainer}>
-                        <ModalHeader />
+                    <div className={classes.infoContainer}>
+                        <ModalHeader title={selected.title} price={selected.price} description={selected.description}/>
                         <div className={classes.divider}></div>
-                        <ModalOptions />
-                        <ModalOptions />
+                        <ModalOptions options={selectedSub} title="Substitution" onUpdate={handleSub}/>
+                        <ModalOptions options={selectedOp} title="Extras" onUpdate={handleOp}/>
+                        <SpecialInst onUpdate={handleInst}/>
+                        <ModalButton onClick={closeModal}/>
 
-                        <div className={classes.buttonContainer}>
+                        {/* <div className={classes.buttonContainer}>
                             <QuantitySelector />
                             <ModalButton />
-                        </div>
-                    </div> */}
+                        </div> */}
+                    </div>
 
                 </div> 
                 
