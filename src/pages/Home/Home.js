@@ -84,7 +84,7 @@ const Home = () => {
 
   return (
 
-    <div className={classes.container}>
+    <div className={`${classes.container} ${classes.bleedContent}`}>
       <div className={classes.introSlide}>
 
         {/* THIS SHOULD BE A BUTTON COMPONENT INSIDE COMPONENTS FOLDER

@@ -41,6 +41,9 @@
             font-size: 0.9rem;
             font-weight: 500;
             align-items: center;
+            justify-content: center;
+            display: contents;
+
             padding-bottom: 30px;
 
             @include breakpoint(md) {
@@ -83,22 +86,18 @@
                 }
             }
             button {
+                border: 1px transparent;
                 cursor: pointer;
                 outline: none;
                 padding: 0.75rem 1.25rem;
                 font-size: 0.8rem;
                 background: transparent;
                 color: $accent;
-                border: 1px solid transparent;
                 transition: 0.3s ease all;
 
                 @include breakpoint(md) {
                     font-size: 1.2rem;
                 }
-            }
-
-            &.isMenu {
-                transform: translate(100%);
             }
         }
     }

@@ -4,6 +4,10 @@
   width: 100%;
   height: 100%;
 
+  &.bleedContent {
+    margin-top: -150px; /* Adjust this value to control the bleeding effect */
+  }
+
   .introSlide {
     // CHANGE THIS BASED ON RESTAURANT
     background-image: url("../../assets/images/PhoPic.png");
