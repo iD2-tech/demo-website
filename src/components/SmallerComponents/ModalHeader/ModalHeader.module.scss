@@ -18,3 +18,19 @@
         margin-top: 8%;
     }
 }
+
+.nameContain {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    >p1 {
+        font-size: 22px;
+    }
+}
+
+.xButton {
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+}

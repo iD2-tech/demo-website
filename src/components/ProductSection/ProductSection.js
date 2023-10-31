@@ -53,6 +53,10 @@ function ProductSection(props) {
     setModalInst(data);
   }
 
+  const xOut = () => {
+    setShow(false);
+  }
+
   const items = props.items;
   const itemsArray = items.items;
 
@@ -71,7 +75,6 @@ function ProductSection(props) {
         quant: modalQuant,
         inst: modalInst,
     }
-    console.log(obj);
     setShow(false);
     setModalInst('');
     setModalOpSelected([]);
@@ -106,7 +109,7 @@ function ProductSection(props) {
                     </div>
 
                     <div className={classes.infoContainer}>
-                        <ModalHeader title={selected.title} price={selected.price} description={selected.description}/>
+                        <ModalHeader title={selected.title} price={selected.price} description={selected.description} onX={xOut}/>
                         <div className={classes.divider}></div>
                         <ModalOptions options={selectedSub} title="Substitution" onUpdate={handleSub}/>
                         <ModalOptions options={selectedOp} title="Extras" onUpdate={handleOp}/>

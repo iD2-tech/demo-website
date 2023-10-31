@@ -6,7 +6,11 @@ function ModalHeader(props) {
   
   return (
     <div className={classes.container}>
-      <p1>{props.title}</p1>
+      <div className={classes.nameContain}>
+        <p1>{props.title}</p1>
+        <div className={classes.xButton} onClick={props.onX}><p1 style={{fontSize: '20px'}}>x</p1></div>
+      </div>
+      
       <p2>${props.price}</p2>
       <p3>{props.description}</p3>
     </div>

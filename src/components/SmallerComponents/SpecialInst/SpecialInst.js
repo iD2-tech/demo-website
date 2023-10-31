@@ -15,7 +15,7 @@ function SpecialInst(props) {
       <p1>Special Instructions</p1>
       <textarea
         value={text}
-        rows={6}
+        rows={2}
         onChange={handleChange}
         placeholder="e.g., no pepper, salt, and sugar please."
       ></textarea>
