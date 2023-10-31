@@ -7,7 +7,7 @@ function EachProduct(props) {
   const item = props.item;
   
   return (
-    <div className={classes.container}>
+    <div className={classes.container} onClick={props.onClick}>
       <div className={classes.imageContainer}> 
         <img className={classes.image} src={item.img} />
       </div>

@@ -309,6 +309,7 @@ const Home = () => {
              <text className={classes.category}>{category}</text>
           ))}
         </div>
+        
         <div className={classes.sectionContain}>
           {
             sectionArray.map((item, i) => {
