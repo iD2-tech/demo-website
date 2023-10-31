@@ -82,13 +82,13 @@ function ProductSection(props) {
     setModalSubSelected([]);
   }
   return (
-    <div className={classes.sectionContainer}>
+    <div id={props.id} className={classes.sectionContainer}>
         <SectionTitle title={items.title}/>
         <div className={classes.eachProductContainer}>
             {
                 itemsArray.map((item, i) => {
                     return (
-                        <EachProduct onClick={() => openModal(item)} item={item} index={i + 1}/>
+                        <EachProduct key={i} onClick={() => openModal(item)} item={item} index={i + 1}/>
                     )
                 })
             }
