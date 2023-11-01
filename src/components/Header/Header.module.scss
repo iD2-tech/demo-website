@@ -28,16 +28,19 @@
             font-weight: 700;
             text-decoration: none;
             color: $text;
+
             margin-bottom: 0.7rem;
 
             @include breakpoint(md) {
                 margin-bottom: 0;
                 font-size: 3rem;
             }
+
         }
 
         &__nav {
             font-family: $basicFont;
+
             font-size: 0.9rem;
             font-weight: 500;
             align-items: center;

@@ -1,0 +1,24 @@
+@import "../../../styles/variables.scss";
+
+.titleContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 98.5%;
+
+    margin-bottom: 2%;
+
+    > p2 {
+        white-space: nowrap;
+        font-size: 20px;
+
+    }
+}
+
+.line {
+    width: 100%;
+    margin-left: 2%;
+    height: 2px;
+    background-color: $line;
+}
