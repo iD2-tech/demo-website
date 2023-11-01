@@ -267,15 +267,6 @@ const Home = () => {
 
     <div className={`${classes.container} ${classes.bleedContent}`}>
       <div className={classes.introSlide}>
-
-
-        {/* THIS SHOULD BE A BUTTON COMPONENT INSIDE COMPONENTS FOLDER
-        SHOULD BE CENTERED ON THE PAGE.
-        COMPONENT SHOULD BE ABLE TO TAKE IN A 'TEXT' PROP  */}
-        <button onClick={goOrder} className={classes.button}>
-          ORDER NOW
-          <AiOutlineArrowRight style={{ marginLeft: '15px' }} />
-        </button>
       </div>
 
       <div className={classes.orderContainer} ref={divRef}>
