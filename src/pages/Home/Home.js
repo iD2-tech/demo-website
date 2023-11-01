@@ -1,9 +1,221 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import classes from './Home.module.scss';
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom';
 import data from '../../assets/data.json';
+import ProductSection from '../../components/ProductSection/ProductSection';
+import image from '../../assets/images/menuImage.png';
+
+const sectionArray = [
+  {
+    title: "Stir Fry Vegetable",
+    id: "stirFryVegetable",
+    items: [
+      {
+        title: 'Checken Veggie',
+        price: 13.99,
+        img: image,
+        description: '[Description of menu]',
+        customization: {
+          substitutions: [
+            'Fried Rice',
+            'Brown Rice',
+            'Spicy',
+            'Teriyaki Sauce'
+          ],
+          extras: [
+            'Extra Chicken',
+            'Extra Katsu'
+          ]
+        }
+      },
+      {
+        title: 'Tofu Veggie',
+        price: 13.99,
+        img: image,
+        description: '[Description of menu]',
+        customization: {
+          substitutions: [
+            'Fried Rice',
+            'Brown Rice',
+            'Spicy',
+            'Teriyaki Sauce'
+          ],
+          extras: [
+            'Extra Chicken',
+            'Extra Katsu'
+          ]
+        }
+      },
+      {
+        title: 'Pork Veggie',
+        price: 14.49,
+        img: image,
+        description: '[Description of menu]',
+        customization: {
+          substitutions: [
+            'Fried Rice',
+            'Brown Rice',
+            'Spicy',
+            'Teriyaki Sauce'
+          ],
+          extras: [
+            'Extra Chicken',
+            'Extra Katsu'
+          ]
+        }
+      },
+      {
+        title: 'Shrimp Veggie',
+        price: 14.99,
+        img: image,
+        description: '[Description of menu]',
+        customization: {
+          substitutions: [
+            'Fried Rice',
+            'Brown Rice',
+            'Spicy',
+            'Teriyaki Sauce'
+          ],
+          extras: [
+            'Extra Chicken',
+            'Extra Katsu'
+          ]
+        }
+      },
+
+      {
+        title: 'Vegetables',
+        price: 13.29,
+        img: image,
+        description: '[Description of menu]',
+        customization: {
+          substitutions: [
+            'Fried Rice',
+            'Brown Rice',
+            'Spicy',
+            'Teriyaki Sauce'
+          ],
+          extras: [
+            'Extra Chicken',
+            'Extra Katsu'
+          ]
+        }
+      },
+
+    ]
+  },
+
+  {
+    title: "Yakisoba",
+    id: "yakisoba",
+    items: [
+      {
+        title: 'Checken Veggie',
+        price: 13.99,
+        img: image,
+        description: '[Description of menu]',
+        customization: {
+          substitutions: [
+            'Fried Rice',
+            'Brown Rice',
+            'Spicy',
+            'Teriyaki Sauce'
+          ],
+          extras: [
+            'Extra Chicken',
+            'Extra Katsu'
+          ]
+        }
+      },
+      {
+        title: 'Tofu Veggie',
+        price: 13.99,
+        img: image,
+        description: '[Description of menu]',
+        customization: {
+          substitutions: [
+            'Fried Rice',
+            'Brown Rice',
+            'Spicy',
+            'Teriyaki Sauce'
+          ],
+          extras: [
+            'Extra Chicken',
+            'Extra Katsu'
+          ]
+        }
+      },
+      {
+        title: 'Pork Veggie',
+        price: 14.49,
+        img: image,
+        description: '[Description of menu]',
+        customization: {
+          substitutions: [
+            'Fried Rice',
+            'Brown Rice',
+            'Spicy',
+            'Teriyaki Sauce'
+          ],
+          extras: [
+            'Extra Chicken',
+            'Extra Katsu'
+          ]
+        }
+      },
+      {
+        title: 'Shrimp Veggie',
+        price: 14.99,
+        img: image,
+        description: '[Description of menu]',
+        customization: {
+          substitutions: [
+            'Fried Rice',
+            'Brown Rice',
+            'Spicy',
+            'Teriyaki Sauce'
+          ],
+          extras: [
+            'Extra Chicken',
+            'Extra Katsu'
+          ]
+        }
+      },
+
+      {
+        title: 'Vegetables',
+        price: 13.29,
+        img: image,
+        description: '[Description of menu]',
+        customization: {
+          substitutions: [
+            'Fried Rice',
+            'Brown Rice',
+            'Spicy',
+            'Teriyaki Sauce'
+          ],
+          extras: [
+            'Extra Chicken',
+            'Extra Katsu'
+          ]
+        }
+      },
+
+    ]
+  }
+
+]
+
+
+
 const Home = () => {
+  const [scrollPercentage, setScrollPercentage] = useState(0.0);
+  const [isMenuFixed, setIsMenuFixed] = useState(false);
+  const [activeSection, setActiveSection] = useState(null);
+  const [scrollTrigger, setScrollTrigger] = useState(0);
+  const divRef = useRef(null);
+  const introRef = useRef(null);
 
   const nav = useNavigate();
   useEffect(() => {
@@ -15,10 +227,6 @@ const Home = () => {
     nav("/order");
   }
 
-  const [scrollPercentage, setScrollPercentage] = useState(0.0);
-  const [isMenuFixed, setIsMenuFixed] = useState(false);
-  const [activeSection, setActiveSection] = useState(null);
-
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -28,15 +236,15 @@ const Home = () => {
       const newScrollPercentage = (scrollY / (pageHeight - windowHeight)) * 100;
 
       setScrollPercentage(newScrollPercentage);
-      console.log(scrollPercentage);
+      const divTop = divRef.current.getBoundingClientRect().top;
+      setScrollTrigger(Math.max(scrollTrigger, divTop))
 
-      if (scrollPercentage > 123.42324815124046 && !isMenuFixed) {
-        setIsMenuFixed(true);
-      } else if (scrollPercentage <= 123.42324815124046 && isMenuFixed) {
-        setIsMenuFixed(false);
-      }
+      setIsMenuFixed(scrollY > scrollTrigger);
 
-      const sections = ['whatIsContainer', 'ourVisionContainer', 'keyFeaturesContainer', 'visitContainer'];
+      let sections = [];
+      sectionArray.forEach(element => {
+        sections.push(element.id);
+      });
       for (const sectionId of sections) {
         const section = document.getElementById(sectionId);
         if (section) {
@@ -47,14 +255,6 @@ const Home = () => {
           }
         }
       }
-
-      const whatIsContainer = document.getElementById('whatIsContainer');
-      if (whatIsContainer) {
-        const rect = whatIsContainer.getBoundingClientRect();
-        if (rect.top > windowHeight * 0.5) {
-          setActiveSection(null);
-        }
-      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -63,29 +263,11 @@ const Home = () => {
     };
   }, [scrollPercentage]);
 
-  useEffect(() => {
-    const menuItems = document.querySelectorAll('[data-target]');
-
-    menuItems.forEach((menuItem) => {
-      menuItem.addEventListener('click', () => {
-        const targetId = menuItem.getAttribute('data-target');
-        const targetSection = document.getElementById(targetId);
-
-        targetSection.scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-
-    return () => {
-      menuItems.forEach((menuItem) => {
-        menuItem.removeEventListener('click', () => { });
-      });
-    };
-  }, []);
-
   return (
 
-    <div className={classes.container}>
+    <div className={`${classes.container} ${classes.bleedContent}`}>
       <div className={classes.introSlide}>
+
 
         {/* THIS SHOULD BE A BUTTON COMPONENT INSIDE COMPONENTS FOLDER
         SHOULD BE CENTERED ON THE PAGE.
@@ -94,17 +276,26 @@ const Home = () => {
           ORDER NOW
           <AiOutlineArrowRight style={{ marginLeft: '15px' }} />
         </button>
-
       </div>
 
-      <div className={classes.orderContainer}>
+      <div className={classes.orderContainer} ref={divRef}>
+        <div className={`${classes.menuContainer} ${isMenuFixed ? classes.fixed : ''}`} >
+          <p className={classes.menuTitle}>MENU</p>
+          {
+            sectionArray.map((item, i) => (
+              <a href={`#${item.id}`} className={activeSection === `${item.id}` ? classes.categoryActive : classes.category} key={i}>{item.title}</a>
+            ))
+          }
+        </div>
 
-        {/* THIS SHOULD BE A 'SIDEBAR SCROLL' COMPONENT WITHIN COMPONENT FOLDER */}
-        <div className={classes.menuContainer}>
-          <text className={classes.menuTitle}>MENU</text>
-          {data.categories.map((category) => (
-             <text className={classes.category}>{category}</text>
-          ))}
+        <div className={classes.sectionContainer}>
+          {
+            sectionArray.map((item, i) => (
+              <div id={item.id} key={i} >
+                <ProductSection items={item} />
+              </div>
+            ))
+          }
         </div>
 
         {/* MAP EACH SECTION: EACH SECTION SHOULD BE A COMPONENT CALLED 'MenuSection' WITHIN COMPONENTS FOLDER

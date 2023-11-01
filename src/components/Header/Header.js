@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from "react";
-
 import { BiMenuAltRight } from "react-icons/bi";
 import { AiOutlineClose, AiFillShopping } from "react-icons/ai";
-
-
 import classes from "./Header.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = () => { 
 
     // need global variable for restaurant name. Will be prop from JSON
     const RESTNAME = "COMMUNITY GROCERY AND DELI";
-
+    const [menuIsOpen, setMenuIsOpen] = useState(false);
     const navigation = useNavigate();
     const [menuOpen, setMenuOpen] = useState(false);
     const [size, setSize] = useState({
@@ -48,49 +45,17 @@ const Header = () => {
         };
     }, [localStorage.getItem("cart")]);
 
-    // useEffect(() => {
-    //     const handleStorage = () => {
-    //         // Place for a function responsible for
-    //         // pulling and displaying local storage data
-            // var cartJSON = localStorage.getItem("cart");
-            // cartJSON = JSON.parse(cartJSON);
-            // var totalQuantity = 0;
-            // for (var key in cartJSON) {
-            //     totalQuantity += cartJSON[key];
-            // }
-            // console.log("hi" + totalQuantity);
-            // setCartQuantity(totalQuantity);
-    //     }
-
-    //     window.addEventListener('storage', handleStorage())
-
-
-
-    // }, [])
-
     useEffect(() => {
-
-
-        const handleResize = () => {
-            setSize({
-                width: window.innerWidth,
-                height: window.innerHeight,
-            });
-        };
-        window.addEventListener("resize", handleResize);
-
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
-
-    useEffect(() => {
-        if (size.width > 768 && menuOpen) {
-            setMenuOpen(false);
+        if (menuIsOpen) {
+          document.body.classList.add('menu-open');
+        } else {
+          document.body.classList.remove('menu-open');
         }
-    }, [size.width, menuOpen]);
-
-    const menuToggleHandler = () => {
-        setMenuOpen((p) => !p);
-    };
+      }, [menuIsOpen]);
+    
+      const menuToggleHandler = () => {
+        setMenuIsOpen(!menuIsOpen);
+      };
 
     const ctaClickHandler = () => {
         menuToggleHandler();
@@ -103,10 +68,7 @@ const Header = () => {
                 <Link to="/" className={classes.header__content__logo}>
                     {RESTNAME}
                 </Link>
-                <nav
-                    className={`${classes.header__content__nav} ${menuOpen && size.width < 768 ? classes.isMenu : ""
-                        }`}
-                >
+                <nav className={classes.header__content__nav}>
                     <ul>
                         <li>
                             <Link to="/aboutus" onClick={menuToggleHandler}>
@@ -132,13 +94,6 @@ const Header = () => {
                         </span>
                     </button>
                 </nav>
-                <div className={classes.header__content__toggle}>
-                    {!menuOpen ? (
-                        <BiMenuAltRight onClick={menuToggleHandler} />
-                    ) : (
-                        <AiOutlineClose onClick={menuToggleHandler} />
-                    )}
-                </div>
             </div>
         </header>
     );
