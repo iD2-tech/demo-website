@@ -1,7 +1,14 @@
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react';
 import classes from './Cart.module.scss';
 import { loadStripe } from '@stripe/stripe-js';
 import { Navigate, useNavigate, Link } from 'react-router-dom';
+//just for testing code
+import phoImage from '../../assets/images/PhoPic.png';
+
+
+import ProductQuantity from '../../components/ProductQuantity/ProductQuantity';
+import CheckoutButton from '../../components/CheckoutButton/CheckoutButton';
+import CartProduct from '../../components/CartProduct/CartProduct';
 
 const stripePromise = loadStripe('pk_test_51LPzSaAmJKzU86rc7blGPoGpWD2vDXq7lodk2F4LKPAhxChyfNN4XFYX1GEbxAYTojFIFKsnWTlqJxG9hE9ppGaL002clKaclh');
 
@@ -14,6 +21,39 @@ const Cart = () => {
   var products = [];
   const TAX_RATE = 0.093;
 
+//this is all code just for the fake data and it is not really needed later
+  const fakeData = [
+    {
+      ID: 1,
+      name: "Product 1",
+      price: 10.99,
+      images: [phoImage],
+      quantity: 2,
+    },
+    {
+      ID: 2,
+      name: "Product 2",
+      price: 15.99,
+      images: [phoImage],
+      quantity: 1,
+    },
+  ];
+
+  useEffect(() => {
+    var cartJSON = JSON.stringify(fakeData);
+    localStorage.setItem("cart", cartJSON);
+  
+    cartJSON = localStorage.getItem("cart");
+    if (cartJSON === null) {
+      cartJSON = [];
+    } else {
+      cartJSON = JSON.parse(cartJSON);
+    }
+    setCart(cartJSON);
+    products = cartJSON;
+    updateCartTotal();
+    console.log(products);
+  }, []);
 
   useEffect(() => {
     // get cart info from localStorage and set info
@@ -132,77 +172,23 @@ const Cart = () => {
         {/* Products */}
         <div className={classes.productsMap}>
           {cart.map((product, index) => (
-            <div key={product.ID} className={classes.product}>
-
-              {/* image container */}
-              <div className={classes.productImage}>
-                <img className={classes.image} src={product.images[0]} alt="background" />
-              </div>
-
-              {/* product info container */}
-              <div className={classes.productMetaData}>
-
-                {/* product name container */}
-                <div className={classes.productNameContainer}>
-                  <p>{product.name}</p>
-                </div>
-
-                {/* product price container */}
-                <div className={classes.productPriceContainer}>
-                  <b>${product.price}</b>
-                </div>
-
-                {/* quantity button container */}
-                <div className={classes.quantityButtonContainer}>
-
-              {/* THE MINUS QUANTITY AND THE PLUS SHOULD BE INSIDE ONE COMPONENT CALLED
-              'PRODUCTQUANTITY' */}
-                  {/* mins sign container */}
-                  <div className={classes.minusSign}>
-                    <button className={classes.adjustMinusButton} onClick={(e) => minusButtonClicked(e, index)}>
-                      -
-                    </button>
-
-                  </div>
-
-                  {/* quantity container */}
-                  <div className={classes.quantityContainer}>
-                    {product.quantity}
-                  </div>
-
-                  {/* plus sign container */}
-                  <div className={classes.plusSign}>
-                    <button className={classes.adjustPlusButton} onClick={(e) => plusButtonClicked(e, index)}>
-                      +
-                    </button>
-                  </div>
-
-                </div>
-
-              </div>
-
-
-              {/* remove from cart container */}
-              <div className={classes.removeFromCartContainer}>
-                <button className={classes.removeButton} onClick={(e) => removeFromCart(e, index)}>
-                  X
-                </button>
-
-              </div>
-
-            </div>
-          ))
-
-          }
+            <CartProduct
+              key={product.ID}
+              product={product}
+              index={index}
+              minusButtonClicked={(e) => minusButtonClicked(e, index)}
+              plusButtonClicked={(e) => plusButtonClicked(e, index)}
+              removeFromCart={(e) => removeFromCart(e, index)}
+            />
+          ))}
         </div>
 
       </div>
 
-      <div className={classes.line}>
-
-      </div>
+      <div className={classes.line} />
 
       {/* Subtotal Column */}
+      <div className={classes.verticalLine}></div>
       <div className={classes.reviewContainer}>
 
         {/* top bar label */}
@@ -212,72 +198,47 @@ const Cart = () => {
 
         {/* items list */}
         <div className={classes.subtotalMap}>
-          {cart.map((product) => (
-            <div key={product.ID} className={classes.item}>
-
-              <div className={classes.quantityRow}>
-                <div className={classes.quantityDisplay}>
-                  {product.quantity}
-                </div>
-
-                <div className={classes.productNameDisplay}>
-                  {product.name}
-                </div>
-
-                <div className={classes.productPriceDisplay}>
-                  ${product.price * product.quantity}
-                </div>
-
+        {cart.map((product, index) => (
+          <div key={product.ID} className={classes.item}>
+              <div className={classes.productNameDisplay}>
+                {product.name}
               </div>
-
-            </div>
-          ))
-          }
+              <div className={classes.productPriceDisplay}>
+                ${product.price * product.quantity}
+              </div>
+          </div>
+        ))}
         </div>
 
-        <div className={classes.horizontalLine}>
-
-        </div>
+        <div className={classes.horizontalLine} />
 
         {/* taxes and total */}
         <div className={classes.taxesTotalContainer}>
-
           {/* taxes container */}
           <div className={classes.taxesContainer}>
-
             <div className={classes.taxLabel}>
               Tax
             </div>
-
             <div className={classes.displayTax}>
               <p className={classes.totalTax}> ${taxes} </p>
             </div>
           </div>
-
           {/* total Container */}
           <div className={classes.totalContainer}>
             <div className={classes.taxLabel}>
               Total
             </div>
-
             <div className={classes.displayTax}>
               <p className={classes.totalTax}> ${total} </p>
             </div>
-
           </div>
-          
           {/* THIS CHECKOUT BUTTON SHOULD BE A COMPONENT */}
           {/* checkout button */}
-          <button className={classes.checkoutButton} onClick={checkoutButtonClicked}>
-            Checkout
-          </button>
-
-
+          <CheckoutButton onClick={checkoutButtonClicked} />
         </div>
-
       </div>
-    </div >
-  )
+    </div>
+  );
 }
 
 // comment
