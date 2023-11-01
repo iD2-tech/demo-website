@@ -67,9 +67,6 @@ const Header = () => {
             <div className={classes.header__content}>
                 <Link to="/" className={classes.header__content__logo}>
                     {RESTNAME}
-                    <button onClick={menuToggleHandler}>
-                        <BiMenuAltRight size="2em" />
-                    </button>
                 </Link>
                 <nav className={classes.header__content__nav}>
                     <ul>
