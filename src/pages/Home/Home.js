@@ -265,8 +265,9 @@ const Home = () => {
 
   return (
 
-    <div className={classes.container}>
-      <div className={classes.introSlide} ref={introRef}>
+    <div className={`${classes.container} ${classes.bleedContent}`}>
+      <div className={classes.introSlide}>
+
 
         {/* THIS SHOULD BE A BUTTON COMPONENT INSIDE COMPONENTS FOLDER
         SHOULD BE CENTERED ON THE PAGE.
