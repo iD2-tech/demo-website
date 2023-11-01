@@ -1,0 +1,43 @@
+@import "../../../styles/variables.scss";
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 10%;
+    width: 100%;
+    margin-top: 8%;
+
+    > button {
+        border: none;
+        background-color: white;
+        width: 20%;
+        height: 50%;
+        font-size: 20px;
+
+        &:hover {
+            background-color: gray;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+        height: 10%;
+        width: 150%;
+        margin-top: 8%;
+    
+        > button {
+            border: none;
+            background-color: white;
+            width: 20%;
+            height: 50%;
+            font-size: 20px;
+        }
+    }
+}
