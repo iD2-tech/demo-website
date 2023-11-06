@@ -3,11 +3,13 @@ import { BiMenuAltRight } from "react-icons/bi";
 import { AiOutlineClose, AiFillShopping } from "react-icons/ai";
 import classes from "./Header.module.scss";
 import { Link, useNavigate } from "react-router-dom";
+import globalInfo from '../../assets/data.json';
+
 
 const Header = () => { 
 
     // need global variable for restaurant name. Will be prop from JSON
-    const RESTNAME = "COMMUNITY GROCERY AND DELI";
+    const RESTNAME = globalInfo.RESTNAME;
     const [menuIsOpen, setMenuIsOpen] = useState(false);
     const navigation = useNavigate();
     const [menuOpen, setMenuOpen] = useState(false);
