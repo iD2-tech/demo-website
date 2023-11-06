@@ -6,214 +6,13 @@ import data from '../../assets/data.json';
 import ProductSection from '../../components/ProductSection/ProductSection';
 import image from '../../assets/images/menuImage.png';
 
-const sectionArray = [
-  {
-    title: "Stir Fry Vegetable",
-    id: "stirFryVegetable",
-    items: [
-      {
-        title: 'Checken Veggie',
-        price: 13.99,
-        img: image,
-        description: '[Description of menu]',
-        customization: {
-          substitutions: [
-            'Fried Rice',
-            'Brown Rice',
-            'Spicy',
-            'Teriyaki Sauce'
-          ],
-          extras: [
-            'Extra Chicken',
-            'Extra Katsu'
-          ]
-        }
-      },
-      {
-        title: 'Tofu Veggie',
-        price: 13.99,
-        img: image,
-        description: '[Description of menu]',
-        customization: {
-          substitutions: [
-            'Fried Rice',
-            'Brown Rice',
-            'Spicy',
-            'Teriyaki Sauce'
-          ],
-          extras: [
-            'Extra Chicken',
-            'Extra Katsu'
-          ]
-        }
-      },
-      {
-        title: 'Pork Veggie',
-        price: 14.49,
-        img: image,
-        description: '[Description of menu]',
-        customization: {
-          substitutions: [
-            'Fried Rice',
-            'Brown Rice',
-            'Spicy',
-            'Teriyaki Sauce'
-          ],
-          extras: [
-            'Extra Chicken',
-            'Extra Katsu'
-          ]
-        }
-      },
-      {
-        title: 'Shrimp Veggie',
-        price: 14.99,
-        img: image,
-        description: '[Description of menu]',
-        customization: {
-          substitutions: [
-            'Fried Rice',
-            'Brown Rice',
-            'Spicy',
-            'Teriyaki Sauce'
-          ],
-          extras: [
-            'Extra Chicken',
-            'Extra Katsu'
-          ]
-        }
-      },
-
-      {
-        title: 'Vegetables',
-        price: 13.29,
-        img: image,
-        description: '[Description of menu]',
-        customization: {
-          substitutions: [
-            'Fried Rice',
-            'Brown Rice',
-            'Spicy',
-            'Teriyaki Sauce'
-          ],
-          extras: [
-            'Extra Chicken',
-            'Extra Katsu'
-          ]
-        }
-      },
-
-    ]
-  },
-
-  {
-    title: "Yakisoba",
-    id: "yakisoba",
-    items: [
-      {
-        title: 'Checken Veggie',
-        price: 13.99,
-        img: image,
-        description: '[Description of menu]',
-        customization: {
-          substitutions: [
-            'Fried Rice',
-            'Brown Rice',
-            'Spicy',
-            'Teriyaki Sauce'
-          ],
-          extras: [
-            'Extra Chicken',
-            'Extra Katsu'
-          ]
-        }
-      },
-      {
-        title: 'Tofu Veggie',
-        price: 13.99,
-        img: image,
-        description: '[Description of menu]',
-        customization: {
-          substitutions: [
-            'Fried Rice',
-            'Brown Rice',
-            'Spicy',
-            'Teriyaki Sauce'
-          ],
-          extras: [
-            'Extra Chicken',
-            'Extra Katsu'
-          ]
-        }
-      },
-      {
-        title: 'Pork Veggie',
-        price: 14.49,
-        img: image,
-        description: '[Description of menu]',
-        customization: {
-          substitutions: [
-            'Fried Rice',
-            'Brown Rice',
-            'Spicy',
-            'Teriyaki Sauce'
-          ],
-          extras: [
-            'Extra Chicken',
-            'Extra Katsu'
-          ]
-        }
-      },
-      {
-        title: 'Shrimp Veggie',
-        price: 14.99,
-        img: image,
-        description: '[Description of menu]',
-        customization: {
-          substitutions: [
-            'Fried Rice',
-            'Brown Rice',
-            'Spicy',
-            'Teriyaki Sauce'
-          ],
-          extras: [
-            'Extra Chicken',
-            'Extra Katsu'
-          ]
-        }
-      },
-
-      {
-        title: 'Vegetables',
-        price: 13.29,
-        img: image,
-        description: '[Description of menu]',
-        customization: {
-          substitutions: [
-            'Fried Rice',
-            'Brown Rice',
-            'Spicy',
-            'Teriyaki Sauce'
-          ],
-          extras: [
-            'Extra Chicken',
-            'Extra Katsu'
-          ]
-        }
-      },
-
-    ]
-  }
-
-]
-
-
 
 const Home = () => {
   const [scrollPercentage, setScrollPercentage] = useState(0.0);
   const [isMenuFixed, setIsMenuFixed] = useState(false);
   const [activeSection, setActiveSection] = useState(null);
   const [scrollTrigger, setScrollTrigger] = useState(0);
+  const [sectionArrayy, setSectionArray] = useState([]);
   const divRef = useRef(null);
   const introRef = useRef(null);
 
@@ -226,6 +25,73 @@ const Home = () => {
   const goOrder = () => {
     nav("/order");
   }
+
+  const [products, setProducts] = useState([]);
+  const [prices, setPrices] = useState([]);
+
+  useEffect(() => {
+      window.dispatchEvent(new Event('storage')) // trigger update to header
+      if (products.length == 0 || prices.length == 0) {
+        getProducts();
+        getPrices();
+      } else {
+        combinePrices();
+      }
+    }, [products])
+  
+    const getProducts = async () => {
+      fetch('http://localhost:3000/products')
+        .then(r => r.json())
+        .then(data => {
+          var array = data.products;
+          setProducts(array);
+        });
+    }
+  
+    // get all prices from stripe
+    const getPrices = async () => {
+      fetch('http://localhost:3000/prices', {
+      }).then(r => r.json())
+        .then(data => {
+          var array = data.price;
+          setPrices(array);
+        })
+    }
+  
+    // combines products to prices
+    const combinePrices = () => {
+
+    // create section array
+    const sectionArray = [];
+    for (let i = 0; i < data.categories.length; i++) {
+      sectionArray.push({title: data.categories[i].title, id: data.categories[i].id, items: [], customization: []});
+    }
+
+  // edit prices
+  // put each item into its respective category in the section array
+      for (let i = 0; i < products.length; i++) {
+        products[i].price = prices[i].unit_amount / 100;
+        
+        if (products[i].metadata.customization === 'true') {
+          const catNames = products[i].metadata.category.split(', ');
+          console.log(catNames)
+          for (const catName of catNames) {
+            const category = sectionArray.find((cat) => cat.id === catName);
+            if (category) {
+              category.customization.push(products[i]);
+            }
+          }
+        } else {
+          const category = sectionArray.find((cat) => cat.id === products[i].metadata.category);
+          if (category) {
+            category.items.push(products[i]);
+          }
+        }
+      }
+  console.log(products)
+  setSectionArray(sectionArray);
+    }
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -242,7 +108,7 @@ const Home = () => {
       setIsMenuFixed(scrollY > scrollTrigger);
 
       let sections = [];
-      sectionArray.forEach(element => {
+      sectionArrayy.forEach(element => {
         sections.push(element.id);
       });
       for (const sectionId of sections) {
@@ -273,7 +139,7 @@ const Home = () => {
         <div className={`${classes.menuContainer} ${isMenuFixed ? classes.fixed : ''}`} >
           <p className={classes.menuTitle}>MENU</p>
           {
-            sectionArray.map((item, i) => (
+            sectionArrayy.map((item, i) => (
               <a href={`#${item.id}`} className={activeSection === `${item.id}` ? classes.categoryActive : classes.category} key={i}>{item.title}</a>
             ))
           }
@@ -281,7 +147,7 @@ const Home = () => {
 
         <div className={classes.sectionContainer}>
           {
-            sectionArray.map((item, i) => (
+            sectionArrayy.map((item, i) => (
               <div id={item.id} key={i} >
                 <ProductSection items={item} />
               </div>

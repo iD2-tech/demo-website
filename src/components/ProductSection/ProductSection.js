@@ -58,18 +58,18 @@ function ProductSection(props) {
 
   const items = props.items;
   const itemsArray = items.items;
+  const customArray = items.customization;
 
   const openModal = (item) => {
     setShow(true);
     setSelected(item);
-    setSelectedSub(item.customization.substitutions);
-    setSelectedOp(item.customization.extras);
+    console.log(customArray)
+    setSelectedOp(item.customization);
   }
 
   const closeModal = () => {
     const obj = {
-        itemTitle: selected.title,
-        sub: modalSubSelected,
+        itemTitle: selected.name,
         op: modalOpSelected,
         quant: modalQuant,
         inst: modalInst,
@@ -100,7 +100,7 @@ function ProductSection(props) {
                 <div className={classes.modalInfo}>
                     <div>
                         <div className={classes.imageContainer}>
-                            <img className={classes.image} src={selected.img}/>
+                            <img className={classes.image} src={selected.images}/>
                         </div>
                         <div className={classes.quantSelect}>
                             <p1>Quantity</p1>
@@ -109,10 +109,9 @@ function ProductSection(props) {
                     </div>
 
                     <div className={classes.infoContainer}>
-                        <ModalHeader title={selected.title} price={selected.price} description={selected.description} onX={xOut}/>
+                        <ModalHeader title={selected.name} price={selected.price} description={selected.description} onX={xOut}/>
                         <div className={classes.divider}></div>
-                        <ModalOptions options={selectedSub} title="Substitution" onUpdate={handleSub}/>
-                        <ModalOptions options={selectedOp} title="Extras" onUpdate={handleOp}/>
+                        <ModalOptions options={customArray} title="Options" onUpdate={handleOp}/>
                         <SpecialInst onUpdate={handleInst}/>
                         <ModalButton onClick={closeModal}/>
                     </div>

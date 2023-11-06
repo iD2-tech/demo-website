@@ -45,6 +45,7 @@ function ModalOptions(props) {
   };
   
   const names = props.options;
+  console.log(names);
 
   return (
     <div>
@@ -69,11 +70,11 @@ function ModalOptions(props) {
         >
           {names.map((name) => (
             <MenuItem
-              key={name}
-              value={name}
+              key={name.name}
+              value={name.name}
               style={getStyles(name, optionName, theme)}
             >
-              {name}
+              +${name.price.toFixed(2)} {name.name}
             </MenuItem>
           ))}
         </Select>

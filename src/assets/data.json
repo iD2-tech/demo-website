@@ -1,3 +1,12 @@
 {
-  "categories": ["Teriyaki", "Combination", "Stir Fry Vegetable", "Yakisoba", "Fried Rice", "Side Order", "Wok"]
+  "categories": [
+    {
+      "title": "Teriyaki",
+      "id": "Teriyaki"
+    },
+    {
+      "title": "Stir Fry Vegetable",
+      "id": "Stir_Fry_Vegetable"
+    }
+  ]
 }
