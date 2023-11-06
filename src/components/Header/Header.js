@@ -1,22 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { BiMenuAltRight } from "react-icons/bi";
 import { AiOutlineClose, AiFillShopping } from "react-icons/ai";
 import classes from "./Header.module.scss";
 import { Link, useNavigate } from "react-router-dom";
+import HeaderLinks from "./HeaderLinks.js";
 import globalInfo from '../../assets/data.json';
-
 
 const Header = () => { 
 
-    // need global variable for restaurant name. Will be prop from JSON
+
     const RESTNAME = globalInfo.RESTNAME;
     const [menuIsOpen, setMenuIsOpen] = useState(false);
     const navigation = useNavigate();
-    const [menuOpen, setMenuOpen] = useState(false);
-    const [size, setSize] = useState({
-        width: undefined,
-        height: undefined,
-    });
     const [cartQuantity, setCartQuantity] = useState();
     const [data, setData] = useState(null);
 
@@ -48,15 +43,15 @@ const Header = () => {
     }, [localStorage.getItem("cart")]);
 
     useEffect(() => {
-        if (menuIsOpen) {
+        if (open) {
           document.body.classList.add('menu-open');
         } else {
           document.body.classList.remove('menu-open');
         }
-      }, [menuIsOpen]);
+      }, [open]);
     
       const menuToggleHandler = () => {
-        setMenuIsOpen(!menuIsOpen);
+        setOpen(!open);
       };
 
     const ctaClickHandler = () => {
@@ -64,38 +59,24 @@ const Header = () => {
         navigation("/cart");
     };
 
+const displayMenuRef = useRef(null);
+
+  const scrollToMenuSection = () => {
+    if (displayMenuRef.current) {
+      displayMenuRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
     return (
-        <header className={classes.header}>
+        <header className={`${classes.header} ${!open && classes['header-closed']}`}>
             <div className={classes.header__content}>
                 <Link to="/" className={classes.header__content__logo}>
                     {RESTNAME}
                 </Link>
-                <nav className={classes.header__content__nav}>
-                    <ul>
-                        <li>
-                            <Link to="/aboutus" onClick={menuToggleHandler}>
-                                ABOUT US
-                            </Link>
-                        </li>
-                        <li>
-                            {/* the link to menu will also be stored within json */}
-                            <Link to="/visitus" onClick={menuToggleHandler}>
-                                VISIT US
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/order" onClick={menuToggleHandler}>
-                                VIEW MENU & ORDER
-                            </Link>
-                        </li>
-                    </ul>
-                    <button onClick={ctaClickHandler}>
-                        <AiFillShopping size="2em" />
-                        <span>
-                            {cartQuantity}
-                        </span>
-                    </button>
-                </nav>
+                <BiMenuAltRight className={classes.header__content__hamburger}
+                    onClick={() => setOpen(!open)}
+                />
+                {open && <HeaderLinks/>}
             </div>
         </header>
     );

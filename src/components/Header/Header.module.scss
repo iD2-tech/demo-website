@@ -22,8 +22,19 @@
         justify-content: center;
         z-index: 100;
 
+        &__hamburger {
+            font-size: 25px;
+            position: absolute;
+            top: 4.5rem;
+            right: 3rem;
+
+            @include breakpoint(md) {
+                display: none;
+            }
+        }
+
         &__logo {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-family: $basicFont;
             font-weight: 700;
             text-decoration: none;
@@ -108,4 +119,8 @@
             }
         }
     }
+}
+
+.header-closed {
+    height: $headerHeight;
 }
