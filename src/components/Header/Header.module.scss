@@ -46,6 +46,11 @@
                 margin-bottom: 0;
                 font-size: 3rem;
             }
+
+            @media (min-width: 767px) and (max-width: 950px){
+                font-size: 2.3rem;
+            
+            }
         }
 
         &__nav {

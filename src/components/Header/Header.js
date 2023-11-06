@@ -4,12 +4,13 @@ import { AiOutlineClose, AiFillShopping } from "react-icons/ai";
 import classes from "./Header.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import HeaderLinks from "./HeaderLinks.js";
+import globalInfo from '../../assets/data.json';
 
 const Header = () => { 
 
-    // need global variable for restaurant name. Will be prop from JSON
-    const RESTNAME = "COMMUNITY GROCERY AND DELI";
-    const [open, setOpen] = useState(false);
+
+    const RESTNAME = globalInfo.RESTNAME;
+    const [menuIsOpen, setMenuIsOpen] = useState(false);
     const navigation = useNavigate();
     const [cartQuantity, setCartQuantity] = useState();
     const [data, setData] = useState(null);
