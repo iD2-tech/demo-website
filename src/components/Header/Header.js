@@ -10,7 +10,7 @@ const Header = () => {
 
 
     const RESTNAME = globalInfo.RESTNAME;
-    const [menuIsOpen, setMenuIsOpen] = useState(false);
+    const [open, setOpen] = useState(false);
     const navigation = useNavigate();
     const [cartQuantity, setCartQuantity] = useState();
     const [data, setData] = useState(null);
