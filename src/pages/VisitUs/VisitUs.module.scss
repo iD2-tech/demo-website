@@ -3,14 +3,12 @@
 .container {
     height: calc(100vh - #{$headerHeight});
     display: flex;
-    overflow-y: scroll;
     max-width: 95vw;
     width: 95%;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     position: relative;
-    overflow: scroll;
 }
 
 .header {
@@ -18,7 +16,6 @@
     font-size: 3vw;
     font-weight: 300;
     width: 100%;
-    margin-top: 3%;
     display: flex;
     justify-content: center;
     align-items: center;

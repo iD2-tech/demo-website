@@ -25,14 +25,77 @@ const Cart = () => {
   const fakeData = [
     {
       ID: 1,
-      name: "Product 1",
+      name: "Chicken Veggie",
       price: 10.99,
       images: [phoImage],
       quantity: 2,
     },
     {
       ID: 2,
-      name: "Product 2",
+      name: "Chicken Veggie Teriyaki Combination",
+      price: 15.99,
+      images: [phoImage],
+      quantity: 1,
+    },
+    {
+      ID: 2,
+      name: "Chicken Veggie Teriyaki Combination",
+      price: 15.99,
+      images: [phoImage],
+      quantity: 1,
+    },
+    {
+      ID: 2,
+      name: "Chicken Veggie Teriyaki Combination",
+      price: 15.99,
+      images: [phoImage],
+      quantity: 1,
+    },
+    {
+      ID: 2,
+      name: "Chicken Veggie Teriyaki Combination",
+      price: 15.99,
+      images: [phoImage],
+      quantity: 1,
+    },
+    {
+      ID: 2,
+      name: "Chicken Veggie Teriyaki Combination",
+      price: 15.99,
+      images: [phoImage],
+      quantity: 1,
+    },
+    {
+      ID: 2,
+      name: "Chicken Veggie Teriyaki Combination",
+      price: 15.99,
+      images: [phoImage],
+      quantity: 1,
+    },
+    {
+      ID: 2,
+      name: "Chicken Veggie Teriyaki Combination",
+      price: 15.99,
+      images: [phoImage],
+      quantity: 1,
+    },
+    {
+      ID: 2,
+      name: "Chicken Veggie Teriyaki Combination",
+      price: 15.99,
+      images: [phoImage],
+      quantity: 1,
+    },
+    {
+      ID: 2,
+      name: "Chicken Veggie Teriyaki Combination",
+      price: 15.99,
+      images: [phoImage],
+      quantity: 1,
+    },
+    {
+      ID: 2,
+      name: "Chicken Veggie Teriyaki Combination",
       price: 15.99,
       images: [phoImage],
       quantity: 1,
@@ -204,7 +267,7 @@ const Cart = () => {
                 {product.name}
               </div>
               <div className={classes.productPriceDisplay}>
-                ${product.price * product.quantity}
+               ${(product.price * product.quantity).toFixed(2) }
               </div>
           </div>
         ))}
