@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import data from '../../assets/data.json';
 import ProductSection from '../../components/ProductSection/ProductSection';
 import image from '../../assets/images/menuImage.png';
+import globalInfo from '../../assets/data.json';
 
 
 const Home = () => {
@@ -128,11 +129,13 @@ const Home = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [scrollPercentage]);
+  
+  const restaurantImage = globalInfo.backgroundImage;
 
   return (
 
     <div className={`${classes.container} ${classes.bleedContent}`}>
-      <div className={classes.introSlide}>
+      <div className={classes.introSlide} style={{ backgroundImage: `url(${restaurantImage})` }}>
       </div>
 
       <div className={classes.orderContainer} ref={divRef}>
