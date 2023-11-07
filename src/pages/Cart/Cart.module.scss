@@ -184,11 +184,7 @@
   
   .productNameDisplay {
     width: 100%;
-    height: auto;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    max-width: 80%;
+    height: 100%
   }
 
 
@@ -257,18 +253,47 @@
 }
 
 @media (max-width: 500px) {
-    .productsContainer, .verticalLine {
+    .container {
+        display: flex;
+        height: 80vh;
+    }
+
+    .verticalLine {
         display: none;
     }
 
+    .productsContainer {
+        height: 45%;
+        width: 90%;
+        overflow: auto;
+        order: 1;
+        padding: 0;
+        margin: 0;
+    }
+
     .reviewContainer {
-        display: flex; 
-        height: 90%;
         width: 90%; 
+        overflow: auto;
+        order: 2;
+        padding: 0;
+        margin: 0;
+    }
+
+    .item {
+        font-size: 20px;
+      }
+    
+    .taxLabel {
+        margin-top: 0;
+        font-size: 25px;
+    }
+
+    .totalTax {
+        font-size: 25px;
     }
 
     .categoryHeader {
-        font-size: 30px;
+        font-size: 25px;
     }
 
     .subtotalMap {

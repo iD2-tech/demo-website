@@ -42,6 +42,17 @@
     border-color: transparent;
   }
 
+  @media (max-width: 500px) {
+    .plusSign{
+      margin-left: 8px;
+      margin-right: 8px;
+    }
+
+    .minusSign {
+      margin-left: 8px;
+      margin-right: 8px;
+    }
+  }
 
   @media (min-width: 501px) and (max-width: 1000px){
     .quantityButtonContainer {

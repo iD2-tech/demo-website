@@ -59,16 +59,14 @@
     margin-top: 15%;
 }
 
-@media (max-width: 567px) {
+@media (max-width: 500px) {
     .eachProductContainer {
         display: flex;
-        // grid-template-columns: repeat(4, 1fr);
         flex-wrap: wrap;
         grid-gap: 5%;
         margin-top: 1.5%;
         justify-content: center;
     }
-
 }
 
 @media (max-width: 800px) {
