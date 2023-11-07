@@ -21,87 +21,6 @@ const Cart = () => {
   var products = [];
   const TAX_RATE = 0.093;
 
-//this is all code just for the fake data and it is not really needed later
-  const fakeData = [
-    {
-      ID: 1,
-      name: "Chicken Veggie",
-      price: 10.99,
-      images: [phoImage],
-      quantity: 2,
-    },
-    {
-      ID: 2,
-      name: "Chicken Veggie Teriyaki Combination",
-      price: 15.99,
-      images: [phoImage],
-      quantity: 1,
-    },
-    {
-      ID: 2,
-      name: "Chicken Veggie Teriyaki Combination",
-      price: 15.99,
-      images: [phoImage],
-      quantity: 1,
-    },
-    {
-      ID: 2,
-      name: "Chicken Veggie Teriyaki Combination",
-      price: 15.99,
-      images: [phoImage],
-      quantity: 1,
-    },
-    {
-      ID: 2,
-      name: "Chicken Veggie Teriyaki Combination",
-      price: 15.99,
-      images: [phoImage],
-      quantity: 1,
-    },
-    {
-      ID: 2,
-      name: "Chicken Veggie Teriyaki Combination",
-      price: 15.99,
-      images: [phoImage],
-      quantity: 1,
-    },
-    {
-      ID: 2,
-      name: "Chicken Veggie Teriyaki Combination",
-      price: 15.99,
-      images: [phoImage],
-      quantity: 1,
-    },
-    {
-      ID: 2,
-      name: "Chicken Veggie Teriyaki Combination",
-      price: 15.99,
-      images: [phoImage],
-      quantity: 1,
-    },
-    {
-      ID: 2,
-      name: "Chicken Veggie Teriyaki Combination",
-      price: 15.99,
-      images: [phoImage],
-      quantity: 1,
-    },
-    {
-      ID: 2,
-      name: "Chicken Veggie Teriyaki Combination",
-      price: 15.99,
-      images: [phoImage],
-      quantity: 1,
-    },
-    {
-      ID: 2,
-      name: "Chicken Veggie Teriyaki Combination",
-      price: 15.99,
-      images: [phoImage],
-      quantity: 1,
-    },
-  ];
-
   useEffect(() => {
     // get cart info from localStorage and set info
     var cartJSON = localStorage.getItem("cart");
@@ -181,7 +100,7 @@ const Cart = () => {
   const checkoutButtonClicked = async () => {
     const cart = JSON.parse(localStorage.getItem('cart'));
     if (cart) {
-      const response = await fetch('http://localhost:5000/create-checkout-session', {
+      const response = await fetch('http://localhost:3000/create-checkout-session', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

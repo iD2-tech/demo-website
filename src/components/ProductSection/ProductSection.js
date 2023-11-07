@@ -77,7 +77,6 @@ function ProductSection(props) {
   }
 
   const closeModal = () => {
-    console.log("the following logs test the add to cart functions: ");
     const obj = {
       itemTitle: selected,
       op: modalOpSelected,
@@ -85,7 +84,6 @@ function ProductSection(props) {
       inst: modalInst,
     }
     console.log(obj);
-
 
     // get the cart info from local storage
     // if it doesn't exist cartJSON is just set to empty brackets
@@ -99,7 +97,9 @@ function ProductSection(props) {
     var index = -1;
     for (let cartParser = 0; cartParser < cartJSON.length; cartParser++) {
       if (cartJSON[cartParser] !== null) {
-        if (cartJSON[cartParser].id === selected.id) {
+        if (cartJSON[cartParser].id === selected.id 
+          && cartJSON[cartParser].customizations === modalOpSelected
+          && cartJSON[cartParser].instructions === modalInst) {
           index = cartParser;
           break;
         }
@@ -150,7 +150,8 @@ function ProductSection(props) {
     });
 
     localStorage.setItem("cart", JSON.stringify(filtered)); // update localStorage
-    console.log("\tlocal storage JSON: " + localStorage.getItem("cart"));
+    console.log("\tlocal storage JSON: ");
+    console.log(localStorage.getItem('cart'));
     setShow(false);
     setModalInst('');
     setModalOpSelected([]);
