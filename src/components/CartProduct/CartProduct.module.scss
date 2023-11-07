@@ -99,6 +99,10 @@
   }
 
   .removeButton {
-    user-select: none;
+    user-select: none; /* Prevent text selection */
+  }
+
+  .customization {
+    font-size: 1.2vw;
   }
 }

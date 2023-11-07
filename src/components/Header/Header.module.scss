@@ -6,8 +6,13 @@
     position: sticky;
     top: 0;
     width: 100%;
-    height: $lgHeaderHeight;
+    height: $smallerHeaderHeight;
     padding: 0 1.5rem;
+
+    &.menuVisible {
+        height: $lgHeaderHeight;
+    }
+
     @include breakpoint(md) {
         height: $headerHeight;
         padding: 0 3rem;
@@ -25,11 +30,18 @@
         &__hamburger {
             font-size: 25px;
             position: absolute;
-            top: 4.5rem;
+            top: 4.4rem;
             right: 3rem;
+            cursor: pointer;
 
             @include breakpoint(md) {
                 display: none;
+            }
+
+            @media(max-width: 499px){
+                right: 0.95rem;
+                top: 4.45rem;
+                font-size: 23px;
             }
         }
 
@@ -47,21 +59,22 @@
                 font-size: 3rem;
             }
 
-            @media (min-width: 767px) and (max-width: 950px){
-                font-size: 2.3rem;
-            
+            @media (min-width: 48em) and (max-width: 950px){
+                font-size: 2.35rem;
+            }
+
+            @media(max-width: 499px){
+                font-size:1.02rem;
             }
         }
 
         &__nav {
             font-family: $basicFont;
-
             font-size: 0.9rem;
             font-weight: 500;
             align-items: center;
             justify-content: center;
-            display: contents;
-
+            display: none;
             padding-bottom: 30px;
 
             @include breakpoint(md) {
@@ -74,6 +87,15 @@
                 width: auto;
                 position: static;
             }
+
+            @media (min-width: 48em) and (max-width: 950px){
+                font-size: 1.1rem;
+            }
+
+            &.menuVisible {
+                display: contents;
+            }
+
             ul {
                 list-style: none;
                 padding: 0;
@@ -107,6 +129,7 @@
                 border: 1px transparent;
                 cursor: pointer;
                 outline: none;
+                margin-top: -16px;
                 padding: 0.75rem 1.25rem;
                 font-size: 0.8rem;
                 background: transparent;
@@ -115,11 +138,17 @@
 
                 @include breakpoint(md) {
                     font-size: 1.2rem;
+                    margin-top: 0px;
                 }
+
+                @media (min-width: 48em) and (max-width: 950px){
+                font-size: 1rem;
+            }
             }
         }
     }
 }
+
 
 .header-closed {
     height: $headerHeight ;
