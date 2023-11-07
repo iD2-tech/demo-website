@@ -1,7 +1,7 @@
 .product {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 100%; 
   max-height: auto;
   margin-top: 2%;
   margin-bottom: 2%;
@@ -27,13 +27,10 @@
 
 .productNameContainer {
   width: 100%;
-  display: flex;
-  height: auto;
-  font-size: 125%;
 }
 
 .productPriceContainer {
-  width: 100%;
+  width: 30%;
   display: flex;
   font-size: 125%;
   padding: 0.5%;
@@ -41,6 +38,18 @@
 
 .removeButton {
   user-select: none;
+}
+
+@media (max-width: 500px) {
+  .productImage {
+    width: 20%;
+    height: 80%;
+    display: flex;
+  }
+
+  .productPriceContainer {
+    font-size: 100%;
+  }
 }
 
 @media (min-width: 501px) and (max-width: 1000px) {
