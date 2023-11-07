@@ -7,6 +7,7 @@ import ProductSection from '../../components/ProductSection/ProductSection';
 import image from '../../assets/images/menuImage.png';
 import globalInfo from '../../assets/data.json';
 
+
 const sectionArray = [
   {
     title: "Stir Fry Vegetable",
