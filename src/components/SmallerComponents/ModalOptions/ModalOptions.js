@@ -34,18 +34,12 @@ function ModalOptions(props) {
   const [optionName, setoptionName] = useState([]);
 
   const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setoptionName(
-      // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value,
-    );
+    const { target: { value }, } = event;
+    setoptionName(typeof value === 'string' ? value.split(',') : value);
     props.onUpdate(typeof value === 'string' ? value.split(',') : value);
   };
   
   const names = props.options;
-  console.log(names);
 
   return (
     <div>

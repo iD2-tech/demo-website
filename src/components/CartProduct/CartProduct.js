@@ -15,6 +15,11 @@ const CartProduct = ({ product, index, minusButtonClicked, plusButtonClicked, re
         <div className={classes.productPriceContainer}>
           <b>${product.price}</b>
         </div>
+        <div>
+          {product.customizations.map((element, i) => (
+            <p className={classes.customization}>+ ${element.price.toFixed(2)} &nbsp;{element.name}</p>
+          ))}
+        </div>
         <ProductQuantity
           quantity={product.quantity}
           minusButtonClicked={(e) => minusButtonClicked(e, index)}

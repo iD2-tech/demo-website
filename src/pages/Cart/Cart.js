@@ -40,22 +40,6 @@ const Cart = () => {
   ];
 
   useEffect(() => {
-    var cartJSON = JSON.stringify(fakeData);
-    localStorage.setItem("cart", cartJSON);
-  
-    cartJSON = localStorage.getItem("cart");
-    if (cartJSON === null) {
-      cartJSON = [];
-    } else {
-      cartJSON = JSON.parse(cartJSON);
-    }
-    setCart(cartJSON);
-    products = cartJSON;
-    updateCartTotal();
-    console.log(products);
-  }, []);
-
-  useEffect(() => {
     // get cart info from localStorage and set info
     var cartJSON = localStorage.getItem("cart");
     if (cartJSON === null) {
