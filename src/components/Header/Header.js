@@ -1,85 +1,97 @@
 import React, { useEffect, useState, useRef } from "react";
 import { BiMenuAltRight } from "react-icons/bi";
-import { AiOutlineClose, AiFillShopping } from "react-icons/ai";
+import { AiFillShopping } from "react-icons/ai";
 import classes from "./Header.module.scss";
 import { Link, useNavigate } from "react-router-dom";
-import HeaderLinks from "./HeaderLinks.js";
 import globalInfo from '../../assets/data.json';
 
 const Header = () => { 
 
-
     const RESTNAME = globalInfo.RESTNAME;
-    const [open, setOpen] = useState(false);
     const navigation = useNavigate();
-    const [cartQuantity, setCartQuantity] = useState();
-    const [data, setData] = useState(null);
+    const [cartQuantity, setCartQuantity] = useState(0);
+    const [menuVisible, setMenuVisible] = useState(false);
+    const displayMenuRef = useRef(null);
+
+    const scrollToMenuSection = () => {
+        if (displayMenuRef.current) {
+            displayMenuRef.current.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
+    const toggleMenu = () => {
+        setMenuVisible(!menuVisible);
+    };
 
     useEffect(() => {
         const storedData = localStorage.getItem("cart");
-        setData(JSON.parse(storedData));
-
-        const handleStorage = (event) => {
-            if (event.key === "cart") {
-                setData(JSON.parse(event.newValue));
-              }
-            var cartJSON = localStorage.getItem("cart");
-            cartJSON = JSON.parse(cartJSON);
-            var totalQuantity = 0;
-            if(cartJSON != null) {
-                cartJSON.forEach(element => {
-                    totalQuantity += element.quantity;
-                });
-            }
-            console.log("\ttotal quantity displayed in header: " + totalQuantity);
-            setCartQuantity(totalQuantity);
-        };
-
-        window.addEventListener("storage", handleStorage);
-
-        return () => {
-            window.removeEventListener("storage", handleStorage);
-        };
-    }, [localStorage.getItem("cart")]);
+        const cartJSON = JSON.parse(storedData) || [];
+        var totalQuantity = 0;
+        cartJSON.forEach(element => {
+            totalQuantity += element.quantity;
+        });
+        console.log("\ttotal quantity displayed in header: " + totalQuantity);
+        setCartQuantity(totalQuantity);
+    }, []);
 
     useEffect(() => {
-        if (open) {
-          document.body.classList.add('menu-open');
-        } else {
-          document.body.classList.remove('menu-open');
-        }
-      }, [open]);
-    
-      const menuToggleHandler = () => {
-        setOpen(!open);
-      };
+        const handleResize = () => {
+            if (window.innerWidth > 768) {
+                setMenuVisible(false);
+            }
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
 
     const ctaClickHandler = () => {
-        menuToggleHandler();
         navigation("/cart");
     };
 
-const displayMenuRef = useRef(null);
-
-  const scrollToMenuSection = () => {
-    if (displayMenuRef.current) {
-      displayMenuRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
     return (
-        <header className={`${classes.header} ${!open && classes['header-closed']}`}>
+        <header className={`${classes.header} ${menuVisible ? classes.menuVisible : ''}`}>
             <div className={classes.header__content}>
                 <Link to="/" className={classes.header__content__logo}>
                     {RESTNAME}
                 </Link>
-                <BiMenuAltRight className={classes.header__content__hamburger}
-                    onClick={() => setOpen(!open)}
+                <BiMenuAltRight
+                    className={classes.header__content__hamburger}
+                    onClick={toggleMenu} 
                 />
-                {open && <HeaderLinks/>}
+                <nav
+                    className={`${classes.header__content__nav} ${menuVisible ? classes.menuVisible : ''}`}
+                >
+                    <ul>
+                        <li>
+                            <Link to="/aboutus">
+                                ABOUT US
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/visitus">
+                                VISIT US
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/displayMenu" onClick={scrollToMenuSection}>
+                                VIEW MENU & ORDER
+                            </Link>
+                        </li>
+                        <button onClick={ctaClickHandler}>
+                            <AiFillShopping size="2em" />
+                            <span>
+                                {cartQuantity}
+                            </span>
+                        </button>
+                    </ul>
+                </nav>
             </div>
         </header>
-    );
+    );    
 };
 
 export default Header;

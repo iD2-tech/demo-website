@@ -7,7 +7,6 @@ import ProductSection from '../../components/ProductSection/ProductSection';
 import image from '../../assets/images/menuImage.png';
 import globalInfo from '../../assets/data.json';
 
-
 const Home = () => {
   const [scrollPercentage, setScrollPercentage] = useState(0.0);
   const [isMenuFixed, setIsMenuFixed] = useState(false);
