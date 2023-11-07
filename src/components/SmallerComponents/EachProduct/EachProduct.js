@@ -9,11 +9,11 @@ function EachProduct(props) {
   return (
     <div className={classes.container} onClick={props.onClick}>
       <div className={classes.imageContainer}> 
-        <img className={classes.image} src={item.img} />
+        <img className={classes.image} src={item.images[0]} />
       </div>
      
       <div className={classes.titleAndPrice}>
-        <p1>{props.index}. {item.title}</p1>
+        <p1>{props.index}. {item.name}</p1>
         <p2>${item.price}</p2>
       </div>
 
