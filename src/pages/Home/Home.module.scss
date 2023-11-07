@@ -62,10 +62,6 @@
       padding-top: 2%;
       background-color: $light;
       position: absolute;
-      
-      // @media (max-width: 500px){
-      //   flex-direction:row;
-      // }
 
       .menuTitle {
         font-size: 2vw;
@@ -123,19 +119,38 @@
   .container{
     .orderContainer{
       .menuContainer {
+        height: 60px;
+        width: 100%;
         flex-direction: row;
+        overflow-x: auto;
+
+        .menuTitle {
+          font-size: 5vw !important;
+        }
+
+        .category {
+          font-size: 5vw !important;
+          margin-right: 10px;
+          display: contents;
+        }
+
+        .category:hover {
+          font-size: 5vw !important;
+          display: contents;
+        }
+
+        .categoryActive {
+          font-size: 5vw !important;
+          display: contents;
+        }
+      }
+
+      .sectionContainer {
+        border: 1px solid orange;
+        padding-top: 60px;
+        padding-left: 0%;
       }
     }
-  }
-
-  .menuTitle {
-    font-size: 4vw !important;
-  }
-
-  .sectionContainer {
-    border: 1px solid orange;
-    margin-top: 20%;;
-    padding-left: 0;
   }
 }
 
