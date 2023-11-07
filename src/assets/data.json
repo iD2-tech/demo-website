@@ -10,5 +10,14 @@
   "phoneNumber": "206-682-7535",
   "hours": "Mon - Fri: 9AM - 8PM\nSat: 11AM - 8PM\nSun: Closed",
 
-  "categories": ["Teriyaki", "Combination", "Stir Fry Vegetable", "Yakisoba", "Fried Rice", "Side Order", "Wok"]
+"categories": [
+    {
+      "title": "Teriyaki",
+      "id": "Teriyaki"
+    },
+    {
+      "title": "Stir Fry Vegetable",
+      "id": "Stir_Fry_Vegetable"
+    }
+  ]
 }

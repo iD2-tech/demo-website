@@ -34,13 +34,8 @@ function ModalOptions(props) {
   const [optionName, setoptionName] = useState([]);
 
   const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setoptionName(
-      // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value,
-    );
+    const { target: { value }, } = event;
+    setoptionName(typeof value === 'string' ? value.split(',') : value);
     props.onUpdate(typeof value === 'string' ? value.split(',') : value);
   };
   
@@ -69,11 +64,11 @@ function ModalOptions(props) {
         >
           {names.map((name) => (
             <MenuItem
-              key={name}
-              value={name}
+              key={name.name}
+              value={name.name}
               style={getStyles(name, optionName, theme)}
             >
-              {name}
+              +${name.price.toFixed(2)} {name.name}
             </MenuItem>
           ))}
         </Select>
