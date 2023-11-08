@@ -52,8 +52,6 @@ const getProduct = async () => {
 
 app.post('/create-checkout-session', async (req, res) => {
   const items = req.body;
-  console.log(req.body);
-  console.log("test");
 
   const lineItems = items.map((item) => {
     return {
@@ -66,7 +64,7 @@ app.post('/create-checkout-session', async (req, res) => {
     payment_method_types: ['card'],
     line_items: lineItems,
     mode: 'payment',
-    success_url: "http://localhost:3000/order/success?session_id={CHECKOUT_SESSION_ID}",
+    success_url: "http://localhost:3001/order/success?session_id={CHECKOUT_SESSION_ID}",
     cancel_url: 'http://localhost:3001/cart',
   });
 
@@ -76,6 +74,8 @@ app.post('/create-checkout-session', async (req, res) => {
 app.get('/checkout-session', async (req, res) => {
   const { sessionId } = req.query;
   const session = await stripe.checkout.sessions.retrieve(sessionId);
+  console.log(sessionId);
+  console.log(session);
   res.send(session);
 });
 

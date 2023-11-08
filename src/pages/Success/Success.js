@@ -6,8 +6,6 @@ const Success = () => {
 
 
     const [session, setSession] = useState({});
-    const location = useLocation();
-    const sessionId = location.search.replace('?session_id=', '');
     const [name, setName] = useState("");
     const [total, setTotal] = useState(0);
     const [items, setItems] = useState([]);
@@ -20,6 +18,7 @@ const Success = () => {
             setSession(
                 await fetch('/checkout-session?sessionId=' + sessionId).then((res) =>
                     res.json()
+                    
                 )
             )
             localStorage.clear();
@@ -78,8 +77,8 @@ const Success = () => {
                 {items.map((product) => (
                     <div className={classes.receiptItem}>
                         <div className={classes.quantityContainer}>
-                            <text>{product.quantity}</text>
-                            <text className={classes.hidden}>{itemCount += product.quantity}</text>
+                            <p>{product.quantity}</p>
+                            <p className={classes.hidden}>{itemCount += product.quantity}</p>
                         </div>
                         <div className={classes.itemContainer}>
                             <p>{product.description}</p>
@@ -93,12 +92,12 @@ const Success = () => {
             </div>
             <div className={classes.receiptEndContainer}>
                 <div className={classes.receiptEndItem}>
-                    <div className={classes.receiptEndLeft}>
+                    {/* <div className={classes.receiptEndLeft}>
                         <p>ITEM COUNT:</p>
                     </div>
                     <div className={classes.receiptEndRight}>
                         <p>{itemCount}</p>
-                    </div>
+                    </div> */}
 
                 </div>
                 <div className={classes.receiptEndItem}>
