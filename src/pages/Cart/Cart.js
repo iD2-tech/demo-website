@@ -9,6 +9,7 @@ import phoImage from '../../assets/images/PhoPic.png';
 import ProductQuantity from '../../components/ProductQuantity/ProductQuantity';
 import CheckoutButton from '../../components/CheckoutButton/CheckoutButton';
 import CartProduct from '../../components/CartProduct/CartProduct';
+import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
 
 const stripePromise = loadStripe('pk_test_51LPzSaAmJKzU86rc7blGPoGpWD2vDXq7lodk2F4LKPAhxChyfNN4XFYX1GEbxAYTojFIFKsnWTlqJxG9hE9ppGaL002clKaclh');
 
@@ -32,7 +33,9 @@ const Cart = () => {
     setCart(cartJSON);
     products = cart;
     updateCartTotal();
+    console.log("TEST5");
     console.log(products);
+    console.log("TEST6");
   }, [])
 
   // updates the cart totals
@@ -46,7 +49,7 @@ const Cart = () => {
 
     let sum = 0;
     for (let i = 0; i < currentCart.length; i++) {
-      sum += currentCart[i].price * currentCart[i].quantity;
+      sum += getTotalCost(currentCart[i]);
     }
     setSubtotal(sum.toFixed(2));
 
@@ -94,6 +97,15 @@ const Cart = () => {
     setCart(cartCopy);
     localStorage.setItem("cart", JSON.stringify(cartCopy));
     updateCartTotal();
+  }
+
+  // gets total cost of product
+  function getTotalCost(product) {
+    let sum = product.price;
+    product.customizations.forEach(item => {
+      sum += item.price;
+    });
+    return sum * product.quantity;
   }
 
   // create stripe checkout session
@@ -165,12 +177,12 @@ const Cart = () => {
         {/* items list */}
         <div className={classes.subtotalMap}>
         {cart.map((product, index) => (
-          <div key={product.ID} className={classes.item}>
+          <div key={index} className={classes.item}>
               <div className={classes.productNameDisplay}>
                 {product.name}
               </div>
               <div className={classes.productPriceDisplay}>
-               ${(product.price * product.quantity).toFixed(2) }
+               ${getTotalCost(product).toFixed(2) }
               </div>
           </div>
         ))}

@@ -76,6 +76,37 @@ function ProductSection(props) {
     setSelectedOp(item.customization);
   }
 
+  function compareArrays(arr1, arr2) {
+    if (arr1.length !== arr2.length) {
+      return false;
+    }
+
+    const sortedArr1 = arr1.map(obj => JSON.stringify(obj)).sort();
+    const sortedArr2 = arr2.map(obj => JSON.stringify(obj)).sort();
+    console.log("test1");
+    console.log(sortedArr1);
+    console.log(sortedArr2);
+    console.log("test2");
+
+    for (let i = 0; i < sortedArr1.length; i++) {
+      if (sortedArr1[i].localeCompare(sortedArr2[i]) != 0) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  function compareStrings(string1, string2) {
+    if (!string1 || !string2) {
+      return false;
+    }
+    if (string1.length !== string2.length) {
+      return false;
+    }
+    return string1.localeCompare(string2) == 0
+  }
+
   const closeModal = () => {
     const obj = {
       itemTitle: selected,
@@ -83,7 +114,9 @@ function ProductSection(props) {
       quant: modalQuant,
       inst: modalInst,
     }
+    console.log("TEST10");
     console.log(obj);
+    console.log("TEST11");
 
     // get the cart info from local storage
     // if it doesn't exist cartJSON is just set to empty brackets
@@ -97,9 +130,9 @@ function ProductSection(props) {
     var index = -1;
     for (let cartParser = 0; cartParser < cartJSON.length; cartParser++) {
       if (cartJSON[cartParser] !== null) {
-        if (cartJSON[cartParser].id === selected.id 
-          && cartJSON[cartParser].customizations === modalOpSelected
-          && cartJSON[cartParser].instructions === modalInst) {
+        if (cartJSON[cartParser].id === selected.id
+          && compareArrays(cartJSON[cartParser].customizations, modalOpSelected)
+          && compareStrings(cartJSON[cartParser].instructions, modalInst)) {
           index = cartParser;
           break;
         }

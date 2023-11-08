@@ -3,6 +3,9 @@ import classes from './CartProduct.module.scss';
 import ProductQuantity from '../ProductQuantity/ProductQuantity';
 
 const CartProduct = ({ product, index, minusButtonClicked, plusButtonClicked, removeFromCart }) => {
+  console.log("TEST3");
+  console.log(product);
+  console.log("TEST4");
   return (
     <div key={product.ID} className={classes.product}>
       <div className={classes.productImage}>
@@ -17,8 +20,11 @@ const CartProduct = ({ product, index, minusButtonClicked, plusButtonClicked, re
         </div>
         <div>
           {product.customizations.map((element, i) => (
-            <p className={classes.customization}>+ ${element.price.toFixed(2)} &nbsp;{element.name}</p>
+            <p className={classes.customization} key={i}>+ ${element.price.toFixed(2)} &nbsp;{element.name}</p>
           ))}
+        </div>
+        <div>
+        <p>{product.instructions}</p>
         </div>
         <ProductQuantity
           quantity={product.quantity}
@@ -28,7 +34,7 @@ const CartProduct = ({ product, index, minusButtonClicked, plusButtonClicked, re
       </div>
       <div className={classes.removeFromCartContainer}>
         <div className={classes.removeButton} onClick={(e) => removeFromCart(e, index)}>
-            <span>X</span>
+          <span>X</span>
         </div>
       </div>
     </div>
