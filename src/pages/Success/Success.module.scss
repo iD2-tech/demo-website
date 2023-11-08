@@ -5,13 +5,13 @@
     flex-direction: column;
     width: 70vh;
     align-self: flex-start;
-    margin-top: 5vh;
 }
 
 .title {
     align-self: center;
     font-size: xx-large;
     text-align: center;
+    margin-bottom: 1vh;
 }
 
 .subtitle {
@@ -20,6 +20,7 @@
     text-align: center;
     padding-bottom: 1vh;
     width: 90%;
+    margin-bottom: 3vh;
 }
 
 .columnLabelContainer {
@@ -28,7 +29,10 @@
     border-top: 1px dashed black;
     border-bottom: 1px dashed black;
     width: 90%;
+    height: 4vh;
     align-self: center;
+    align-items: center;
+    margin-bottom: 2vh;
 }
 
 .quantityContainer {
@@ -66,6 +70,8 @@
     border-bottom: 1px dashed black;
     width: 90%;
     align-self: center;
+    height: 4vh;
+    justify-content: center;
 }
 
 .receiptEndItem {

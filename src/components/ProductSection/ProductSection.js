@@ -22,6 +22,7 @@ const customStyles = {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
+    zIndex: 9999999999,
   },
 };
 
