@@ -35,6 +35,25 @@ const Header = () => {
     }, []);
 
     useEffect(() => {
+        const handleCartChange = () => {
+          const storedData = localStorage.getItem("cart");
+          const cartJSON = JSON.parse(storedData) || [];
+          var totalQuantity = 0;
+          cartJSON.forEach((element) => {
+            totalQuantity += element.quantity;
+          });
+          console.log("\ttotal quantity displayed in header: " + totalQuantity);
+          setCartQuantity(totalQuantity);
+        };
+    
+        window.addEventListener("storage", handleCartChange);
+    
+        return () => {
+          window.removeEventListener("storage", handleCartChange);
+        };
+      }, []);
+
+    useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth > 768) {
                 setMenuVisible(false);
