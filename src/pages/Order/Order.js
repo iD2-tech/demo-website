@@ -19,7 +19,6 @@ const Order = () => {
           setCounter(counter + 1);
         }
       }
-    console.log(products);
 
   }, [counter])
 
@@ -56,7 +55,6 @@ const Order = () => {
         array.push(products[i]);
       }
     }
-    console.log(array);
     var category;
     if (props.includes("Spring")) {
       category = "Appetizers"

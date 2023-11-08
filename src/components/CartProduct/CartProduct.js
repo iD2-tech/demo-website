@@ -3,9 +3,6 @@ import classes from './CartProduct.module.scss';
 import ProductQuantity from '../ProductQuantity/ProductQuantity';
 
 const CartProduct = ({ product, index, minusButtonClicked, plusButtonClicked, removeFromCart }) => {
-  console.log("TEST3");
-  console.log(product);
-  console.log("TEST4");
   return (
     <div key={product.ID} className={classes.product}>
       <div className={classes.productImage}>

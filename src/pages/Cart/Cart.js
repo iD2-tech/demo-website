@@ -33,9 +33,6 @@ const Cart = () => {
     setCart(cartJSON);
     products = cart;
     updateCartTotal();
-    console.log("TEST5");
-    console.log(products);
-    console.log("TEST6");
   }, [])
 
   // updates the cart totals
@@ -55,11 +52,9 @@ const Cart = () => {
 
     const taxEstimate = sum * TAX_RATE;
     setTaxes(taxEstimate.toFixed(2));
-    console.log(taxes);
 
     const tempTotal = sum + taxEstimate;
     setTotal(tempTotal.toFixed(2));
-    console.log(total);
     window.dispatchEvent(new Event('storage')) // trigger update to header
 
   }
@@ -86,7 +81,6 @@ const Cart = () => {
       localStorage.setItem("cart", JSON.stringify(cartCopy));
       updateCartTotal();
     }
-
   }
 
   // increments cart quantity by one
@@ -111,13 +105,26 @@ const Cart = () => {
   // create stripe checkout session
   const checkoutButtonClicked = async () => {
     const cart = JSON.parse(localStorage.getItem('cart'));
+    console.log(cart);
+    
+
     if (cart) {
+      const cartWithCustomizations = [];
+      cart.forEach(item => {
+        cartWithCustomizations.push(item);
+        item.customizations.forEach(customization => {
+          customization.quantity = item.quantity;
+          cartWithCustomizations.push(customization);
+          
+        });
+      });
+
       const response = await fetch('http://localhost:3000/create-checkout-session', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(cart),
+        body: JSON.stringify(cartWithCustomizations),
       });
 
       const session = await response.json();
@@ -210,7 +217,6 @@ const Cart = () => {
               <p className={classes.totalTax}> ${total} </p>
             </div>
           </div>
-          {/* THIS CHECKOUT BUTTON SHOULD BE A COMPONENT */}
           {/* checkout button */}
           <CheckoutButton onClick={checkoutButtonClicked} />
         </div>

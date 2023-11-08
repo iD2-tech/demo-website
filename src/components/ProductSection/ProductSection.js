@@ -45,7 +45,9 @@ function ProductSection(props) {
     setModalSubSelected(data);
   }
 
+  // adds customizations
   const handleOp = (data) => {
+    console.log(data);
     const arr = [];
     for (const d of data) {
       for (const item of customArray) {
@@ -54,7 +56,6 @@ function ProductSection(props) {
         }
       }
     }
-    console.log(arr);
     setModalOpSelected(arr);
   }
 
@@ -80,14 +81,8 @@ function ProductSection(props) {
     if (arr1.length !== arr2.length) {
       return false;
     }
-
     const sortedArr1 = arr1.map(obj => JSON.stringify(obj)).sort();
     const sortedArr2 = arr2.map(obj => JSON.stringify(obj)).sort();
-    console.log("test1");
-    console.log(sortedArr1);
-    console.log(sortedArr2);
-    console.log("test2");
-
     for (let i = 0; i < sortedArr1.length; i++) {
       if (sortedArr1[i].localeCompare(sortedArr2[i]) != 0) {
         return false;
@@ -114,9 +109,6 @@ function ProductSection(props) {
       quant: modalQuant,
       inst: modalInst,
     }
-    console.log("TEST10");
-    console.log(obj);
-    console.log("TEST11");
 
     // get the cart info from local storage
     // if it doesn't exist cartJSON is just set to empty brackets

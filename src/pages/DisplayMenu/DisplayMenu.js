@@ -31,11 +31,6 @@ const DisplayMenu = () => {
   const [allProducts, setAllProducts] = useState(location.state.allProducts);
   const [triggerRerender, setTriggerRerender] = useState();
 
-  useEffect(() => {
-    // console.log(allProducts);
-    // console.log(products.imag)
-  }, [])
-
   // opens pop up
   const openModal = (props) => {
     setShow(true);

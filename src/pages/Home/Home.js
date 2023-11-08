@@ -8,27 +8,18 @@ import image from '../../assets/images/menuImage.png';
 import globalInfo from '../../assets/data.json';
 
 const Home = () => {
+  const restaurantImage = globalInfo.backgroundImage;
   const [scrollPercentage, setScrollPercentage] = useState(0.0);
   const [isMenuFixed, setIsMenuFixed] = useState(false);
   const [activeSection, setActiveSection] = useState(null);
   const [scrollTrigger, setScrollTrigger] = useState(0);
   const [sectionArrayy, setSectionArray] = useState([]);
-  const divRef = useRef(null);
-  const introRef = useRef(null);
-
-  const nav = useNavigate();
-  useEffect(() => {
-    window.dispatchEvent(new Event('storage')) // trigger update to header
-    console.log(data.categories)
-  }, [])
-
-  const goOrder = () => {
-    nav("/order");
-  }
-
   const [products, setProducts] = useState([]);
   const [prices, setPrices] = useState([]);
+  const divRef = useRef(null);
+  
 
+  // retrieve products and prices
   useEffect(() => {
     window.dispatchEvent(new Event('storage')) // trigger update to header
     if (products.length == 0 || prices.length == 0) {
@@ -39,6 +30,7 @@ const Home = () => {
     }
   }, [products])
 
+  // get all products from stripe
   const getProducts = async () => {
     fetch('http://localhost:3000/products')
       .then(r => r.json())
@@ -74,7 +66,6 @@ const Home = () => {
 
       if (products[i].metadata.customization === 'true') {
         const catNames = products[i].metadata.category.split(', ');
-        console.log(catNames)
         for (const catName of catNames) {
           const category = sectionArray.find((cat) => cat.id === catName);
           if (category) {
@@ -88,11 +79,11 @@ const Home = () => {
         }
       }
     }
-    console.log(products)
     setSectionArray(sectionArray);
   }
 
 
+  // handles sidebar menu UI
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
@@ -129,7 +120,7 @@ const Home = () => {
     };
   }, [scrollPercentage]);
 
-  const restaurantImage = globalInfo.backgroundImage;
+  
 
   return (
 
