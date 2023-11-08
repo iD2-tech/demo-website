@@ -24,17 +24,6 @@ const Header = () => {
     };
 
     useEffect(() => {
-        const storedData = localStorage.getItem("cart");
-        const cartJSON = JSON.parse(storedData) || [];
-        var totalQuantity = 0;
-        cartJSON.forEach(element => {
-            totalQuantity += element.quantity;
-        });
-        console.log("\ttotal quantity displayed in header: " + totalQuantity);
-        setCartQuantity(totalQuantity);
-    }, []);
-
-    useEffect(() => {
         const handleCartChange = () => {
           const storedData = localStorage.getItem("cart");
           const cartJSON = JSON.parse(storedData) || [];
