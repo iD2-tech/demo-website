@@ -38,15 +38,21 @@
                 display: none;
             }
 
-            @media(max-width: 499px){
+            @media(min-width: 281px) and (max-width: 499px){
                 right: 0.95rem;
                 top: 4.45rem;
                 font-size: 23px;
             }
+
+            @media(max-width: 280px){
+                right: 0.95rem;
+                top: 4.7rem;
+                font-size: 15px;
+            }
         }
 
         &__logo {
-            font-size: 1.2rem;
+            font-size: 4vw;
             font-family: $basicFont;
             font-weight: 700;
             text-decoration: none;
@@ -60,11 +66,15 @@
             }
 
             @media (min-width: 48em) and (max-width: 950px){
-                font-size: 2.35rem;
+                font-size: 4.5vw;
             }
 
-            @media(max-width: 499px){
+            @media(min-width: 281px) and (max-width: 499px){
                 font-size:1.02rem;
+            }
+
+            @media(max-width: 280px){
+                font-size:0.75rem;
             }
         }
 
@@ -90,6 +100,10 @@
 
             @media (min-width: 48em) and (max-width: 950px){
                 font-size: 1.1rem;
+            }
+
+            @media(max-width: 280px){
+                font-size: 0.7rem;
             }
 
             &.menuVisible {
