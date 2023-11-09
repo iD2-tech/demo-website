@@ -5,19 +5,13 @@ import classes from "./Header.module.scss";
 import { Link, useNavigate } from "react-router-dom";
 import globalInfo from '../../assets/data.json';
 
-const Header = () => { 
+
+const Header = ({ scrollToOrderContainer }) => { 
 
     const RESTNAME = globalInfo.RESTNAME;
     const navigation = useNavigate();
     const [cartQuantity, setCartQuantity] = useState(0);
     const [menuVisible, setMenuVisible] = useState(false);
-    const displayMenuRef = useRef(null);
-
-    const scrollToMenuSection = () => {
-        if (displayMenuRef.current) {
-            displayMenuRef.current.scrollIntoView({ behavior: "smooth" });
-        }
-    };
 
     const toggleMenu = () => {
         setMenuVisible(!menuVisible);
@@ -85,9 +79,9 @@ const Header = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/displayMenu" onClick={scrollToMenuSection}>
+                            <div onClick={scrollToOrderContainer}>
                                 VIEW MENU & ORDER
-                            </Link>
+                            </div>
                         </li>
                         <button onClick={ctaClickHandler}>
                             <AiFillShopping size="2em" />

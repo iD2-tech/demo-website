@@ -120,7 +120,9 @@ const Home = () => {
     };
   }, [scrollPercentage]);
 
-  
+  const scrollToOrderContainer = () => {
+    divRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
 
