@@ -6,7 +6,6 @@ import Order from "./pages/Order/Order";
 import Cart from "./pages/Cart/Cart";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import VisitUs from "./pages/VisitUs/VisitUs";
-import DisplayMenu from "./pages/DisplayMenu/DisplayMenu";
 import Success from "./pages/Success/Success";
 
 function App() {
@@ -20,12 +19,10 @@ function App() {
             https://stackoverflow.com/questions/69675357/what-is-the-proper-way-to-do-global-state */}
             <Routes>
                 <Route path="/" exact element={<Home />} />
-                <Route path="/menu" exact element={<Menu />} />
-                <Route path="/order" exact element={<Order />} />
+                {/* <Route path="/order" exact element={<Order />} /> */}
                 <Route path="/cart" exact element={<Cart />} />
                 <Route path="/aboutus" exact element={<AboutUs />} />
                 <Route path="/visitus" exact element={<VisitUs />} />
-                <Route path="/displayMenu" exact element={<DisplayMenu />} />
                 <Route path="/order/success" exact element={<Success />} />
             </Routes>
         </Layout>

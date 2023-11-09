@@ -13,7 +13,7 @@
 
 .header {
     font-family: $basicFont;
-    font-size: 3vw;
+    font-size: 50px;
     font-weight: 300;
     width: 100%;
     display: flex;
@@ -21,6 +21,14 @@
     align-items: center;
 }
 
-.body {
-    font-size: 20px;
+@media (max-width: 768px){
+    .header{
+        font-size: 5vw;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 950px){
+    .header{
+        font-size: 5vw;
+    }
 }
