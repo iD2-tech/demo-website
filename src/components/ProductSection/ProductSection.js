@@ -212,7 +212,7 @@ function ProductSection(props) {
                   <QuantitySelector onUpdate={handleQuant} />
                 </div>
               </div>
-
+ 
               <div className={classes.infoContainer}>
                 <ModalHeader title={selected.name} price={selected.price} description={selected.description} onX={xOut} />
                 <div className={classes.divider}></div>
