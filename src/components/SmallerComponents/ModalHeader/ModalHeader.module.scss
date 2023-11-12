@@ -34,3 +34,9 @@
         transform: scale(1.1);
     }
 }
+
+@media (max-width: 700px) {
+    .xButton {
+        display: none;
+    }
+}

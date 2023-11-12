@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import classes from './Product.module.scss';
 import SectionTitle from '../SmallerComponents/SectionTitle/SectionTitle.js';
 import EachProduct from '../SmallerComponents/EachProduct/EachProduct.js';
@@ -9,24 +9,58 @@ import SpecialInst from '../SmallerComponents/SpecialInst/SpecialInst';
 import QuantitySelector from '../SmallerComponents/QuantitySelector/QuantitySelector';
 import ModalButton from '../SmallerComponents/ModalButton/ModalButton';
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    width: '50%',
-    height: '90%',
-    transform: 'translate(-50%, -50%)',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    zIndex: 9999999999,
-  },
-};
-
 function ProductSection(props) {
+
+  const [customStyles, setCustomStyles] = useState({
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      width: '50%',
+      height: '90%',
+      transform: 'translate(-50%, -50%)',
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      zIndex: 9999999999,
+    },
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 500) {
+        setCustomStyles((prevStyles) => ({
+          ...prevStyles,
+          content: { ...prevStyles.content, width: '74.5%' },
+        }));
+      } else if (window.innerWidth < 1000) {
+        setCustomStyles((prevStyles) => ({
+          ...prevStyles,
+          content: { ...prevStyles.content, width: '80%' },
+        }));
+      } else if (window.innerWidth < 1300) {
+        setCustomStyles((prevStyles) => ({
+          ...prevStyles,
+          content: { ...prevStyles.content, width: '65%' },
+        }));
+      } else {
+        setCustomStyles((prevStyles) => ({
+          ...prevStyles,
+          content: { ...prevStyles.content, width: '50%' },
+        }));
+      }
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []); 
 
   const items = props.items;
   const itemsArray = items.items;
@@ -205,6 +239,7 @@ function ProductSection(props) {
             <div className={classes.modalInfo}>
               <div>
                 <div className={classes.imageContainer}>
+                  <div className={classes.xButton} onClick={xOut}><p1 style={{fontSize: '20px'}}>x</p1></div>
                   <img className={classes.image} src={selected.images} />
                 </div>
                 <div className={classes.quantSelect}>
