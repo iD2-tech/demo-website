@@ -42,3 +42,31 @@
         font-size: 14px;
     }
 }
+
+@media (max-width: 500px) {
+    .imageContainer {
+        position: relative;
+        overflow: hidden;
+        height: 170px;
+        width: 170px;
+        border-radius: 10px;
+    }
+
+    .titleAndPrice {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 4%;
+        width: 100%;
+    
+        > p1 {
+            font-size: 13px;
+        }
+    
+        > p2 {
+            color: $price;
+            font-size: 11px;
+        }
+    }
+}
