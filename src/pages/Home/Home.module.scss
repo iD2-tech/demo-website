@@ -64,16 +64,20 @@
       position: absolute;
 
       .menuTitle {
-        font-size: 2vw;
+        font-family: $basicFont;
+        font-weight: 700;
+        font-size: 200%;
       }
 
       .category {
+        font-family: $basicFont;
+        font-weight: 700;
         width: 100%;
-        height: 10%;
+        height: 25%;
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        font-size: 1.5vw;
+        font-size: 160%;
         text-decoration: none;
         color: $menuUnselected;
         transition: color 0.8s, text-decoration 0.5s ease;
@@ -81,6 +85,8 @@
       }
 
       .category:hover {
+        font-family: $basicFont;
+        font-weight: 700;
         color: $primary;
         text-decoration: underline;
         cursor: pointer;
@@ -88,12 +94,14 @@
       }
 
       .categoryActive {
+        font-family: $basicFont;
+        font-weight: 700;
         width: 100%;
-        height: 10%;
+        height: 25%;
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        font-size: 1.5vw;
+        font-size: 160%;
         color: $primary;
         text-decoration: underline;
         transition: color 0.8s, text-decoration 1.2s ease;
@@ -126,12 +134,13 @@
 
 
         .menuTitle {
-          font-size: 5.5vw !important;
+          font-family: $basicFont;
+          font-size: 150% !important;
         }
 
         .category {
-          font-size: 5vw !important;
-          height: 100%;
+          font-size: 140% !important;
+          height: 25%;
           width: auto;
           padding: 4px;
           margin-bottom: 2.5px;
@@ -140,7 +149,7 @@
 
         .category:hover {
           font-size: 5vw !important;
-          height: 100%;
+          height: 25%;
           width: auto;
           padding: 4px;
           margin-bottom: 2.5px;
@@ -148,8 +157,8 @@
         }
 
         .categoryActive {
-          font-size: 5vw !important;
-          height: 100%;
+          font-size: 140% !important;
+          height: 25%;
           width: auto;
           padding: 4px;
           margin-bottom: 2.5px;
@@ -161,108 +170,108 @@
   }
 }
 
-// @media (min-width: 501px) and (max-width: 750px) {
-//   .container {
-//     width: 100%;
+@media (min-width: 501px) and (max-width: 800px) {
+  .container {
+    width: 100%;
   
-//     .introSlide {
-//       background-image: url("../../assets/images/PhoPic.png");
-//       height: 100vh;
-//       width: 100%;
-//       justify-content: center;
-//       align-items: center;
-//       display: flex;
-//     }
+    .introSlide {
+      background-image: url("../../assets/images/PhoPic.png");
+      height: 100vh;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
 
-//     .menuContainer {
-//       width: 30% !important;
-//       height: 50vh;
-//       display: flex;
-//       flex-direction: column;
-//       padding-left: 2%;
-//       padding-top: 2%;
-//       background-color: $light;
-//       position: absolute;
+    .menuContainer {
+      width: 30% !important;
+      height: 50vh;
+      display: flex;
+      flex-direction: column;
+      padding-left: 2%;
+      padding-top: 2%;
+      background-color: $light;
+      position: absolute;
 
-//       .menuTitle {
-//         font-size: 4vw !important;
-//       }
+      .menuTitle {
+        font-size: 4vw !important;
+      }
 
-//       .category {
-//         width: 100%;
-//         height: 10%;
-//         display: flex;
-//         justify-content: flex-start;
-//         align-items: center;
-//         font-size: 3vw !important;
-//         text-decoration: none;
-//         color: $menuUnselected;
-//         transition: color 0.8s, text-decoration 0.5s ease;
-//         text-decoration: underline solid transparent;
-//       }
+      .category {
+        width: 100%;
+        height: 10%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 3vw !important;
+        text-decoration: none;
+        color: $menuUnselected;
+        transition: color 0.8s, text-decoration 0.5s ease;
+        text-decoration: underline solid transparent;
+      }
 
-//       .category:hover {
-//         color: $primary;
-//         text-decoration: underline;
-//         cursor: pointer;
-//         transition: color 0.8s, text-decoration 1.2s ease;
-//       }
+      .category:hover {
+        color: $primary;
+        text-decoration: underline;
+        cursor: pointer;
+        transition: color 0.8s, text-decoration 1.2s ease;
+      }
 
-//       .categoryActive {
-//         width: 100%;
-//         height: 10%;
-//         display: flex;
-//         justify-content: flex-start;
-//         align-items: center;
-//         font-size: 3vw !important;
-//         color: $primary;
-//         text-decoration: underline;
-//         transition: color 0.8s, text-decoration 1.2s ease;
-//       }
-//     }
+      .categoryActive {
+        width: 100%;
+        height: 10%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 3vw !important;
+        color: $primary;
+        text-decoration: underline;
+        transition: color 0.8s, text-decoration 1.2s ease;
+      }
+    }
 
-//     .menuContainer.fixed {
-//       position: fixed;
-//       top: 0;
-//       z-index: 100;
-//     }
+    .menuContainer.fixed {
+      position: fixed;
+      top: 0;
+      z-index: 100;
+    }
 
-//     .sectionContainer {
-//       padding-left: 30% !important;
-//       width: 100%;
-//       // border: 10px solid blue
-//     }
+    .sectionContainer {
+      padding-left: 30% !important;
+      width: 100%;
+      // border: 10px solid blue
+    }
   
-//   }
+  }
 
-//   .button {
-//     padding-left: 7vw;
-//     padding-right: 7vw;
-//     padding-top: 15px;
-//     padding-bottom: 15px;
-//     background-color: $primary;
-//     border-radius: 25px;
-//     font-family: $Outfit;
-//     color: $text;
-//     border-style: none;
-//     font-size: 3vw;
-//     font-weight: 500;
-//     flex-direction: row;
-//     margin-top: 40vh;
-//     margin-left: auto;
-//     margin-right: auto;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     align-content: center;
-//     min-width: 20vw;
+  .button {
+    padding-left: 7vw;
+    padding-right: 7vw;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: $primary;
+    border-radius: 25px;
+    font-family: $Outfit;
+    color: $text;
+    border-style: none;
+    font-size: 3vw;
+    font-weight: 500;
+    flex-direction: row;
+    margin-top: 40vh;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    min-width: 20vw;
 
-//     &:hover {
-//       background-color: $primary;
-//       cursor: pointer;
-//     }
-//   }
-// }
+    &:hover {
+      background-color: $primary;
+      cursor: pointer;
+    }
+  }
+}
 
 
 html {
