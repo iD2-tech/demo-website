@@ -119,36 +119,43 @@
   .container{
     .orderContainer{
       .menuContainer {
-        height: 60px;
+        height: 40px;
         width: 100%;
         flex-direction: row;
-        overflow-x: auto;
+        align-items: center;
+
 
         .menuTitle {
-          font-size: 5vw !important;
+          font-size: 5.5vw !important;
         }
 
         .category {
           font-size: 5vw !important;
-          margin-right: 10px;
-          display: contents;
+          height: 100%;
+          width: auto;
+          padding: 4px;
+          margin-bottom: 2.5px;
+          margin-left: 8px;
         }
 
         .category:hover {
           font-size: 5vw !important;
-          display: contents;
+          height: 100%;
+          width: auto;
+          padding: 4px;
+          margin-bottom: 2.5px;
+          margin-left: 8px;
         }
 
         .categoryActive {
           font-size: 5vw !important;
-          display: contents;
-        }
-      }
+          height: 100%;
+          width: auto;
+          padding: 4px;
+          margin-bottom: 2.5px;
+          margin-left: 8px;
 
-      .sectionContainer {
-        border: 1px solid orange;
-        padding-top: 60px;
-        padding-left: 0%;
+        }
       }
     }
   }

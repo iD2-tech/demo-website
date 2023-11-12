@@ -60,7 +60,13 @@
 }
 
 @media (max-width: 500px) {
-    
+    .sectionContainer {
+        display: flex;
+        flex-direction: column;
+        padding: 2%;
+        margin-top: 45px;
+        margin-left: -75px;
+    }   
 }
 
 @media  (max-width: 800px) {
