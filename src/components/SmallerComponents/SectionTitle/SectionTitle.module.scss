@@ -1,6 +1,8 @@
 @import "../../../styles/variables.scss";
 
 .titleContainer {
+    font-family: $basicFont;
+    font-weight: 700;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -11,7 +13,7 @@
 
     > p2 {
         white-space: nowrap;
-        font-size: 20px;
+        font-size: 200%;
 
     }
 }
@@ -21,4 +23,24 @@
     margin-left: 2%;
     height: 2px;
     background-color: $line;
+}
+
+@media  (max-width: 800px) {
+    .titleContainer {
+        font-family: $basicFont;
+        font-weight: 700;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 98.5%;
+    
+        margin-bottom: 2%;
+    
+        > p2 {
+            white-space: nowrap;
+            font-size: 150%;
+    
+        }
+    }
 }
