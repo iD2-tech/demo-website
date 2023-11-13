@@ -9,7 +9,7 @@ function EachProduct(props) {
   return (
     <div className={classes.container} onClick={props.onClick}>
       <div className={classes.imageContainer}> 
-        <img className={classes.image} src={item.images[0]} />
+        <img style={{objectFit: 'cover'}} alt="..." loading="lazy" width="100%" height="100%" src={item.images[0]} />
       </div>
      
       <div className={classes.titleAndPrice}>
