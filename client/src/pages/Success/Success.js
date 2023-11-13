@@ -23,6 +23,7 @@ const Success = () => {
       )
       localStorage.clear();
     }
+    localStorage.clear();
     const url = new URL(window.location);
     const sessionId = url.searchParams.get('session_id');
     try {
