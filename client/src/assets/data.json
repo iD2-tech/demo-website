@@ -18,6 +18,34 @@
     {
       "title": "Stir Fry Vegetable",
       "id": "Stir_Fry_Vegetable"
+    },
+    {
+      "title": "Fried Rice",
+      "id": "Fried_Rice"
+    },
+    {
+      "title": "Sandwiches",
+      "id": "Sandwiches"
+    },
+    {
+      "title": "Side Order",
+      "id": "Side_Order"
+    },
+    {
+      "title": "Teriyaki Combo",
+      "id": "Teriyaki_Combo"
+    },
+    {
+      "title": "Wok",
+      "id": "Wok"
+    },
+    {
+      "title": "Yakisoba",
+      "id": "Yakisoba"
+    },
+    {
+      "title": "Breakfast",
+      "id": "Breakfast"
     }
   ]
 }
