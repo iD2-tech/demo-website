@@ -78,11 +78,11 @@ const Header = ({ scrollToOrderContainer }) => {
                                 VISIT US
                             </Link>
                         </li>
-                        <li>
+                        {/* <li>
                             <div onClick={scrollToOrderContainer}>
                                 VIEW MENU & ORDER
                             </div>
-                        </li>
+                        </li> */}
                         <button onClick={ctaClickHandler}>
                             <AiFillShopping size="2em" />
                             <span>

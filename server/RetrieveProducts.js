@@ -36,7 +36,7 @@ app.get('/prices', (req, res) => {
 const getPrice = async () => {
   return new Promise(function (resolve, reject) {
     const price = stripe.prices.list({
-      limit: 10,
+      limit: 50,
     });
     resolve(price);
   })
@@ -44,7 +44,7 @@ const getPrice = async () => {
 const getProduct = async () => {
   return new Promise(function (resolve, reject) {
     const products = stripe.products.list({
-      limit: 10,
+      limit: 50,
     });
     resolve(products);
   })
