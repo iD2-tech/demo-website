@@ -5,10 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import data from '../../assets/data.json';
 import ProductSection from '../../components/ProductSection/ProductSection';
 import image from '../../assets/images/menuImage.png';
-import globalInfo from '../../assets/data.json';
+import { useContext } from 'react';
+import { FirebaseContext } from '../../firebaseContext';
+import { ref, onValue } from 'firebase/database';
 
 const Home = () => {
-  const restaurantImage = globalInfo.backgroundImage;
   const [scrollPercentage, setScrollPercentage] = useState(0.0);
   const [isMenuFixed, setIsMenuFixed] = useState(false);
   const [activeSection, setActiveSection] = useState(null);
@@ -17,6 +18,27 @@ const Home = () => {
   const [products, setProducts] = useState([]);
   const [prices, setPrices] = useState([]);
   const divRef = useRef(null);
+  const database = useContext(FirebaseContext);
+  const [restaurantData, setRestaurantData] = useState(null);
+
+  useEffect(() => {
+    // Reference to the "restaurants" node in the database
+    const restaurantsRef = ref(database, 'restaurants');
+
+    // Attach an asynchronous callback to read the data at the reference
+    onValue(restaurantsRef, (snapshot) => {
+      const data = snapshot.val();
+      setRestaurantData(data);
+    });
+
+    // Detach the callback when the component unmounts
+    return () => {
+      // Unsubscribe from the database changes
+      // This helps avoid potential memory leaks
+      // when the component is unmounted
+      onValue(restaurantsRef, () => {});
+    };
+  }, [database]); // Only re-run the effect if the database changes
   
 
   // retrieve products and prices
@@ -32,7 +54,7 @@ const Home = () => {
 
   // get all products from stripe
   const getProducts = async () => {
-    fetch('https://community-teriyaki-backend.onrender.com/products')
+    fetch('http://localhost:3000/products')
       .then(r => r.json())
       .then(data => {
         var array = data.products;
@@ -42,7 +64,7 @@ const Home = () => {
 
   // get all prices from stripe
   const getPrices = async () => {
-    fetch('https://community-teriyaki-backend.onrender.com/prices', {
+    fetch('http://localhost:3000/prices', {
     }).then(r => r.json())
       .then(data => {
         var array = data.price;
@@ -127,8 +149,17 @@ const Home = () => {
   return (
 
     <div className={`${classes.container} ${classes.bleedContent}`}>
-      <div className={classes.introSlide} style={{ backgroundImage: `url(${restaurantImage})` }}>
-      </div>
+      <div
+        className={classes.introSlide}
+        style={{
+          backgroundImage: `url(${
+            restaurantData &&
+            Object.entries(restaurantData).map(([restaurantId, restaurant]) => (
+              restaurant.backgroundImage
+            ))
+          })`,
+        }}
+      ></div>
 
       <div className={classes.orderContainer} ref={divRef}>
         <div className={`${classes.menuContainer} ${isMenuFixed ? classes.fixed : ''}`} >
