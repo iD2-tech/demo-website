@@ -69,8 +69,8 @@ app.post('/create-checkout-session', async (req, res) => {
     payment_method_types: ['card'],
     line_items: lineItems,
     mode: 'payment',
-    success_url: "http://localhost:3001/order/success?session_id={CHECKOUT_SESSION_ID}",
-    cancel_url: 'http://localhost:3001/cart',
+    success_url: "http://communityteriyaki.com/order/success?session_id={CHECKOUT_SESSION_ID}",
+    cancel_url: 'http://communityteriyaki.com/cart',
     metadata: metadata
   });
 
