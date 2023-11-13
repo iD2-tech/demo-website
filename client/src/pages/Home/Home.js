@@ -32,7 +32,7 @@ const Home = () => {
 
   // get all products from stripe
   const getProducts = async () => {
-    fetch('http://localhost:3000/products')
+    fetch('https://community-teriyaki-backend.onrender.com/products')
       .then(r => r.json())
       .then(data => {
         var array = data.products;
@@ -42,7 +42,7 @@ const Home = () => {
 
   // get all prices from stripe
   const getPrices = async () => {
-    fetch('http://localhost:3000/prices', {
+    fetch('https://community-teriyaki-backend.onrender.com/prices', {
     }).then(r => r.json())
       .then(data => {
         var array = data.price;

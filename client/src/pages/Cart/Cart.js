@@ -119,7 +119,7 @@ const Cart = () => {
         });
       });
 
-      const response = await fetch('http://localhost:3000/create-checkout-session', {
+      const response = await fetch('https://community-teriyaki-backend.onrender.com/create-checkout-session', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

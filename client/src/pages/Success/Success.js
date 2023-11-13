@@ -26,7 +26,7 @@ const Success = () => {
     const url = new URL(window.location);
     const sessionId = url.searchParams.get('session_id');
     try {
-      fetch(`http://localhost:3000/checkout/${sessionId}/line_items`)
+      fetch(`https://community-teriyaki-backend.onrender.com/checkout/${sessionId}/line_items`)
         .then(data => data.json())
         .then(items => {
           setItems(items);
