@@ -36,10 +36,10 @@ const Home = () => {
       // Unsubscribe from the database changes
       // This helps avoid potential memory leaks
       // when the component is unmounted
-      onValue(restaurantsRef, () => {});
+      onValue(restaurantsRef, () => { });
     };
   }, [database]); // Only re-run the effect if the database changes
-  
+
 
   // retrieve products and prices
   useEffect(() => {
@@ -130,6 +130,16 @@ const Home = () => {
           const rect = section.getBoundingClientRect();
           if (rect.top <= windowHeight * 0.5 && rect.bottom >= windowHeight * 0.5) {
             setActiveSection(sectionId);
+            const menuContainer = document.getElementById('menuContainer');
+            if (menuContainer) {
+              const activeCategory = menuContainer.querySelector(`[href="#${sectionId}"]`);
+              if (activeCategory) {
+                activeCategory.scrollIntoView({
+                  behavior: 'smooth',
+                  inline: 'center',
+                });
+              }
+            }
             break;
           }
         }
@@ -152,17 +162,16 @@ const Home = () => {
       <div
         className={classes.introSlide}
         style={{
-          backgroundImage: `url(${
-            restaurantData &&
+          backgroundImage: `url(${restaurantData &&
             Object.entries(restaurantData).map(([restaurantId, restaurant]) => (
               restaurant.backgroundImage
             ))
-          })`,
+            })`,
         }}
       ></div>
 
       <div className={classes.orderContainer} ref={divRef}>
-        <div className={`${classes.menuContainer} ${isMenuFixed ? classes.fixed : ''}`} >
+        <div id={'menuContainer'} className={`${classes.menuContainer} ${isMenuFixed ? classes.fixed : ''}`} >
           <p className={classes.menuTitle}>MENU</p>
           {
             sectionArrayy.map((item, i) => (
@@ -180,19 +189,6 @@ const Home = () => {
             ))
           }
         </div>
-
-        {/* MAP EACH SECTION: EACH SECTION SHOULD BE A COMPONENT CALLED 'MenuSection' WITHIN COMPONENTS FOLDER
-        THE COMPONENT SHOULD TAKE IN SECTION TILE, AND THE LIST OF ITEMS IN THAT SECTION
-
-        EACH SECTION COMPONENT SHOULD MAP THE LIST OF ITEMS 
-        EACH ITEM INSIDE THE MAP SHOULD BE A COMPONENT CALLED 'Item' 
-        THAT TAKES IN THE PRODUCT INFORMATION AND DISPLAYS IT
-
-        ON CLICK FOR EACH ITEM SHOULD TRIGGER A POP UP MODAL
-        THE MODAL IS ALSO A COMPONENT WITHIN THE COMPONENT FOLDER
-        IT SHOULD TAKE IN PRODUCT CUSTOMIZATION INFORMATION AND DISPLAY IT ON THE MODAL */}
-
-
       </div>
     </div>
   )

@@ -127,10 +127,11 @@
   .container{
     .orderContainer{
       .menuContainer {
-        height: 40px;
+        height: 6vh;
         width: 100%;
         flex-direction: row;
         align-items: center;
+        overflow-x: scroll;
 
 
         .menuTitle {
@@ -139,31 +140,33 @@
         }
 
         .category {
-          font-size: 140% !important;
+          font-size: 5vw !important;
           height: 25%;
-          width: auto;
+          width: fit-content;
           padding: 4px;
           margin-bottom: 2.5px;
           margin-left: 8px;
+          white-space: nowrap;
         }
 
         .category:hover {
           font-size: 5vw !important;
           height: 25%;
-          width: auto;
+          width: fit-content;
           padding: 4px;
           margin-bottom: 2.5px;
           margin-left: 8px;
+          white-space: nowrap;
         }
 
         .categoryActive {
-          font-size: 140% !important;
+          font-size: 5vw !important;
           height: 25%;
-          width: auto;
+          width: fit-content;
           padding: 4px;
           margin-bottom: 2.5px;
           margin-left: 8px;
-
+          white-space: nowrap;
         }
       }
     }
@@ -192,6 +195,7 @@
       padding-top: 2%;
       background-color: $light;
       position: absolute;
+      overflow-x: scroll;
 
       .menuTitle {
         font-size: 4vw !important;
@@ -206,15 +210,17 @@
         font-size: 3vw !important;
         text-decoration: none;
         color: $menuUnselected;
-        transition: color 0.8s, text-decoration 0.5s ease;
+        // transition: color 0.8s, text-decoration 0.5s ease;
         text-decoration: underline solid transparent;
+        white-space: nowrap;
       }
 
       .category:hover {
         color: $primary;
         text-decoration: underline;
         cursor: pointer;
-        transition: color 0.8s, text-decoration 1.2s ease;
+        // transition: color 0.8s, text-decoration 1.2s ease;
+        white-space: nowrap;
       }
 
       .categoryActive {
@@ -226,7 +232,8 @@
         font-size: 3vw !important;
         color: $primary;
         text-decoration: underline;
-        transition: color 0.8s, text-decoration 1.2s ease;
+        white-space: nowrap;
+      //   transition: color 0.8s, text-decoration 1.2s ease;
       }
     }
 
