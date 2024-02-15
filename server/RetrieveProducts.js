@@ -1,17 +1,80 @@
 const express = require('express'); //Line 1
 const app = express(); //Line 2
+const WebSocket = require('ws');
+const wss = new WebSocket.Server({ server: app });
 const port = process.env.PORT || 3000; //Line 3
 var cors = require("cors");
 const stripe = require('stripe')('sk_test_51LPzSaAmJKzU86rcPkixEgsmzCDCKkeSKE9JiRstspOC4RbvaJm3qHlm3NqrBFWhcRiFg2hoDSCqQE879PbAJhHN00W0ePS1ZA')
 var bodyParser = require('body-parser')
 
+const endpointSecret = "whsec_4d9d5aa5c272302bf5f15227b8ed33bc1b8b0395ca62c0ace56a8cd286294626";
 
+function broadcast(data) {
+    wss.clients.forEach(function each(client) {
+      if (client.readyState === WebSocket.OPEN) {
+        client.send(data);
+      }
+    });
+  }
 
 app.use(bodyParser.json());
 app.use(cors());
 
 // This displays message that the server runode nning and listening to specified port
 app.listen(port, () => console.log(`Listening on port ${port}`));
+
+app.post('/webhookProduct', express.raw({type: 'application/json'}), (request, response) => {
+    const sig = request.headers['stripe-signature'];
+  
+    let event;
+  
+    try {
+      event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
+    } catch (err) {
+      response.status(400).send(`Webhook Error: ${err.message}`);
+      return;
+    }
+  
+    // Handle the event
+    switch (event.type) {
+      case 'price.created':
+        const priceCreated = event.data.object;
+        // Then define and call a function to handle the event price.created
+        broadcast(JSON.stringify({ type: 'product_updated' }));
+        break;
+      case 'price.deleted':
+        const priceDeleted = event.data.object;
+        // Then define and call a function to handle the event price.deleted
+        broadcast(JSON.stringify({ type: 'product_updated' }));
+        break;
+      case 'price.updated':
+        const priceUpdated = event.data.object;
+        // Then define and call a function to handle the event price.updated
+        broadcast(JSON.stringify({ type: 'product_updated' }));
+        break;
+      case 'product.created':
+        const productCreated = event.data.object;
+        // Then define and call a function to handle the event product.created
+        broadcast(JSON.stringify({ type: 'product_updated' }));
+        break;
+      case 'product.deleted':
+        const productDeleted = event.data.object;
+        // Then define and call a function to handle the event product.deleted
+        broadcast(JSON.stringify({ type: 'product_updated' }));
+        break;
+      case 'product.updated':
+        const productUpdated = event.data.object;
+        // Then define and call a function to handle the event product.updated
+        broadcast(JSON.stringify({ type: 'product_updated' }));
+        break;
+      // ... handle other event types
+      default:
+        console.log(`Unhandled event type ${event.type}`);
+    }
+  
+    // Return a 200 response to acknowledge receipt of the event
+    response.send();
+  });
 
 
 app.get('/products', (req, res) => {

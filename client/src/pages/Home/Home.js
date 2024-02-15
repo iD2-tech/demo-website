@@ -22,6 +22,24 @@ const Home = () => {
   const [restaurantData, setRestaurantData] = useState(null);
 
   useEffect(() => {
+    const ws = new WebSocket('ws://community-teriyaki-backend.onrender.com');
+  
+    ws.onmessage = (event) => {
+      // Check if the message indicates a product update
+      const message = JSON.parse(event.data);
+      if (message.type === 'product_updated') {
+        // Refetch products and prices
+        getProducts();
+        getPrices();
+      }
+    };
+  
+    return () => {
+      ws.close();
+    };
+  }, []);
+
+  useEffect(() => {
     // Reference to the "restaurants" node in the database
     const restaurantsRef = ref(database, 'restaurants');
 
