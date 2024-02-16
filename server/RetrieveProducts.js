@@ -1,9 +1,9 @@
 const express = require('express'); //Line 1
 const app = express(); //Line 2
 const WebSocket = require('ws');
-const WEB_SOCKET_PORT = process.env.WEBSOCKET_PORT  || 3000; //Line 3
+const PORT = process.env.PORT  || 3000; //Line 3
 
-const wss = new WebSocket.Server({ port: WEB_SOCKET_PORT});
+const wss = new WebSocket.Server({ noServer: true});
 
 var cors = require("cors");
 const stripe = require('stripe')('sk_test_51LPzSaAmJKzU86rcPkixEgsmzCDCKkeSKE9JiRstspOC4RbvaJm3qHlm3NqrBFWhcRiFg2hoDSCqQE879PbAJhHN00W0ePS1ZA')
@@ -80,7 +80,7 @@ app.use(cors());
 
 
 // This displays message that the server runode nning and listening to specified port
-app.listen(WEB_SOCKET_PORT, () => console.log(`Listening on port ${WEB_SOCKET_PORT}`));
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
 
 app.get('/products', (req, res) => {
