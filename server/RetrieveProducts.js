@@ -1,9 +1,9 @@
 const express = require('express'); //Line 1
 const app = express(); //Line 2
 const WebSocket = require('ws');
-const PORT = process.env.PORT || 3000; //Line 3
+const port = process.env.PORT || 3000; //Line 3
 
-const wss = new WebSocket.Server({ port: PORT});
+const wss = new WebSocket.Server({ port: port});
 
 var cors = require("cors");
 const stripe = require('stripe')('sk_test_51LPzSaAmJKzU86rcPkixEgsmzCDCKkeSKE9JiRstspOC4RbvaJm3qHlm3NqrBFWhcRiFg2hoDSCqQE879PbAJhHN00W0ePS1ZA')
