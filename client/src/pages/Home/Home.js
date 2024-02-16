@@ -22,10 +22,11 @@ const Home = () => {
   const [restaurantData, setRestaurantData] = useState(null);
 
   useEffect(() => {
-    const ws = new WebSocket('ws://community-teriyaki-backend.onrender.com');
-  
+    const ws = new WebSocket('ws://localhost:7071/ws');
+    console.log(ws)
     ws.onmessage = (event) => {
       // Check if the message indicates a product update
+
       const message = JSON.parse(event.data);
       if (message.type === 'product_updated') {
         // Refetch products and prices
@@ -72,7 +73,13 @@ const Home = () => {
 
   // get all products from stripe
   const getProducts = async () => {
-    fetch('https://community-teriyaki-backend.onrender.com/products')
+    // fetch('https://community-teriyaki-backend.onrender.com/products')
+    //   .then(r => r.json())
+    //   .then(data => {
+    //     var array = data.products;
+    //     setProducts(array);
+    //   });
+      fetch('http://localhost:3000/products')
       .then(r => r.json())
       .then(data => {
         var array = data.products;
@@ -82,7 +89,13 @@ const Home = () => {
 
   // get all prices from stripe
   const getPrices = async () => {
-    fetch('https://community-teriyaki-backend.onrender.com/prices', {
+    // fetch('https://community-teriyaki-backend.onrender.com/prices', {
+    // }).then(r => r.json())
+    //   .then(data => {
+    //     var array = data.price;
+    //     setPrices(array);
+    //   })
+      fetch('http://localhost:3000/prices', {
     }).then(r => r.json())
       .then(data => {
         var array = data.price;

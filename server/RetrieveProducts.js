@@ -2,39 +2,35 @@ const express = require('express'); //Line 1
 const app = express(); //Line 2
 const WebSocket = require('ws');
 const port = process.env.PORT || 3000; //Line 3
-const wss = new WebSocket.Server({ port: 8080 });
+
+const wss = new WebSocket.Server({ port: 7071});
+
 var cors = require("cors");
 const stripe = require('stripe')('sk_test_51LPzSaAmJKzU86rcPkixEgsmzCDCKkeSKE9JiRstspOC4RbvaJm3qHlm3NqrBFWhcRiFg2hoDSCqQE879PbAJhHN00W0ePS1ZA')
 var bodyParser = require('body-parser')
 
-const endpointSecret = "whsec_4d9d5aa5c272302bf5f15227b8ed33bc1b8b0395ca62c0ace56a8cd286294626";
-
 function broadcast(data) {
     wss.clients.forEach(function each(client) {
       if (client.readyState === WebSocket.OPEN) {
+        console.log(data);
         client.send(data);
       }
     });
   }
 
-app.use(bodyParser.json());
-app.use(cors());
+app.post('/webhook', express.raw({type: 'application/json'}), (request, response) => {
 
-// This displays message that the server runode nning and listening to specified port
-app.listen(port, () => console.log(`Listening on port ${port}`));
-
-app.post('/webhookProduct', express.raw({type: 'application/json'}), (request, response) => {
     const sig = request.headers['stripe-signature'];
-  
     let event;
   
     try {
       event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
+      
     } catch (err) {
+      console.log(err.message);
       response.status(400).send(`Webhook Error: ${err.message}`);
       return;
     }
-  
     // Handle the event
     switch (event.type) {
       case 'price.created':
@@ -76,6 +72,16 @@ app.post('/webhookProduct', express.raw({type: 'application/json'}), (request, r
     response.send();
   });
 
+app.use(bodyParser.json());
+app.use(cors());
+
+const endpointSecret = "whsec_4d9d5aa5c272302bf5f15227b8ed33bc1b8b0395ca62c0ace56a8cd286294626";
+
+
+
+// This displays message that the server runode nning and listening to specified port
+app.listen(port, () => console.log(`Listening on port ${port}`));
+
 
 app.get('/products', (req, res) => {
   const product = getProduct().then((result) => {
@@ -83,8 +89,6 @@ app.get('/products', (req, res) => {
       result.data[i].key = i;
       result.data[i].quantity = 0;
     }
-    console.log("length: " + result.data.length)
-    console.log(result.data)
     res.json({ products: result.data })
   });
 });
@@ -143,8 +147,6 @@ app.post('/create-checkout-session', async (req, res) => {
 app.get('/checkout-session', async (req, res) => {
   const { sessionId } = req.query;
   const session = await stripe.checkout.sessions.retrieve(sessionId);
-  console.log(sessionId);
-  console.log(session);
   res.send(session);
 });
 
