@@ -22,7 +22,7 @@ const Home = () => {
   const [restaurantData, setRestaurantData] = useState(null);
 
   useEffect(() => {
-    const ws = new WebSocket('wss://community-teriyaki-backend.onrender.com:10000');
+    const ws = new WebSocket('ws://localhost:7071/ws');
     console.log(ws)
     ws.onmessage = (event) => {
       // Check if the message indicates a product update
@@ -79,7 +79,7 @@ const Home = () => {
     //     var array = data.products;
     //     setProducts(array);
     //   });
-      fetch('https://community-teriyaki-backend.onrender.com/products')
+      fetch('http://localhost:3000/products')
       .then(r => r.json())
       .then(data => {
         var array = data.products;
@@ -95,7 +95,7 @@ const Home = () => {
     //     var array = data.price;
     //     setPrices(array);
     //   })
-      fetch('https://community-teriyaki-backend.onrender.com/prices', {
+      fetch('http://localhost:3000/prices', {
     }).then(r => r.json())
       .then(data => {
         var array = data.price;
