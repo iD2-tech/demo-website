@@ -8,6 +8,7 @@ const wss = new WebSocket.Server({ port: 7071});
 var cors = require("cors");
 const stripe = require('stripe')('sk_test_51LPzSaAmJKzU86rcPkixEgsmzCDCKkeSKE9JiRstspOC4RbvaJm3qHlm3NqrBFWhcRiFg2hoDSCqQE879PbAJhHN00W0ePS1ZA')
 var bodyParser = require('body-parser')
+const endpointSecret = "whsec_yFi1WnOOscYWnzdXLlrC19PO2LeObGcC";
 
 function broadcast(data) {
     wss.clients.forEach(function each(client) {
@@ -74,8 +75,6 @@ app.post('/webhook', express.raw({type: 'application/json'}), (request, response
 
 app.use(bodyParser.json());
 app.use(cors());
-
-const endpointSecret = "whsec_4d9d5aa5c272302bf5f15227b8ed33bc1b8b0395ca62c0ace56a8cd286294626";
 
 
 
